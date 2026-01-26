@@ -1,0 +1,79 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  /* background-color: #383838; */
+  
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.container {
+  /* max-width: 1920px; */
+  max-width: 1440px;
+
+  /* width: 1440px;
+  height: 1559px; */
+
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  /* background-color: #181818; */
+  background-color: rgba(250, 250, 250, 1);
+  display: flex;
+}
+
+/* Контейнер страницы с центроблоком и сайдбаром */
+/* .page__content {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+} */
+
+/* Центрблок с контентом */
+.centerblock {
+  flex: 1 1 auto;
+  min-width: 300px;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Сайдбар с плейлистом (справа) */
+.content__playlist {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
+  width: 250px;
+}
+
+/* Адаптив для планшетов (до 1440px) */
+@media (max-width: 1440px) {
+  .page__content {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .content__playlist {
+    width: 220px;
+  }
+  .centerblock {
+    padding: 16px;
+  }
+}
+
+/* Адаптив для мобильных (до 1024px) */
+@media (max-width: 1024px) {
+  .page__content {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .content__playlist {
+    width: 200px;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+  }
+  .centerblock {
+    padding: 12px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
