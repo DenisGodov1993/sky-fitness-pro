@@ -5,7 +5,7 @@
 // import Link from 'next/link';
 import styles from './page.module.css';
 import Header from '@/components/Header/Header';
-import Centerblock from '@/components/Header/Header';
+import Centerblock from '@/components/Centerblock/Centerblock';
 
 export default function Home() {
   // const scrollToTop = () => {
