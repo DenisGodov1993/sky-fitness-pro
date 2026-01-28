@@ -1,98 +1,257 @@
+// 'use client';
+
 import styles from './centerblock.module.css';
-// import Track from '../Track/Track';
-// import { data } from '@/data';
+import Image from 'next/image';
+// import Link from 'next/link';
 
 export default function Centerblock() {
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth',
+  //   });
+  // };
 
   return (
     <div className={styles.centerblock}>
-      
-      <h2 className={styles.centerblock__h2}>Начните заниматься спортоми улучшите качество жизни</h2>
-
-      <div className={styles.centerblock__filter}>
-        
+      <div className={styles.centerblock__title}>
+        <h2 className={styles.title__text}>
+          <span>Начните заниматься спортом</span>
+          <span>и улучшите качество жизни</span>
+        </h2>
+        <Image
+          width={288}
+          height={102}
+          className={styles.title__image}
+          src="/img/title.svg"
+          alt="title__image"
+        />
       </div>
-
       <div className={styles.centerblock__content}>
-
-        <div className={styles.content__playlist}> 
-          {/* {data.map((track) => (
-            <Track key={track._id} track={track} />
-          ))} */}
+        <div className={styles.content__card} id="card__1">
+          <div className={styles.card__imageContainer}>
+            <Image
+              width={360}
+              height={325}
+              className={styles.card__img}
+              src="/img/skill1.svg"
+              alt={'Йога'}
+            />
+            <button className={styles.card__imgPlusSvg} aria-label="Добавить">
+              <Image
+                width={32}
+                height={32}
+                src="/img/icon/plus.svg"
+                alt={'Добавить'}
+              />
+            </button>
+          </div>
+          <div className={styles.card__textContainer}>
+            <h3 className={styles.textContainer__title}>Йога</h3>
+            <div className={styles.textContainer__info}>
+              <div className={styles.info__txt}>
+                <div className={styles.txt__1}>
+                  <svg className={styles.txt__1Svg}>
+                    <use xlinkHref="/img/icon/calendar.svg"></use>
+                  </svg>
+                  <p>25 дней</p>
+                </div>
+                <div className={styles.txt__2}>
+                  <svg className={styles.txt__2Svg}>
+                    <use xlinkHref="/img/icon/watch.svg"></use>
+                  </svg>
+                  <p>20-50 мин/день</p>
+                </div>
+              </div>
+              <div className={styles.txt__3}>
+                <svg className={styles.txt__3Svg}>
+                  <use xlinkHref="/img/icon/complexity.svg"></use>
+                </svg>
+                <p>Сложность</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div> 
+        {/* <div className={styles.content__card} id="card__2">
+          <div className={styles.card__imageContainer}>
+            <Image
+              width={360}
+              height={325}
+              className={styles.card__img}
+              src="/img/skill2.svg"
+              alt={'Стретчинг'}
+            />
+            <button className={styles.card__imgPlusSvg} aria-label="Добавить">
+              <Image
+                width={32}
+                height={32}
+                src="/img/icon/plus.svg"
+                alt={'Добавить'}
+              />
+            </button>
+          </div>
+          <div className={styles.card__textContainer}>
+            <h3 className={styles.textContainer__title}>Стретчинг</h3>
+            <div className={styles.textContainer__info}>
+              <div className={styles.info__txt}>
+                <div className={styles.txt__1}>
+                  <svg className={styles.txt__1Svg}>
+                    <use xlinkHref="/img/icon/calendar.svg"></use>
+                  </svg>
+                  <p>25 дней</p>
+                </div>
+                <div className={styles.txt__2}>
+                  <svg className={styles.txt__2Svg}>
+                    <use xlinkHref="/img/icon/watch.svg"></use>
+                  </svg>
+                  <p>20-50 мин/день</p>
+                </div>
+              </div>
+              <div className={styles.txt__3}>
+                <svg className={styles.txt__3Svg}>
+                  <use xlinkHref="/img/icon/complexity.svg"></use>
+                </svg>
+                <p>Сложность</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.content__card} id="card__3">
+          <div className={styles.card__imageContainer}>
+            <Image
+              width={360}
+              height={325}
+              className={styles.card__img}
+              src="/img/skill3.svg"
+              alt={'Фитнес'}
+            />
+            <button className={styles.card__imgPlusSvg} aria-label="Добавить">
+              <Image
+                width={32}
+                height={32}
+                src="/img/icon/plus.svg"
+                alt={'Добавить'}
+              />
+            </button>
+          </div>
+          <div className={styles.card__textContainer}>
+            <h3 className={styles.textContainer__title}>Фитнес</h3>
+            <div className={styles.textContainer__info}>
+              <div className={styles.info__txt}>
+                <div className={styles.txt__1}>
+                  <svg className={styles.txt__1Svg}>
+                    <use xlinkHref="/img/icon/calendar.svg"></use>
+                  </svg>
+                  <p>25 дней</p>
+                </div>
+                <div className={styles.txt__2}>
+                  <svg className={styles.txt__2Svg}>
+                    <use xlinkHref="/img/icon/watch.svg"></use>
+                  </svg>
+                  <p>20-50 мин/день</p>
+                </div>
+              </div>
+              <div className={styles.txt__3}>
+                <svg className={styles.txt__3Svg}>
+                  <use xlinkHref="/img/icon/complexity.svg"></use>
+                </svg>
+                <p>Сложность</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.content__card} id="card__4">
+          <div className={styles.card__imageContainer}>
+            <Image
+              width={360}
+              height={325}
+              className={styles.card__img}
+              src="/img/skill4.svg"
+              alt={'Степ-аэробика'}
+            />
+            <button className={styles.card__imgPlusSvg} aria-label="Добавить">
+              <Image
+                width={32}
+                height={32}
+                src="/img/icon/plus.svg"
+                alt={'Добавить'}
+              />
+            </button>
+          </div>
+          <div className={styles.card__textContainer}>
+            <h3 className={styles.textContainer__title}>Степ-аэробика</h3>
+            <div className={styles.textContainer__info}>
+              <div className={styles.info__txt}>
+                <div className={styles.txt__1}>
+                  <svg className={styles.txt__1Svg}>
+                    <use xlinkHref="/img/icon/calendar.svg"></use>
+                  </svg>
+                  <p>25 дней</p>
+                </div>
+                <div className={styles.txt__2}>
+                  <svg className={styles.txt__2Svg}>
+                    <use xlinkHref="/img/icon/watch.svg"></use>
+                  </svg>
+                  <p>20-50 мин/день</p>
+                </div>
+              </div>
+              <div className={styles.txt__3}>
+                <svg className={styles.txt__3Svg}>
+                  <use xlinkHref="/img/icon/complexity.svg"></use>
+                </svg>
+                <p>Сложность</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.content__card} id="card__5">
+          <div className={styles.card__imageContainer}>
+            <Image
+              width={360}
+              height={325}
+              className={styles.card__img}
+              src="/img/skill5.svg"
+              alt={'Бодифлекс'}
+            />
+            <button className={styles.card__imgPlusSvg} aria-label="Добавить">
+              <Image
+                width={32}
+                height={32}
+                src="/img/icon/plus.svg"
+                alt={'Добавить'}
+              />
+            </button>
+          </div>
+          <div className={styles.card__textContainer}>
+            <h3 className={styles.textContainer__title}>Бодифлекс</h3>
+            <div className={styles.textContainer__info}>
+              <div className={styles.info__txt}>
+                <div className={styles.txt__1}>
+                  <svg className={styles.txt__1Svg}>
+                    <use xlinkHref="/img/icon/calendar.svg"></use>
+                  </svg>
+                  <p>25 дней</p>
+                </div>
+                <div className={styles.txt__2}>
+                  <svg className={styles.txt__2Svg}>
+                    <use xlinkHref="/img/icon/watch.svg"></use>
+                  </svg>
+                  <p>20-50 мин/день</p>
+                </div>
+              </div>
+              <div className={styles.txt__3}>
+                <svg className={styles.txt__3Svg}>
+                  <use xlinkHref="/img/icon/complexity.svg"></use>
+                </svg>
+                <p>Сложность</p>
+              </div>
+            </div>
+          </div>
+        </div> */}
+      </div>
+      {/* <button id="backTotop" className={styles.backTotop} onClick={scrollToTop}>
+        Наверх ↑
+      </button> */}
     </div>
-
-//     <section class="games-box center">
-//         <div class="text-box">
-//             <h2 class="text-box__title" id="about-games">Об играх</h2>
-//             <p class="text-box__text">В моей коллекции представлено 6 игр на разные темы. <br> Игры несложные — в них может поиграть каждый. <br> Все игры доступны для пользования.</p>
-//         </div>
-//         <div class="about-games">
-//             <div class="about">
-//                 <a class="about__game" href="#game1" hrefTab="#game-1">
-//                     <article class="about__game about__game_1-3">
-//                         <img class="about__img" src="img/game1.jpeg" alt="игра 1">
-//                         <div class="game-text">
-//                             <p class="game-text__1">Игра № 1</p>
-//                             <p class="game-text__2">Угадай число</p>
-//                         </div>
-//                     </article>
-//                 </a>
-//                 <a class="about__game" href="#game4" hrefTab="#game-4">
-//                     <article class="about__game about__game_4-6">
-//                         <img class="about__img" src="img/game4.jpeg" alt="игра 4">
-//                         <div class="game-text">
-//                             <p class="game-text__1">Игра №4</p>
-//                             <p class="game-text__2">Камень, ножницы, <br> бумага</p>
-//                         </div>
-//                     </article>
-//                 </a>
-//             </div>
-//             <div class="about">
-//                 <a class="about__game" href="#game2" hrefTab="#game-2">
-//                     <article class="about__game about__game_2-5">
-//                         <img class="about__img" src="img/game2.jpeg" alt="игра 2">
-//                         <div class="game-text">
-//                             <p class="game-text__1">Игра № 2</p>
-//                             <p class="game-text__2">Простая арифметика</p>
-//                         </div>
-//                     </article> 
-//                 </a>
-//                 <a class="about__game" href="#game5" hrefTab="#game-5">
-//                     <article class="about__game about__game_2-5">
-//                         <img class="about__img" src="img/game5.jpeg" alt="игра 5">
-//                         <div class="game-text">
-//                             <p class="game-text__1">Игра №5</p>
-//                             <p class="game-text__2">Простая викторина</p>
-//                         </div>
-//                     </article>
-//                 </a>
-//             </div>
-//             <div class="about">
-//                 <a class="about__game" href="#game3" hrefTab="#game-3">
-//                     <article class="about__game about__game_1-3">
-//                         <img class="about__img" src="img/game3.jpeg" alt="игра 3">
-//                         <div class="game-text">
-//                             <p class="game-text__1">Игра №3</p>
-//                             <p class="game-text__2">Переверни текст</p>
-//                         </div>
-//                     </article>
-//                 </a>
-//                 <a class="about__game" href="#game6" hrefTab="#game-6">
-//                     <article class="about__game about__game_4-6">
-//                         <img class="about__img" src="img/game6.jpeg" alt="игра 6">
-//                         <div class="game-text">
-//                             <p class="game-text__1">Игра №6</p>
-//                             <p class="game-text__2">Генератор случайных цветов</p>
-//                         </div>
-//                     </article>
-//                 </a>
-//             </div>
-//         </div>
-//     </section>
-
-
-
   );
 }

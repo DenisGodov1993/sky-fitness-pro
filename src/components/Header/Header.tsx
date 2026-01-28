@@ -35,21 +35,20 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className={styles.main__nav}>
+    <div className={styles.header}>
       <div className={styles.header__logo}>
         <Image
-          width={220}
-          height={35}
+          width={250}
+          height={170}
           className={styles.logo__image}
           src="/img/logo.svg"
           alt={'logo'}
-          priority
         />
         <p className={styles.logo__text}>Онлайн-тренировки для занятий дома</p>
       </div>
-      <Link href="/login" className={styles.login__btn}>
+      <Link className={styles.header__btn} href="btn">
         Войти
       </Link>
-    </header>
+    </div>
   );
 }
