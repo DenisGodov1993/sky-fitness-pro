@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import './globals.css';
-// import ReduxProvider from '@/store/ReduxProvider';
+import ReduxProvider from '@/store/ReduxProvider';
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -19,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <ReduxProvider>
+    <ReduxProvider>
       <html lang="en">
         <body className={`${roboto.variable} `}>{children}</body>
       </html>
-    // </ReduxProvider>
+    </ReduxProvider>
   );
 }
 
