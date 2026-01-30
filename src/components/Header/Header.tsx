@@ -1,3 +1,31 @@
+
+'use client';
+
+import Image from 'next/image';
+import styles from './header.module.css';
+import Link from 'next/link';
+
+export default function Header() {
+  return (
+    <div className={styles.header}>
+      <div className={styles.header__logo}>
+        <Image
+          width={250}
+          height={170}
+          className={styles.logo__image}
+          src="/img/logo.svg"
+          alt={'logo'}
+        />
+        <p className={styles.logo__text}>Онлайн-тренировки для занятий дома</p>
+      </div>
+      <Link className={styles.header__btn} href="btn">
+        Войти
+      </Link>
+    </div>
+  );
+}
+
+
 // import styles from './header.module.css';
 // import Image from 'next/image';
 // import Link from 'next/link';
@@ -27,28 +55,3 @@
 //   );
 // }
 
-'use client';
-
-import Image from 'next/image';
-import styles from './header.module.css';
-import Link from 'next/link';
-
-export default function Header() {
-  return (
-    <div className={styles.header}>
-      <div className={styles.header__logo}>
-        <Image
-          width={250}
-          height={170}
-          className={styles.logo__image}
-          src="/img/logo.svg"
-          alt={'logo'}
-        />
-        <p className={styles.logo__text}>Онлайн-тренировки для занятий дома</p>
-      </div>
-      <Link className={styles.header__btn} href="btn">
-        Войти
-      </Link>
-    </div>
-  );
-}

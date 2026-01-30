@@ -1,5 +1,6 @@
 .header {
   width: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,6 +9,7 @@
 
 .header__logo {
   width: 220px;
+  height: auto;
 }
 
 .logo__image {

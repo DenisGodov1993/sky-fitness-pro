@@ -1,13 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { courseSliceReducer } from '@/store/features/courseSlice';
-// import { authSliceReducer } from './features/authSlice';
+import { authSliceReducer } from '@/store/features/authSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: combineReducers({
       courses: courseSliceReducer,
-    //   auth: authSliceReducer,
+      auth: authSliceReducer,
     }),
   });
 };
