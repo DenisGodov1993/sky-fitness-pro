@@ -1,4 +1,4 @@
-export type createUserProp = {
-  email: string;
-  password: string;
-};
+// export type createUserProp = {
+//   email: string;
+//   password: string;
+// };

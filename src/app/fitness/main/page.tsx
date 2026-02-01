@@ -1,23 +1,24 @@
 'use client';
 
-import styles from './page.module.css';
-import Header from '@/components/Header/Header';
+import FitnessLayout from '@/app/fitness/FitnessLayout';
 import Centerblock from '@/components/Centerblock/Centerblock';
-// import { useEffect } from 'react';
-// import { getCourses } from '@/services/courses/coursesApi';
+import { useAppSelector } from '@/store/store';
 
 export default function Home() {
-  // useEffect(() => {
-  //   getCourses();
-  // }, []);
+  const { fetchError, fetchIsLoading, allCourses } = useAppSelector(
+    (state) => state.courses,
+  );
 
   return (
-    <div className={styles.wrapper}>
-      <main className={styles.main}>
-        <Header />
-        <Centerblock />
-      </main>
-    </div>
+    <FitnessLayout>
+      <Centerblock
+        // courses={courses}
+        // courses={allCourses}
+        // isLoading={fetchIsLoading}
+        // errorRes={fetchError}
+        // itemName="Фитнес курсы"
+      />
+    </FitnessLayout>
   );
 }
 

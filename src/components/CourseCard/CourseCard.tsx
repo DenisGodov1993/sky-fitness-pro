@@ -20,7 +20,11 @@ export function CourseCard({ course }: CourseCardProps) {
 
   return (
     <div className={styles.content__card} onClick={onClickCourse}>
-      <Link className={styles.card__imageContainer} href= "/fitness/fitnessCourses/1">
+      <Link
+        className={styles.card__imageContainer}
+        // href="/fitness/fitnessCourses/1"
+        href={`/fitness/fitnessCourses/${course.id}`}
+      >
         <Image
           width={360}
           height={325}
@@ -34,6 +38,7 @@ export function CourseCard({ course }: CourseCardProps) {
             height={32}
             src="/img/icon/plus.svg"
             alt="Добавить"
+            // onClick={addCourse}
           />
         </button>
       </Link>

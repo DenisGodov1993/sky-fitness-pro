@@ -23,7 +23,7 @@ export default function Centerblock() {
           height={102}
           className={styles.title__image}
           src="/img/title.svg"
-          alt="title"
+          alt="title" 
           style={{ width: 'auto', height: 'auto' }}
         />
       </div>
