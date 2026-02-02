@@ -11,12 +11,13 @@ import { setUser } from '@/store/features/authSlice';
 import { useRouter } from 'next/navigation';
 
 export default function SignIn() {
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const dispatch = useAppDispatch();
+  
   const router = useRouter();
 
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -86,7 +87,7 @@ export default function SignIn() {
           <button disabled={isLoading} onClick={onSubmit} className={styles.btn__enter}>
             {isLoading ? 'Вход...' : 'Войти'}
           </button>
-          <Link href="/auth/signup" className={styles.btn__signup}>
+          <Link href={'/auth/signup'} className={styles.btn__signup}>
             Зарегистрироваться
           </Link>
         </div>

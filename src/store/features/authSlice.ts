@@ -21,15 +21,23 @@ const authSlice = createSlice({
       state.username = action.payload.username;
       state.token = action.payload.token;
 
-      localStorage.setItem('username', action.payload.username);
-      localStorage.setItem('token', action.payload.token);
+      // localStorage.setItem('username', action.payload.username);
+      // localStorage.setItem('token', action.payload.token);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('username', action.payload.username);
+        localStorage.setItem('token', action.payload.token);
+      }
     },
     clearUser: (state) => {
       state.username = '';
       state.token = '';
 
-      localStorage.removeItem('username');
-      localStorage.removeItem('token');
+      // localStorage.removeItem('username');
+      // localStorage.removeItem('token');
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('username');
+        localStorage.removeItem('token');
+      }
     },
   },
 });

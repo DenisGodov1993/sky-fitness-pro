@@ -10,7 +10,7 @@ export const makeStore = () => {
       auth: authSliceReducer,
     }),
   });
-};
+}; 
 
 export type AppStore = ReturnType<typeof makeStore>;
 type RootState = ReturnType<AppStore['getState']>;

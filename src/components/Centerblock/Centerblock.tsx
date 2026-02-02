@@ -1,7 +1,7 @@
 import styles from './centerblock.module.css';
 import Image from 'next/image';
-import { fitCourses } from '@/data';
 import { CourseCard } from '@components/CourseCard/CourseCard';
+import { useAppSelector } from '@/store/store';
 
 export default function Centerblock() {
   const scrollToTop = () => {
@@ -10,8 +10,14 @@ export default function Centerblock() {
       behavior: 'smooth',
     });
   };
+  
+  const courses = useAppSelector((state) => state.courses.allCourses);
+
+  // Сортируем по order прямо перед рендером
+  const sortedCourses = courses.slice().sort((a, b) => a.order - b.order);
 
   return (
+    
     <div className={styles.centerblock}>
       <div className={styles.centerblock__title}>
         <h2 className={styles.title__text}>
@@ -26,11 +32,11 @@ export default function Centerblock() {
           alt="title" 
           style={{ width: 'auto', height: 'auto' }}
         />
-      </div>
+      </div> 
 
       <div className={styles.centerblock__content}>
-        {fitCourses.map((course) => (
-          <CourseCard key={course.id} course={course} />
+        {sortedCourses.map((course) => (
+          <CourseCard key={course._id} course={course} />
         ))}
       </div>
       <button id="backTotop" className={styles.backTotop} onClick={scrollToTop}>
@@ -39,3 +45,51 @@ export default function Centerblock() {
     </div>
   );
 }
+
+
+// import styles from './centerblock.module.css';
+// import Image from 'next/image';
+// // import { fitCourses } from '@/data';
+// import { CourseApiType } from '@/sharedTypes/sharedTypes';
+// import { CourseCard } from '@components/CourseCard/CourseCard';
+// import { useAppSelector } from '@/store/store';
+
+// export default function Centerblock() {
+//   const scrollToTop = () => {
+//     window.scrollTo({
+//       top: 0,
+//       behavior: 'smooth',
+//     });
+//   };
+  
+//   const courses = useAppSelector((state) => state.courses.allCourses);
+
+//   return (
+    
+//     <div className={styles.centerblock}>
+//       <div className={styles.centerblock__title}>
+//         <h2 className={styles.title__text}>
+//           <span>Начните заниматься спортом</span>
+//           <span>и улучшите качество жизни</span>
+//         </h2>
+//         <Image
+//           width={288}
+//           height={102}
+//           className={styles.title__image}
+//           src="/img/title.svg"
+//           alt="title" 
+//           style={{ width: 'auto', height: 'auto' }}
+//         />
+//       </div>
+
+//       <div className={styles.centerblock__content}>
+//         { courses.map((course) => (
+//           <CourseCard key={course._id} course={course} />
+//         ))}
+//       </div>
+//       <button id="backTotop" className={styles.backTotop} onClick={scrollToTop}>
+//         Наверх ↑
+//       </button>
+//     </div>
+//   );
+// }

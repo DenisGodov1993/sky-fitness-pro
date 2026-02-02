@@ -1,9 +1,10 @@
-import { FitCourse } from '@/sharedTypes/sharedTypes';
+// import { FitCourse } from '@/sharedTypes/sharedTypes';
+import { CourseApiType } from '@/sharedTypes/sharedTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type initialStateType = {
-  currentCourse: null | FitCourse;
-  allCourses: FitCourse[];
+  currentCourse: null | CourseApiType;
+  allCourses: CourseApiType[];
   fetchError: null | string;
   fetchIsLoading: boolean;
 };
@@ -19,10 +20,10 @@ const courseSlice = createSlice({
   name: 'courses',
   initialState,
   reducers: {
-    setCurrentCourse: (state, action: PayloadAction<FitCourse>) => {
+    setCurrentCourse: (state, action: PayloadAction<CourseApiType>) => {
       state.currentCourse = action.payload;
     },
-    setAllCourses: (state, action: PayloadAction<FitCourse[]>) => {
+    setAllCourses: (state, action: PayloadAction<CourseApiType[]>) => {
       state.allCourses = action.payload;
     },
     setFetchError: (state, action: PayloadAction<string>) => {

@@ -1,47 +1,50 @@
 // курс из API
-export interface CourseApi {
+export interface CourseApiType {
   _id: string;
   nameRU: string;
   nameEN: string;
-  description: string;
-  directions: string[];
-  fitting: string[];
-  difficulty?: string;
-  durationInDays?: number;
-  dailyDurationInMinutes?: {
+  description: string; // описание
+  difficulty: string; // трудность (сложность)
+  directions: string[]; // направления
+  fitting: string[]; // подходящий курс (текст)
+  durationInDays: number; // длительность в днях
+  dailyDurationInMinutes: {
+    // ежедневная продолжительность в минутах
     from: number;
     to: number;
   };
-  workouts: string[];
+  workouts: string[]; // тренировки
+  order: number; // порядок
 }
+
+
 
 // тренировка из API
 export interface WorkoutApi {
   _id: string;
   name: string;
   video: string;
-  exercises: ExerciseApi[];
+  exercises: ExerciseApi[]; // упражнения
 }
 
 export interface ExerciseApi {
   _id: string;
   name: string;
-  quantity: number;
+  quantity: number; // количество
 }
 
 // прогресс
 export interface CourseProgressApi {
   courseId: string;
-  courseCompleted: boolean;
-  workoutsProgress: WorkoutProgressApi[];
+  courseCompleted: boolean; // курс завершен
+  workoutsProgress: WorkoutProgressApi[]; // прогресс тренировок
 }
 
 export interface WorkoutProgressApi {
   workoutId: string;
-  workoutCompleted: boolean;
+  workoutCompleted: boolean; // тренировка завершена
   progressData: number[];
 }
-
 
 // export type Duration = {
 //   min: number;

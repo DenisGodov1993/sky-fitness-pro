@@ -49,7 +49,7 @@ export const loginUser = async (data: AuthData): Promise<LoginResponse> => {
         password: data.password.trim(),
       },
       {
-        headers: {
+        headers: { 
           'Content-Type': '',
         },
       },

@@ -26,7 +26,9 @@ export default function FetchingCourses() {
       .catch((error) => {
         if (error instanceof AxiosError) {
           if (error.response) {
-            dispatch(setFetchError(error.response.data));
+            // dispatch(setFetchError(error.response.data));
+            dispatch(setFetchError(error.response.data.message));
+
           } else if (error.request) {
             dispatch(setFetchError('Произошла ошибка. Попробуйте позже'));
           }

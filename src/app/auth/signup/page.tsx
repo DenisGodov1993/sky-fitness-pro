@@ -123,7 +123,7 @@ export default function SignUp() {
           >
             {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
           </button>
-          <Link href="/auth/signin" className={styles.btn__signup}>
+          <Link href={'/auth/signin'} className={styles.btn__signup}>
             Войти
           </Link>
         </div>

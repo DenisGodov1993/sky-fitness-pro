@@ -2,22 +2,26 @@
 
 import FitnessLayout from '@/app/fitness/FitnessLayout';
 import Centerblock from '@/components/Centerblock/Centerblock';
-import { useAppSelector } from '@/store/store';
+import { getCourses } from '@/services/courses/coursesApi';
+import { setAllCourses } from '@/store/features/courseSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const { fetchError, fetchIsLoading, allCourses } = useAppSelector(
-    (state) => state.courses,
-  );
+  // const { fetchError, fetchIsLoading, allCourses } = useAppSelector(
+  //   (state) => state.courses,
+  // );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    getCourses().then((data) => {
+      dispatch(setAllCourses(data));
+    });
+  }, []);
 
   return (
     <FitnessLayout>
-      <Centerblock
-        // courses={courses}
-        // courses={allCourses}
-        // isLoading={fetchIsLoading}
-        // errorRes={fetchError}
-        // itemName="Фитнес курсы"
-      />
+      <Centerblock />
     </FitnessLayout>
   );
 }

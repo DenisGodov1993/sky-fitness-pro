@@ -1,115 +1,195 @@
-// export const courseImageMap: Record<string, string> = {
-//   Йога: '/img/skill1.svg',
-//   Стретчинг: '/img/skill2.svg',
-//   Фитнес: '/img/skill3.svg',
-//   'Степ-аэробика': '/img/skill4.svg',
-//   Бодифлекс: '/img/skill5.svg',
-// };
+'use client';
 
-export const courseImageMap = [
-  { name: 'Йога', image: '/img/skill1.svg' },
-  { name: 'Стретчинг', image: '/img/skill2.svg' },
-  { name: 'Фитнес', image: '/img/skill3.svg' },
-  { name: 'Степ-аэробика', image: '/img/skill4.svg' },
-  { name: 'Бодифлекс', image: '/img/skill5.svg' },
-];
-
-export const skillImageMap = [
-  { name: 'Йога', image: '/img/skillCard1.png' },
-  { name: 'Стретчинг', image: '/img/skillCard2.png' },
-  { name: 'Фитнес', image: '/img/skillCard3.png' },
-  { name: 'Степ-аэробика', image: '/img/skillCard4.png' },
-  { name: 'Бодифлекс', image: '/img/skillCard5.png' },
-];
-
-
-// 'use client';
-
-// import { useEffect, useState } from 'react';
-// import { useParams, useRouter } from 'next/navigation';
-// import { getCourseById, addCourseToUser } from '@/services/courses/coursesApi';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CourseApiType } from '@/sharedTypes/sharedTypes';
+import styles from './aboutCourse.module.css';
 // import { useAppSelector } from '@/store/store';
-// import { CourseApiType } from '@/sharedTypes/sharedTypes';
-// import styles from './page.module.css';
+import { skillImageMap } from '@/data';
 
-// export default function CoursePage() {
-//   const params = useParams<{ id: string }>();
-//   const [course, setCourse] = useState<CourseApiType | null>(null);
-//   const [error, setError] = useState('');
-//   const [isLoading, setIsLoading] = useState(false);
-//   const username = useAppSelector((state) => state.auth.username);
-//   const token = useAppSelector((state) => state.auth.token);
-//   const router = useRouter();
+interface AboutCourseProps {
+  course: CourseApiType;
+  username?: string;
+  isLoading: boolean;
+  onAddCourse: () => void;
+  isAdded: boolean;
+}
 
-//   useEffect(() => {
-//     getCourseById(params.id)
-//       .then((data) => setCourse(data))
-//       .catch(() => setError('Ошибка загрузки курса'));
-//   }, [params.id]);
+export default function AboutCourse({
+  course,
+  username,
+  isLoading,
+  onAddCourse,
+  isAdded,
+}: AboutCourseProps) {
 
-//   const handleAddCourse = async () => {
-//     if (!token) return router.push('/auth/signin');
-//     setIsLoading(true);
-//     try {
-//       if (course) await addCourseToUser(course._id);
-//       alert('Курс успешно добавлен!');
-//     } catch {
-//       alert('Не удалось добавить курс. Попробуйте позже.');
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
+    // const courses = useAppSelector((state) => state.courses.allCourses);
 
-//   if (error) return <div>{error}</div>;
-//   if (!course) return <div>Загрузка...</div>;
+    // Сортируем по order прямо перед рендером
+//   const sortedSkill = courses.slice().sort((a, b) => a.order - b.order);
+  
+  const skillImage =
+      skillImageMap.find((c) => c.name === course.nameRU)?.image;
+  return (
+    <>
+      {/* Основная карточка курса */}
+      <div className={styles.skillCard}>
+        <Image
+          width={1160}
+          height={310}
+          className={styles.skillCard__image}
+        //   src="/img/skillCard1.png"
+          src={skillImage ?? ''}
+          alt={course.nameRU}
+          style={{ width: 'auto', height: 'auto' }}
+        />
 
-//   const isAdded = false; // TODO: проверить, есть ли курс у пользователя через API
+        {/* Название курса */}
+        {/* <h1 className={styles.skillCard__text}>{course.nameRU}</h1> */}
 
-//   return (
-//     <div className={styles.coursePage}>
-//       <h1>{course.nameRU}</h1>
-//       <p>{course.description}</p>
-//       <p>Сложность: {course.difficulty}</p>
-//       <p>Продолжительность: {course.durationInDays} дней</p>
+        {/* Блок "Подойдет для вас" */}
+        <div className={styles.skillCard__infoContainer}>
+          <h2 className={styles.skillCard__text}>Подойдет для вас, если:</h2>
 
-//       {username ? (
-//         !isAdded && (
-//           <button disabled={isLoading} onClick={handleAddCourse}>
-//             {isLoading ? 'Добавление...' : 'Добавить курс'}
-//           </button>
-//         )
-//       ) : (
-//         <button onClick={() => router.push('/auth/signin')}>
-//           Войдите, чтобы добавить курс
-//         </button>
-//       )}
-//     </div>
-//   );
-// }
+          <div className={styles.infoContainer__infoCard}>
+            <div className={styles.infoContainer__infoCard1}>
+              <div className={styles.infoCard1__card1}>
+                <Image width={35} height={101} src="/img/1.svg" alt="1" />
+                <p className={styles.card1__txt}>{course.description}</p>
+              </div>
+            </div>
 
+            <div className={styles.infoContainer__infoCard2}>
+              <div className={styles.infoCard2__card2}>
+                <Image width={43} height={101} src="/img/2.svg" alt="2" />
+                <p className={styles.card2__txt}>
+                  Сложность: {course.difficulty}
+                </p>
+              </div>
+            </div>
 
+            <div className={styles.infoContainer__infoCard3}>
+              <div className={styles.infoCard3__card3}>
+                <Image width={43} height={101} src="/img/3.svg" alt="3" />
+                <p className={styles.card3__txt}>
+                  Продолжительность: {course.durationInDays} дней
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        {/* Направления курса */}
+        {course.directions && (
+          <div className={styles.skillCard__directionsCourses}>
+            <h2 className={styles.directionsCourses__text}>Направления</h2>
 
+            <div className={styles.directionsCourses__dirCourse}>
+              <div className={styles.dirCourse__wrapper}>
+                {course.directions.map((name, i) => (
+                  <div key={i} className={styles.dirCourse__block}>
+                    <div className={styles.dirCourse__item}>
+                      <Image
+                        width={19.5}
+                        height={19.5}
+                        src="/img/icon/star.svg"
+                        alt="звезда"
+                      />
+                      <p className={styles.dirCourse__txt}>{name}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
+        {/* Кнопка добавления */}
+        {username && !isAdded ? (
+          <button
+            className={styles.txtContainer__btn}
+            disabled={isLoading}
+            onClick={onAddCourse}
+          >
+            {isLoading ? 'Добавление...' : 'Добавить курс'}
+          </button>
+        ) : !username ? (
+          <Link className={styles.txtContainer__btn} href="/auth/signin">
+            Войдите, чтобы добавить курс
+          </Link>
+        ) : null}
+      </div>
 
+      {/* Рекламный постер */}
+      <div className={styles.skillPoster}>
+        <div className={styles.posterContainer}>
+          <div className={styles.posterContainer__txtContainer}>
+            <h3 className={styles.txtContainer__title}>
+              Начните путь к новому телу
+            </h3>
 
+            <div className={styles.txtContainer__list}>
+              <ul>
+                <li>проработка всех групп мышц</li>
+                <li>тренировка суставов</li>
+                <li>улучшение циркуляции крови</li>
+                <li>упражнения заряжают бодростью</li>
+                <li>помогают противостоять стрессам</li>
+              </ul>
+            </div>
 
+            {!username && (
+              <Link className={styles.txtContainer__btn} href="/auth/signin">
+                Войдите, чтобы добавить курс
+              </Link>
+            )}
+          </div>
+        </div>
+
+        <Image
+          width={604.47}
+          height={604.47}
+          className={styles.skillPoster__posterImg}
+          src="/img/poster.png"
+          alt="постер"
+        />
+
+        <Image
+          width={670.18}
+          height={390.98}
+          className={styles.skillPoster__posterImgSvg}
+          src="/img/icon/greenLine.svg"
+          alt="линия"
+        />
+      </div>
+    </>
+  );
+}
 
 // 'use client';
 
-// import FitnessLayout from '@/app/fitness/FitnessLayout';
-// import styles from './page.module.css';
 // import Image from 'next/image';
 // import Link from 'next/link';
-// // import { useAppSelector } from '@/store/store';
-// // import { useParams } from 'next/navigation';
+// import { CourseApiType } from '@/sharedTypes/sharedTypes';
+// import styles from './aboutCourse.module.css';
 
-// export default function FitnessCoursesPage() {
-//   // const params = useParams<{ id: string }>();
+// interface AboutCourseProps {
+//   course: CourseApiType;
+//   username?: string;
+//   isLoading: boolean;
+//   onAddCourse: () => void;
+//   isAdded: boolean;
+// }
+
+// export default function AboutCourse({
+//   course,
+//   username,
+//   isLoading,
+//   onAddCourse,
+//   isAdded,
+// }: AboutCourseProps) {
 //   return (
-//     <FitnessLayout>
-//       <div className={styles.skillContainer}>
-//         <div className={styles.skillCard}>
+//             <div className={styles.skillCard}>
 //           <Image
 //             width={1160}
 //             height={310}
@@ -292,7 +372,46 @@ export const skillImageMap = [
 //             style={{ width: 'auto', height: 'auto' }}
 //           />
 //         </div>
+//         );
+//     }
+
+//     <div className={styles.aboutCourse}>
+//       <h1>{course.nameRU}</h1>
+//       <p>{course.description}</p>
+//       <p>Сложность: {course.difficulty}</p>
+//       <p>Продолжительность: {course.durationInDays} дней</p>
+
+//       {username && !isAdded ? (
+//         <button disabled={isLoading} onClick={onAddCourse}>
+//           {isLoading ? 'Добавление...' : 'Добавить курс'}
+//         </button>
+//       ) : !username ? (
+//         <Link href="/auth/signin">Войдите, чтобы добавить курс</Link>
+//       ) : null}
+
+//       {/* Пример блока с направлениями */}
+//       <div className={styles.directions}>
+//         <h2>Направления</h2>
+//         <ul>
+//           <li>Йога для новичков</li>
+//           <li>Классическая йога</li>
+//           <li>Кундалини-йога</li>
+//           <li>Йогатерапия</li>
+//           <li>Хатха-йога</li>
+//           <li>Аштанга-йога</li>
+//         </ul>
 //       </div>
-//     </FitnessLayout>
+
+//       {/* Пример постера */}
+//       <div className={styles.poster}>
+//         <Image
+//           width={604}
+//           height={604}
+//           src="/img/poster.png"
+//           alt="рекламный плакат"
+//           style={{ width: 'auto', height: 'auto' }}
+//         />
+//       </div>
+//     </div>
 //   );
 // }
