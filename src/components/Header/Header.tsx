@@ -1,173 +1,229 @@
 'use client';
 
 import Image from 'next/image';
-import styles from './header.module.css';
 import Link from 'next/link';
 import { useAppSelector } from '@/store/store';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import styles from './header.module.css';
 
 export default function Header() {
-  const username = useAppSelector((state) => state.auth.username);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const email = useAppSelector((state) => state.auth.username);
 
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
+  // Преобразуем email в "имя пользователя"
+  //  Имя пользователя должно приходить с бэкенда, сейчас используется email
+  const displayName = email
+    ? email.split('@')[0][0].toUpperCase() + email.split('@')[0].slice(1)
+    : '';
 
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // // Логика для обработки клика "Выйти" (например, dispatch logout action)
-  // const handleLogout = () => {
-  //   // Здесь логика выхода из аккаунта (например, dispatch(logout()))
-  //   closeModal();
-  // };
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // закрытие по клику вне меню
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.header__logo}>
         <Image
           width={250}
           height={170}
           className={styles.logo__image}
           src="/img/logo.svg"
-          alt={'logo'}
+          alt="logo"
         />
         <p className={styles.logo__text}>Онлайн-тренировки для занятий дома</p>
       </div>
 
-      {username ? (
-        <div className={styles.header__user} >
-          {/* onClick={() => openModal()} */}
-          <Image
-            width={41.67}
-            height={41.67}
-            className={styles.header__userIcon}
-            src="/img/icon/user.svg"
-            alt={'иконка пользователя'}
-          />
-          <span className={styles.header__userName}>{username}</span>
+      {/* Пользователь / Войти */}
+      {email ? (
+        <div ref={menuRef} className={styles.header__userWrapper}>
+          <button
+            type="button"
+            className={styles.header__user}
+            onClick={toggleMenu}
+          >
+            <Image
+              width={42}
+              height={42}
+              className={styles.header__userIcon}
+              src="/img/icon/user.svg"
+              alt="иконка пользователя"
+            />
+
+            {/* обработанный email */}
+            <span className={styles.header__userName}>{displayName}</span>
+
+            <span
+              className={`${styles.header__arrow} ${
+                isMenuOpen ? styles.header__arrow_open : ''
+              }`}
+            />
+          </button>
+
+          {isMenuOpen && (
+            <div className={styles.userMenu}>
+              <div className={styles.userMenu__info}>
+                <p className={styles.info__titleName}>{displayName}</p>
+                <p className={styles.info__mail}>{email}</p>
+              </div>
+              <div className={styles.userMenu__btn}>
+                <Link
+                  href="/profile"
+                  className={styles.btn__profile}
+                  onClick={closeMenu}
+                >
+                  Мой профиль
+                </Link>
+
+                <button
+                  className={styles.btn__exit}info
+                  onClick={() => {
+                    // dispatch(logout())
+                    closeMenu();
+                  }}
+                >
+                  Выйти
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       ) : (
-        <Link className={styles.header__btn}  href={'/auth/signin'}>
+        <Link className={styles.header__btn} href="/auth/signin">
           Войти
         </Link>
       )}
-
-      {/* Модальное окно */}
-      {isModalOpen && (
-        <div className={styles.modal}>
-          {/* <button onClick={closeModal} className={styles.modal__close}>
-            Закрыть
-          </button>
-          <button onClick={handleLogout} className={styles.modal__btn}>
-            Выйти
-          </button>
-          <button onClick={closeModal} className={styles.modal__btn}>
-            Мой профиль
-          </button> */}
-        </div>
-      )}
-    </div>
+    </header>
   );
 }
 
 // 'use client';
 
 // import Image from 'next/image';
-// import styles from './header.module.css';
 // import Link from 'next/link';
 // import { useAppSelector } from '@/store/store';
+// import { useEffect, useRef, useState } from 'react';
+// import styles from './header.module.css';
 
 // export default function Header() {
 //   const username = useAppSelector((state) => state.auth.username);
 
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const menuRef = useRef<HTMLDivElement | null>(null);
+
+//   const toggleMenu = () => {
+//     setIsMenuOpen((prev) => !prev);
+//   };
+
+//   const closeMenu = () => {
+//     setIsMenuOpen(false);
+//   };
+
+//   // закрытие по клику вне меню
+//   useEffect(() => {
+//     const handleClickOutside = (e: MouseEvent) => {
+//       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+//         closeMenu();
+//       }
+//     };
+
+//     document.addEventListener('mousedown', handleClickOutside);
+//     return () => {
+//       document.removeEventListener('mousedown', handleClickOutside);
+//     };
+//   }, []);
+
 //   return (
-//     <div className={styles.header}>
+//     <header className={styles.header}>
+//       {/* Логотип */}
 //       <div className={styles.header__logo}>
 //         <Image
 //           width={250}
 //           height={170}
 //           className={styles.logo__image}
 //           src="/img/logo.svg"
-//           alt={'logo'}
+//           alt="logo"
 //         />
-//         <p className={styles.logo__text}>Онлайн-тренировки для занятий дома</p>
+//         <p className={styles.logo__text}>
+//           Онлайн-тренировки для занятий дома
+//         </p>
 //       </div>
+
+//       {/* Пользователь / Войти */}
 //       {username ? (
-//         <div className={styles.header__user}>
-//           {/* onClick={() => openModal()} */}
-//           <Image
-//             width={41.67}
-//             height={41.67}
-//             className={styles.header__userIcon}
-//             src="/img/icon/user.svg"
-//             alt={'иконка пользователя'}
-//           />
-//           <span className={styles.header__userName}>{username}</span>
+//         <div ref={menuRef} className={styles.header__userWrapper}>
+//           <button
+//             type="button"
+//             className={styles.header__user}
+//             onClick={toggleMenu}
+//           >
+//             <Image
+//               width={42}
+//               height={42}
+//               className={styles.header__userIcon}
+//               src="/img/icon/user.svg"
+//               alt="иконка пользователя"
+//             />
+
+//             <span className={styles.header__userName}>{username}</span>
+
+//             <Image
+//               width={12}
+//               height={8}
+//               src="/img/icon/arrow-down.svg"
+//               alt="стрелка"
+//               className={`${styles.header__arrow} ${
+//                 isMenuOpen ? styles.header__arrow_open : ''
+//               }`}
+//             />
+//           </button>
+
+//           {isMenuOpen && (
+//             <div className={styles.userMenu}>
+//               <Link
+//                 href="/profile"
+//                 className={styles.userMenu__item}
+//                 onClick={closeMenu}
+//               >
+//                 Мой профиль
+//               </Link>
+
+//               <button
+//                 className={styles.userMenu__item}
+//                 onClick={() => {
+//                   // dispatch(logout())
+//                   closeMenu();
+//                 }}
+//               >
+//                 Выйти
+//               </button>
+//             </div>
+//           )}
 //         </div>
 //       ) : (
-
-//       <Link className={styles.header__btn} href="btn">
-//         Войти
-//       </Link>
-//       )}
-//     </div>
-//   );
-// }
-
-// 'use client';
-
-// import Image from 'next/image';
-// import styles from './header.module.css';
-// import Link from 'next/link';
-
-// export default function Header() {
-//   return (
-//     <div className={styles.header}>
-//       <div className={styles.header__logo}>
-//         <Image
-//           width={250}
-//           height={170}
-//           className={styles.logo__image}
-//           src="/img/logo.svg"
-//           alt={'logo'}
-//         />
-//         <p className={styles.logo__text}>Онлайн-тренировки для занятий дома</p>
-//       </div>
-//       <Link className={styles.header__btn} href="btn">
-//         Войти
-//       </Link>
-//     </div>
-//   );
-// }
-
-// import styles from './header.module.css';
-// import Image from 'next/image';
-// import Link from 'next/link';
-
-// export default function Header() {
-//   return (
-//     <header id="header" className={styles.header}>
-//       <div className={styles.container}>
-//         <div className={styles.logo__wrapper}>
-//           <Link href="/" className={styles.logo}>
-//             <Image
-//               width={220}
-//               height={35}
-//               className={styles.logo__image}
-//               src="/logo.png"
-//               alt="SkyFitnessPro logo"
-//               priority
-//             />
-//           </Link>
-//           <p className={styles.tagline}>Онлайн-тренировки для занятий дома</p>
-//         </div>
-//         <Link href="/login" className={styles.login__btn}>
+//         <Link className={styles.header__btn} href="/auth/signin">
 //           Войти
 //         </Link>
-//       </div>
+//       )}
 //     </header>
 //   );
 // }

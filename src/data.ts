@@ -1,11 +1,3 @@
-// export const courseImageMap: Record<string, string> = {
-//   Йога: '/img/skill1.svg',
-//   Стретчинг: '/img/skill2.svg',
-//   Фитнес: '/img/skill3.svg',
-//   'Степ-аэробика': '/img/skill4.svg',
-//   Бодифлекс: '/img/skill5.svg',
-// };
-
 export const courseImageMap = [
   { name: 'Йога', image: '/img/skill1.svg' },
   { name: 'Стретчинг', image: '/img/skill2.svg' },
@@ -22,277 +14,120 @@ export const skillImageMap = [
   { name: 'Бодифлекс', image: '/img/skillCard5.png' },
 ];
 
-
 // 'use client';
 
-// import { useEffect, useState } from 'react';
-// import { useParams, useRouter } from 'next/navigation';
-// import { getCourseById, addCourseToUser } from '@/services/courses/coursesApi';
-// import { useAppSelector } from '@/store/store';
-// import { CourseApiType } from '@/sharedTypes/sharedTypes';
-// import styles from './page.module.css';
-
-// export default function CoursePage() {
-//   const params = useParams<{ id: string }>();
-//   const [course, setCourse] = useState<CourseApiType | null>(null);
-//   const [error, setError] = useState('');
-//   const [isLoading, setIsLoading] = useState(false);
-//   const username = useAppSelector((state) => state.auth.username);
-//   const token = useAppSelector((state) => state.auth.token);
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     getCourseById(params.id)
-//       .then((data) => setCourse(data))
-//       .catch(() => setError('Ошибка загрузки курса'));
-//   }, [params.id]);
-
-//   const handleAddCourse = async () => {
-//     if (!token) return router.push('/auth/signin');
-//     setIsLoading(true);
-//     try {
-//       if (course) await addCourseToUser(course._id);
-//       alert('Курс успешно добавлен!');
-//     } catch {
-//       alert('Не удалось добавить курс. Попробуйте позже.');
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   if (error) return <div>{error}</div>;
-//   if (!course) return <div>Загрузка...</div>;
-
-//   const isAdded = false; // TODO: проверить, есть ли курс у пользователя через API
-
-//   return (
-//     <div className={styles.coursePage}>
-//       <h1>{course.nameRU}</h1>
-//       <p>{course.description}</p>
-//       <p>Сложность: {course.difficulty}</p>
-//       <p>Продолжительность: {course.durationInDays} дней</p>
-
-//       {username ? (
-//         !isAdded && (
-//           <button disabled={isLoading} onClick={handleAddCourse}>
-//             {isLoading ? 'Добавление...' : 'Добавить курс'}
-//           </button>
-//         )
-//       ) : (
-//         <button onClick={() => router.push('/auth/signin')}>
-//           Войдите, чтобы добавить курс
-//         </button>
-//       )}
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-// 'use client';
-
-// import FitnessLayout from '@/app/fitness/FitnessLayout';
-// import styles from './page.module.css';
 // import Image from 'next/image';
 // import Link from 'next/link';
-// // import { useAppSelector } from '@/store/store';
-// // import { useParams } from 'next/navigation';
+// import { useAppSelector } from '@/store/store';
+// import { useEffect, useRef, useState } from 'react';
+// import styles from './header.module.css';
 
-// export default function FitnessCoursesPage() {
-//   // const params = useParams<{ id: string }>();
+// export default function Header() {
+//   const email = useAppSelector((state) => state.auth.email); // используем email
+
+//   // Преобразуем email в "имя пользователя"
+//   const username = email ? email.split('@')[0] : '';
+//   const displayName =
+//     username.length > 0 ? username[0].toUpperCase() + username.slice(1) : '';
+
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const menuRef = useRef<HTMLDivElement | null>(null);
+
+//   const toggleMenu = () => {
+//     setIsMenuOpen((prev) => !prev);
+//   };
+
+//   const closeMenu = () => {
+//     setIsMenuOpen(false);
+//   };
+
+//   // закрытие по клику вне меню
+//   useEffect(() => {
+//     const handleClickOutside = (e: MouseEvent) => {
+//       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+//         closeMenu();
+//       }
+//     };
+
+//     document.addEventListener('mousedown', handleClickOutside);
+//     return () => {
+//       document.removeEventListener('mousedown', handleClickOutside);
+//     };
+//   }, []);
+
 //   return (
-//     <FitnessLayout>
-//       <div className={styles.skillContainer}>
-//         <div className={styles.skillCard}>
-//           <Image
-//             width={1160}
-//             height={310}
-//             className={styles.skillCard__image}
-//             src="/img/skillCard1.png"
-//             alt="Карточка навыка"
-//             style={{ width: 'auto', height: 'auto' }}
-//           />
-//           <div className={styles.skillCard__infoContainer}>
-//             <h2 className={styles.skillCard__text}>Подойдет для вас, если:</h2>
-
-//             <div className={styles.infoContainer__infoCard}>
-//               <div className={styles.infoContainer__infoCard1}>
-//                 <div className={styles.infoCard1__card1}>
-//                   <Image
-//                     width={35}
-//                     height={101}
-//                     // className={styles.infoCard1__image}
-//                     src="/img/1.svg"
-//                     alt="цифра один"
-//                     style={{ width: 'auto', height: 'auto' }}
-//                   />
-//                   <p className={styles.card1__txt}>
-//                     Давно хотели попробовать йогу, <br /> но не решались начать
-//                   </p>
-//                 </div>
-//               </div>
-
-//               <div className={styles.infoContainer__infoCard2}>
-//                 <div className={styles.infoCard2__card2}>
-//                   <Image
-//                     width={43}
-//                     height={101}
-//                     // className={styles.infoCard1__image}
-//                     src="/img/2.svg"
-//                     alt="цифра два"
-//                     style={{ width: 'auto', height: 'auto' }}
-//                   />
-//                   <p className={styles.card2__txt}>
-//                     Хотите укрепить позвоночник, избавиться <br /> от болей в
-//                     спине и суставах
-//                   </p>
-//                 </div>
-//               </div>
-
-//               <div className={styles.infoContainer__infoCard3}>
-//                 <div className={styles.infoCard3__card3}>
-//                   <Image
-//                     width={43}
-//                     height={101}
-//                     // className={styles.infoCard1__image}
-//                     src="/img/3.svg"
-//                     alt="цифра три"
-//                     style={{ width: 'auto', height: 'auto' }}
-//                   />
-//                   <p className={styles.card3__txt}>
-//                     Ищете активность, полезную для тела и души
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className={styles.skillCard__directionsCourses}>
-//             <h2 className={styles.directionsCourses__text}>Направления</h2>
-//             <div className={styles.directionsCourses__dirCourse}>
-//               <div className={styles.dirCourse__wrapper}>
-//                 <div className={styles.dirCourse__block}>
-//                   <div className={styles.dirCourse__item}>
-//                     <Image
-//                       width={19.5}
-//                       height={19.5}
-//                       src="/img/icon/star.svg"
-//                       alt="звезда"
-//                       className={styles.dirCourse__image}
-//                       style={{ width: 'auto', height: 'auto' }}
-//                     />
-//                     <p className={styles.dirCourse__txt}>Йога для новичков</p>
-//                   </div>
-
-//                   <div className={styles.dirCourse__item}>
-//                     <Image
-//                       width={19.5}
-//                       height={19.5}
-//                       src="/img/icon/star.svg"
-//                       alt="звезда"
-//                       className={styles.dirCourse__image}
-//                       style={{ width: 'auto', height: 'auto' }}
-//                     />
-//                     <p className={styles.dirCourse__txt}>Классическая йога</p>
-//                   </div>
-//                 </div>
-//                 <div className={styles.dirCourse__block}>
-//                   <div className={styles.dirCourse__item}>
-//                     <Image
-//                       width={19.5}
-//                       height={19.5}
-//                       className={styles.dirCourse__image}
-//                       src="/img/icon/star.svg"
-//                       alt="звезда"
-//                       style={{ width: 'auto', height: 'auto' }}
-//                     />
-//                     <p className={styles.dirCourse__txt}>Кундалини-йога</p>
-//                   </div>
-//                   <div className={styles.dirCourse__item}>
-//                     <Image
-//                       width={19.5}
-//                       height={19.5}
-//                       className={styles.dirCourse__image}
-//                       src="/img/icon/star.svg"
-//                       alt="звезда"
-//                       style={{ width: 'auto', height: 'auto' }}
-//                     />
-//                     <p className={styles.dirCourse__txt}>Йогатерапия</p>
-//                   </div>
-//                 </div>
-//                 <div className={styles.dirCourse__block}>
-//                   <div className={styles.dirCourse__item}>
-//                     <Image
-//                       width={19.5}
-//                       height={19.5}
-//                       className={styles.dirCourse__image}
-//                       src="/img/icon/star.svg"
-//                       alt="звезда"
-//                       style={{ width: 'auto', height: 'auto' }}
-//                     />
-//                     <p className={styles.dirCourse__txt}>Хатха-йога</p>
-//                   </div>
-//                   <div className={styles.dirCourse__item}>
-//                     <Image
-//                       width={19.5}
-//                       height={19.5}
-//                       className={styles.dirCourse__image}
-//                       src="/img/icon/star.svg"
-//                       alt="звезда"
-//                       style={{ width: 'auto', height: 'auto' }}
-//                     />
-//                     <p className={styles.dirCourse__txt}>Аштанга-йога</p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <div className={styles.skillPoster}>
-//           <div className={styles.posterContainer}>
-//             <div className={styles.posterContainer__txtContainer}>
-//               <h3 className={styles.txtContainer__title}>
-//                 Начните путь к новому телу
-//               </h3>
-//               <div className={styles.txtContainer__list}>
-//                 <ul>
-//                   <li>проработка всех групп мышц</li>
-//                   <li>тренировка суставов</li>
-//                   <li>улучшение циркуляции крови</li>
-//                   <li>упражнения заряжают бодростью</li>
-//                   <li>помогают противостоять стрессам</li>
-//                 </ul>
-//               </div>
-
-//               <Link className={styles.txtContainer__btn} href={'/auth/signin'}>
-//                 Войдите, чтобы добавить курс
-//               </Link>
-//             </div>
-//           </div>
-//           <Image
-//             width={604.47}
-//             height={604.47}
-//             className={styles.skillPoster__posterImg}
-//             src="/img/poster.png"
-//             alt="рекламный плакат"
-//             style={{ width: 'auto', height: 'auto' }}
-//           />
-//           <Image
-//             width={670.18}
-//             height={390.98}
-//             className={styles.skillPoster__posterImgSvg}
-//             src="/img/icon/greenLine.svg"
-//             alt="зеленая линия"
-//             style={{ width: 'auto', height: 'auto' }}
-//           />
-//         </div>
+//     <header className={styles.header}>
+//       {/* Логотип */}
+//       <div className={styles.header__logo}>
+//         <Image
+//           width={250}
+//           height={170}
+//           className={styles.logo__image}
+//           src="/img/logo.svg"
+//           alt="logo"
+//         />
+//         <p className={styles.logo__text}>
+//           Онлайн-тренировки для занятий дома
+//         </p>
 //       </div>
-//     </FitnessLayout>
+
+//       {/* Пользователь / Войти */}
+//       {email ? (
+//         <div ref={menuRef} className={styles.header__userWrapper}>
+//           <button
+//             type="button"
+//             className={styles.header__user}
+//             onClick={toggleMenu}
+//           >
+//             <Image
+//               width={42}
+//               height={42}
+//               className={styles.header__userIcon}
+//               src="/img/icon/user.svg"
+//               alt="иконка пользователя"
+//             />
+
+//             {/* Показываем красиво обработанный email */}
+//             <span className={styles.header__userName}>{displayName}</span>
+
+//             <Image
+//               width={12}
+//               height={8}
+//               src="/img/icon/arrow-down.svg"
+//               alt="стрелка"
+//               className={`${styles.header__arrow} ${
+//                 isMenuOpen ? styles.header__arrow_open : ''
+//               }`}
+//             />
+//           </button>
+
+//           {isMenuOpen && (
+//             <div className={styles.userMenu}>
+//               <Link
+//                 href="/profile"
+//                 className={styles.userMenu__item}
+//                 onClick={closeMenu}
+//               >
+//                 Мой профиль
+//               </Link>
+
+//               <button
+//                 className={styles.userMenu__item}
+//                 onClick={() => {
+//                   // dispatch(logout())
+//                   closeMenu();
+//                 }}
+//               >
+//                 Выйти
+//               </button>
+//             </div>
+//           )}
+//         </div>
+//       ) : (
+//         <Link className={styles.header__btn} href="/auth/signin">
+//           Войти
+//         </Link>
+//       )}
+//     </header>
 //   );
 // }

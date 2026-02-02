@@ -17,6 +17,38 @@ export interface CourseApiType {
   order: number; // порядок
 }
 
+// export interface AboutCourseApiType {
+//   _id: string;
+//   nameRU: string;
+//   nameEN: string;
+  
+// durationInDays
+// :
+//   description: string; // описание
+//   difficulty: string; // трудность (сложность)
+//   directions: string[]; // направления
+//   fitting: string[]; // подходящий курс (текст)
+//   durationInDays: number; // длительность в днях
+//   dailyDurationInMinutes: {
+//     // ежедневная продолжительность в минутах
+//     from: number;
+//     to: number;
+//   };
+//   workouts: string[]; // тренировки
+//   order: number; // порядок
+// }
+
+export type Course = {
+  id: string;
+  nameRU: string;
+  durationInDays: number;
+  dailyDurationInMinutes: {
+    from: number;
+    to: number;
+  };
+  difficulty: number;
+  image: string;
+};
 
 
 // тренировка из API
