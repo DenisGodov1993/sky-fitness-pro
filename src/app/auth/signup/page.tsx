@@ -3,7 +3,7 @@
 import styles from './signup.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { registerUser, loginUser } from '@/services/auth/authApi';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';

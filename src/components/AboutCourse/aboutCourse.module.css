@@ -162,12 +162,12 @@
 }
 
 .directionsCourses__dirCourse {
-  /* width: 1160px;
+  width: 1160px;
   height: 146px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px; */
+  gap: 10px;
   padding: 30px;
   border-radius: 28px;
   background: rgba(188, 236, 48, 1);
@@ -177,7 +177,16 @@
   width: 1100px;
   height: 86px;
   display: flex;
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
   gap: 124px;
+  
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  row-gap: 34px;       
+  column-gap: 124px;    */
 }
 
 .dirCourse__block {
@@ -185,7 +194,7 @@
   height: 86px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   gap: 34px;
 }
 
@@ -310,18 +319,29 @@
   padding: 16px 26px 16px 26px;
   border-radius: 46px;
   background: rgba(188, 236, 48, 1);
-
-  /* Войдите, чтобы добавить курс */
-  /* width: 258px;
-   height: 20px; */
-
-  /* Добавить курс */
-  /* width: 125px;
-   height: 20px; */
-
   color: rgba(0, 0, 0, 1);
   /* font-style: Regular; */
   font-size: 18px;
   font-weight: 400;
   line-height: 110%;
+  border: none;
+  cursor: pointer;
 }
+
+/* .infoContainer__infoCard {
+  display: flex;
+  gap: 20px;
+}
+
+.infoCardItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.infoCardText {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+} */

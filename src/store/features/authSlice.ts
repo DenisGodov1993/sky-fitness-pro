@@ -6,8 +6,8 @@ type AuthState = {
 };
 
 const initialState: AuthState = {
-  username: '',
-  token: '',
+  username: typeof window !== 'undefined' ? localStorage.getItem('username') || '' : '',
+  token: typeof window !== 'undefined' ? localStorage.getItem('token') || '' : '',
 };
 
 const authSlice = createSlice({
@@ -40,3 +40,47 @@ const authSlice = createSlice({
 
 export const { setUser, clearUser } = authSlice.actions;
 export const authSliceReducer = authSlice.reducer;
+
+
+// import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+// type AuthState = {
+//   username: string;
+//   token: string;
+// };
+
+// const initialState: AuthState = {
+//   username: '',
+//   token: '',
+// };
+
+// const authSlice = createSlice({
+//   name: 'authSlice',
+//   initialState,
+//   reducers: {
+//     setUser: (
+//       state,
+//       action: PayloadAction<{ username: string; token: string }>,
+//     ) => {
+//       state.username = action.payload.username;
+//       state.token = action.payload.token;
+
+//       if (typeof window !== 'undefined') {
+//         localStorage.setItem('username', action.payload.username);
+//         localStorage.setItem('token', action.payload.token);
+//       }
+//     },
+//     clearUser: (state) => {
+//       state.username = '';
+//       state.token = '';
+
+//       if (typeof window !== 'undefined') {
+//         localStorage.removeItem('username');
+//         localStorage.removeItem('token');
+//       }
+//     },
+//   },
+// });
+
+// export const { setUser, clearUser } = authSlice.actions;
+// export const authSliceReducer = authSlice.reducer;

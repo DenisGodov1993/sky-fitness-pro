@@ -17,27 +17,6 @@ export interface CourseApiType {
   order: number; // порядок
 }
 
-// export interface AboutCourseApiType {
-//   _id: string;
-//   nameRU: string;
-//   nameEN: string;
-  
-// durationInDays
-// :
-//   description: string; // описание
-//   difficulty: string; // трудность (сложность)
-//   directions: string[]; // направления
-//   fitting: string[]; // подходящий курс (текст)
-//   durationInDays: number; // длительность в днях
-//   dailyDurationInMinutes: {
-//     // ежедневная продолжительность в минутах
-//     from: number;
-//     to: number;
-//   };
-//   workouts: string[]; // тренировки
-//   order: number; // порядок
-// }
-
 export type Course = {
   id: string;
   nameRU: string;
@@ -49,7 +28,6 @@ export type Course = {
   difficulty: number;
   image: string;
 };
-
 
 // тренировка из API
 export interface WorkoutApi {
@@ -77,24 +55,3 @@ export interface WorkoutProgressApi {
   workoutCompleted: boolean; // тренировка завершена
   progressData: number[];
 }
-
-// export type Duration = {
-//   min: number;
-//   max: number;
-// };
-
-// export interface FitCourse {
-//   id: number;
-//   title: string;
-//   days: number;
-//   duration: Duration;
-//   image: string;
-//   logo?: string | null;
-//   starredUsers: string[];
-// }
-
-// export interface ResfitnessCoursesApiType {
-//   _id: number;
-//   name: string;
-//   items: FitCourse[];
-// }
