@@ -19,7 +19,8 @@
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
       "@sharedTypes/*": ["src/sharedTypes/*"],
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@hooks/*": ["src/hooks/*"]
     },
     "plugins": [
       {
