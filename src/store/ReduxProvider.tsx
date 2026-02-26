@@ -18,3 +18,24 @@ export default function ReduxProvider({
 
   return <Provider store={storeRef.current}>{children}</Provider>;
 }
+
+// 'use client';
+
+// import { useRef } from 'react';
+// import { Provider } from 'react-redux';
+// import { makeStore, AppStore } from './store';
+
+// export default function ReduxProvider({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   const storeRef = useRef<AppStore | null>(null);
+
+//   // Инициализируем хранилище только один раз: eslint-disable-next-line react-hooks/exhaustive-deps
+//   if (!storeRef.current) {
+//     storeRef.current = makeStore();
+//   }
+
+//   return <Provider store={storeRef.current}>{children}</Provider>; 
+// }

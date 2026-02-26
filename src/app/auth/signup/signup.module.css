@@ -12,7 +12,7 @@
 .login__input {
   display: flex;
   flex-direction: column;
-  gap: 10;
+  gap: 10px;
   margin-bottom: 34px;
 }
 
@@ -61,7 +61,7 @@
   height: 114px;
   display: flex;
   flex-direction: column;
-  gap: 10;
+  gap: 10px;
 }
 
 .btn__enter {

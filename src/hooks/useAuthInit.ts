@@ -25,3 +25,33 @@ export const useAuthInit = () => {
 
   return isChecked;
 };
+
+
+// 'use client';
+
+// import { useEffect, useState } from 'react';
+// import { useAppDispatch } from '@/store/store';
+// import { setUser, clearUser } from '@/store/features/authSlice';
+
+// export const useAuthInit = () => {
+//   const dispatch = useAppDispatch();
+//   const [isChecked, setIsChecked] = useState(false);
+
+//   useEffect(() => {
+//     if (typeof window === 'undefined') return;
+ 
+//     const username = localStorage.getItem('username');
+//     const token = localStorage.getItem('token');
+//     const userId = localStorage.getItem('userId');
+
+//     if (username && token && userId) {
+//       dispatch(setUser({ username, token, id: userId }));
+//     } else {
+//       dispatch(clearUser());
+//     }
+
+//     setTimeout(() => setIsChecked(true), 0);
+//   }, [dispatch]);
+
+//   return isChecked;
+// };
