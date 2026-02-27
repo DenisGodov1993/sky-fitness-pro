@@ -26,7 +26,7 @@ export default function AboutCourse({
     skillImageMap.find((c) => c.name === course.nameRU)?.image ??
     '/img/skillCard1.png';
 
-  const imageWidths = [35, 43, 43];
+  // const imageWidths = [35, 43, 43];
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function AboutCourse({
             alt={course.nameRU}
             priority
           />
-        )}
+        )} 
 
         {/* <div className={styles.skillCard__description}>{course.description}</div> */}
 
@@ -56,17 +56,30 @@ export default function AboutCourse({
                 <div
                   className={styles[`infoCard${index + 1}__card${index + 1}`]}
                 >
-                  <Image
+                  {/* <Image
                     // width={100}
                     width={imageWidths[index]}
                     // width={35}
                     height={101}
                     src={`/img/${index + 1}.svg`}
                     alt={`${index + 1}`}
-                  />
+                  /> */}
                   <p className={styles[`card${index + 1}__txt`]}>{text}</p>
                 </div>
               </div>
+
+
+            //    <div className={styles.suitableFor}>
+            //   <h2 className={styles.sectionTitle}>Подойдет для вас, если:</h2>
+            //   <div className={styles.suitableForList}>
+            //     {course.suitableFor.map((item, index) => (
+            //       <div key={index} className={styles.suitableForItem}>
+            //         <span className={styles.itemNumber}>{index + 1}</span>
+            //         <p className={styles.itemText}>{item}</p>
+            //       </div>
+            //     ))}
+            //   </div>
+            // </div>
             ))}
           </div>
         </div>
@@ -100,7 +113,7 @@ export default function AboutCourse({
         <div className={styles.posterContainer}>
           <div className={styles.posterContainer__txtContainer}>
             <h3 className={styles.txtContainer__title}>
-              Начните путь к новому телу
+              Начните путь <br />к новому телу
             </h3>
 
             <div className={styles.txtContainer__list}>

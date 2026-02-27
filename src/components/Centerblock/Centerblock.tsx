@@ -24,10 +24,9 @@ export default function Centerblock() {
           <span>и улучшите качество жизни</span>
         </h2>
         <div className={styles.title__imageText}>
-          
           <p className={styles.imageText__text}>
             Измени своё <br />
-            тело за полгода!
+            тело за полгода! 
           </p>
           <Image
             width={30.24}
@@ -38,14 +37,6 @@ export default function Centerblock() {
             style={{ width: 'auto', height: 'auto' }}
           />
         </div>
-        {/* <Image
-          width={288}
-          height={102}
-          className={styles.title__image}
-          src="/img/title.svg"
-          alt="title" 
-          style={{ width: 'auto', height: 'auto' }}
-        /> */}
       </div>
 
       <div className={styles.centerblock__content}>
