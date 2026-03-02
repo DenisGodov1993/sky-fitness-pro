@@ -28,7 +28,6 @@ export default function FetchingCourses() {
           if (error.response) {
             // dispatch(setFetchError(error.response.data));
             dispatch(setFetchError(error.response.data.message));
-
           } else if (error.request) {
             dispatch(setFetchError('Произошла ошибка. Попробуйте позже'));
           }

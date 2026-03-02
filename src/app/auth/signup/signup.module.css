@@ -48,8 +48,6 @@
 }
 
 .errorContainer {
-  /* height: 30px; */
-  /* color: var(--Palette/Red/90, rgba(219, 0, 48, 1)); */
   color: red;
   font-style: Regular;
   font-size: 14px;

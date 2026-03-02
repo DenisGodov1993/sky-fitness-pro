@@ -1,0 +1,73 @@
+.wrapper {
+  width: 100%;
+  /* min-height: 100%; */
+  /* overflow: hidden; */
+  /* left: calc(50% - (366px / 2));
+  top: calc(50% - (439px / 2)); */
+}
+
+
+
+.modal__selectWorkout {
+  /* select workout */
+  width: 460px;
+  height: 609px;
+  /* Автолейаут */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48;
+  padding: 40px;
+
+  border-radius: 30px;
+  /* Shadow */
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+
+.selectWorkout__title {
+  /* Выберите тренировку */
+  /* width: 346px; */
+  /* height: 35px; */
+  color: rgba(0, 0, 0, 1);
+
+  /* font-family: StratosSkyeng; */
+  /* font-style: Regular; */
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 110%; */
+  /* letter-spacing: 0%; */
+  /* text-align: left; */
+}
+
+
+.selectWorkout__content {
+}
+
+.selectWorkout__btn {
+  /* Frame 2043683048 */
+  /* width: 380px; */
+  /* height: 52px; */
+  /* Автолейаут */
+  /* max-width: 380px; */ 
+  width: 100%;
+  max-height: 52px;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  gap: 10;
+  padding: 16px 26px 16px 26px;
+  border-radius: 46px;
+  background: rgba(188, 236, 48, 1);
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Regular; */
+  font-size: 18px;
+  font-weight: 400;
+  /* line-height: 110%;
+  letter-spacing: 0px;
+  text-align: left; */
+  border: none;
+}
