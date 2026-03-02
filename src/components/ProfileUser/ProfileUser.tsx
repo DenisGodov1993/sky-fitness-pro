@@ -1,445 +1,219 @@
+'use client';
+
+import styles from './profileUser.module.css';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+// import Link from 'next/link';
+import { useAppSelector } from '@/store/store';
+import { useMemo } from 'react';
+import { CourseCard } from '../CourseCard/CourseCard';
+
+interface ProfileUserProps {
+  username: string;
+  userSelectedCourses: string[];
+}
+
+export default function ProfileUser({
+  username = '',
+  userSelectedCourses = [],
+}: ProfileUserProps) {
+  const {
+    allCourses = [],
+    fetchIsLoading,
+    fetchError,
+  } = useAppSelector((state) => state.courses);
+
+  const displayName = useMemo(() => {
+    if (!username) return 'Пользователь';
+
+    const namePart = username.split('@')[0];
+    if (!namePart) return 'Пользователь';
+
+    return namePart[0].toUpperCase() + namePart.slice(1);
+  }, [username]);
+
+  const myCourses = useMemo(() => {
+    if (!Array.isArray(userSelectedCourses)) return [];
+
+    return allCourses.filter((course) =>
+      userSelectedCourses.includes(course._id),
+    );
+  }, [allCourses, userSelectedCourses]);
+  
+  const router = useRouter();
+
+   const logout = () => {
+    //   dispatch(clearUser());
+    //   localStorage.removeItem('username');
+    //   localStorage.removeItem('token');
+      router.push('/auth/signin');
+    //   closeMenu();
+    };
+
+  return (
+    <div className={styles.profilePage__wrapper}>
+      {/* Профиль */}
+      <div className={styles.profilePage__myProfile}>
+        <h1 className={styles.profilePage__title}>Профиль</h1>
+        <div className={styles.myProfile__container}>
+          <Image
+            className={styles.container__image}
+            src="/img/icon/profile.svg"
+            alt="иконка пользователя"
+            width={197}
+            height={197}
+          />
+
+          <div className={styles.container__info}>
+            <h2 className={styles.container__name}>
+              {displayName ?? 'Пользователь'}
+            </h2>
+            <p className={styles.container__email}>Логин: {username}</p>
+            <button className={styles.container__button} onClick={logout}>Выйти</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Курсы */}
+      <div className={styles.profilePage__myCourses}>
+        <h1 className={styles.profilePage__title}>Мои курсы</h1>
+
+        {fetchIsLoading ? (
+          <p>Загрузка курсов...</p>
+        ) : fetchError ? (
+          <p style={{ color: 'red' }}>{fetchError}</p>
+        ) : myCourses.length === 0 ? (
+          <p>Вы ещё не добавили курсы</p>
+        ) : (
+          <div className={styles.myCourses__container}>
+            {myCourses.map((course) => (
+              <CourseCard key={course._id} course={course} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // 'use client';
 
+// import styles from './profileUser.module.css';
 // import Image from 'next/image';
 // import Link from 'next/link';
-// import { useEffect, useState } from 'react';
-// import { CourseDetail } from '@/sharedTypes/sharedTypes';
-// import styles from './profileUser.module.css';
-// import {
-//   addCourseToUser,
-//   getCourseProgress,
-// } from '@/services/courses/coursesApi';
-// import { calculateCourseProgress } from '@/utils/courseUtils';
+// import { useAppSelector } from '@/store/store';
+// import { useMemo } from 'react';
+// import { CourseCard } from '../CourseCard/CourseCard';
 
 // interface ProfileUserProps {
-//   course: CourseDetail | null;
-//   username?: string;
+//   username: string;
 //   userSelectedCourses: string[];
-//   onCourseAdded?: (courseId: string) => void;
 // }
 
 // export default function ProfileUser({
-//   course,
-//   username,
-//   userSelectedCourses,
-//   onCourseAdded,
+//   username = '',
+//   userSelectedCourses = [],
 // }: ProfileUserProps) {
-//   const [isAdded, setIsAdded] = useState(false);
-//   const [addingCourse, setAddingCourse] = useState(false);
-//   const [progress, setProgress] = useState(0);
+//   const {
+//     allCourses = [],
+//     fetchIsLoading,
+//     fetchError,
+//   } = useAppSelector((state) => state.courses);
 
-//   useEffect(() => {
-//     if (!course) return;
-//     setIsAdded(userSelectedCourses.includes(course._id));
-//   }, [course, userSelectedCourses]);
+//   const displayName = useMemo(() => {
+//     if (!username) return 'Пользователь';
 
-//   useEffect(() => {
-//     if (!course) return;
-//     const loadProgress = async () => {
-//       try {
-//         const progressData = await getCourseProgress(course._id);
-//         setProgress(
-//           calculateCourseProgress(progressData, course.workouts?.length ?? 0)
-//         );
-//       } catch {
-//         setProgress(0);
-//       }
-//     };
-//     loadProgress();
-//   }, [course]);
+//     const namePart = username.split('@')[0];
+//     if (!namePart) return 'Пользователь';
 
-//   const handleAddCourse = async () => {
-//     if (!course || isAdded || addingCourse) return;
+//     return namePart[0].toUpperCase() + namePart.slice(1);
+//   }, [username]);
 
-//     setAddingCourse(true);
-//     try {
-//       await addCourseToUser(course._id);
-//       setIsAdded(true);
-//       onCourseAdded?.(course._id);
-//     } catch {
-//       alert('Не удалось добавить курс. Попробуйте снова.');
-//     } finally {
-//       setAddingCourse(false);
-//     }
-//   };
+//   const myCourses = useMemo(() => {
+//     if (!Array.isArray(userSelectedCourses)) return [];
 
-//   if (!course) {
-//     return <div>Курс не найден</div>;
-//   }
+//     return allCourses.filter((course) =>
+//       userSelectedCourses.includes(course._id),
+//     );
+//   }, [allCourses, userSelectedCourses]);
 
 //   return (
 //     <div className={styles.profilePage__wrapper}>
 //       {/* Профиль */}
 //       <div className={styles.profilePage__myProfile}>
-//         <h1>{username ?? 'Пользователь'}</h1>
-//         <p>Почта скрыта</p>
-//       </div>
-
-//       {/* Курс */}
-//       <div className={styles.profilePage__myCourses}>
-//         <h2 className={styles.myCourses__title}>{course.nameRU}</h2>
-//         <div className={styles.myCourses__container}>
-//           <div className={styles.myCourses__course}>
-//             <div className={styles.content__card}>
-//               <Link href={`/fitness/fitnessCourses/${course._id}`}>
-//                 <Image
-//                   src="/img/default-course.png"
-//                   alt={course.nameRU}
-//                   width={360}
-//                   height={325}
-//                 />
-//               </Link>
-//               <p>{course.durationInDays} дней</p>
-//               <p>
-//                 {course.dailyDurationInMinutes.from}–
-//                 {course.dailyDurationInMinutes.to} мин/день
-//               </p>
-//               <p>Прогресс: {progress}%</p>
-
-//               {username ? (
-//                 <button
-//                   className={styles.contentProfile__button}
-//                   disabled={isAdded || addingCourse}
-//                   onClick={handleAddCourse}
-//                 >
-//                   {isAdded
-//                     ? 'Добавлено'
-//                     : addingCourse
-//                       ? 'Загрузка...'
-//                       : 'Добавить курс'}
-//                 </button>
-//               ) : (
-//                 <Link
-//                   className={styles.contentProfile__button}
-//                   href="/auth/signin"
-//                 >
-//                   Войдите, чтобы добавить курс
-//                 </Link>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// 'use client';
-
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { useState } from 'react';
-// import { CourseDetail } from '@/sharedTypes/sharedTypes';
-// import styles from './profileUser.module.css';
-// import {
-//   addCourseToUser,
-//   getCourseProgress,
-// } from '@/services/courses/coursesApi';
-// import { calculateCourseProgress } from '@/utils/courseUtils';
-
-// interface ProfileUserProps {
-//   course: CourseDetail;
-//   username?: string;
-//   userSelectedCourses: string[]; // список ID выбранных курсов
-// }
-
-// export default function ProfileUser({
-//   course,
-//   username,
-//   userSelectedCourses,
-// }: ProfileUserProps) {
-//   const [isAdded, setIsAdded] = useState(
-//     userSelectedCourses.includes(course._id),
-//   );
-//   const [addingCourse, setAddingCourse] = useState(false);
-//   const [progress, setProgress] = useState(0);
-
-//   // Загрузка прогресса курса
-//   const loadProgress = async () => {
-//     try {
-//       const progressData = await getCourseProgress(course._id);
-//       setProgress(
-//         calculateCourseProgress(progressData, course.workouts?.length ?? 0),
-//       );
-//     } catch {
-//       setProgress(0);
-//     }
-//   };
-
-//   // При монтировании загружаем прогресс
-//   useState(() => {
-//     loadProgress();
-//   });
-
-//   const handleAddCourse = async () => {
-//     if (isAdded) return;
-
-//     setAddingCourse(true);
-//     try {
-//       await addCourseToUser(course._id);
-
-//       // Локально обновляем состояние
-//       setIsAdded(true);
-//       loadProgress();
-
-//       // Можно хранить выбранные курсы в localStorage
-//       const savedCourses = localStorage.getItem('selectedCourses');
-//       const courses: string[] = savedCourses ? JSON.parse(savedCourses) : [];
-//       if (!courses.includes(course._id)) {
-//         courses.push(course._id);
-//         localStorage.setItem('selectedCourses', JSON.stringify(courses));
-//       }
-//     } catch {
-//       alert('Не удалось добавить курс. Попробуйте снова.');
-//     } finally {
-//       setAddingCourse(false);
-//     }
-//   };
-
-//   return (
-//     <div className={styles.profilePage__wrapper}>
-//       {/* Профиль */}
-//       <div className={styles.profilePage__myProfile}>
-//         <h1>{username ?? 'Пользователь'}</h1>
-//         <p>Почта скрыта</p>
-//       </div>
-
-//       {/* Курс */}
-//       <div className={styles.profilePage__myCourses}>
-//         <h2 className={styles.myCourses__title}>{course.nameRU}</h2>
-//         <div className={styles.myCourses__container}>
-//           <div className={styles.myCourses__course}>
-//             <div className={styles.content__card}>
-//               <Link href={`/fitness/fitnessCourses/${course._id}`}>
-//                 <Image
-//                   src="/img/default-course.png"
-//                   alt={course.nameRU}
-//                   width={360}
-//                   height={325}
-//                 />
-//               </Link>
-//               <p>{course.durationInDays} дней</p>
-//               <p>
-//                 {course.dailyDurationInMinutes.from}–
-//                 {course.dailyDurationInMinutes.to} мин/день
-//               </p>
-//               <p>Прогресс: {progress}%</p>
-
-//               {username ? (
-//                 <button
-//                   className={styles.contentProfile__button}
-//                   disabled={isAdded || addingCourse}
-//                   onClick={handleAddCourse}
-//                 >
-//                   {isAdded
-//                     ? 'Добавлено'
-//                     : addingCourse
-//                       ? 'Загрузка...'
-//                       : 'Добавить курс'}
-//                 </button>
-//               ) : (
-//                 <Link
-//                   className={styles.contentProfile__button}
-//                   href="/auth/signin"
-//                 >
-//                   Войдите, чтобы добавить курс
-//                 </Link>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// 'use client';
-
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { useEffect, useState } from 'react';
-// import { useAppDispatch, useAppSelector } from '@/store/store';
-// import { CourseDetail } from '@/sharedTypes/sharedTypes';
-// import styles from './profileUser.module.css';
-// import { skillImageMap } from '@/data';
-// import {
-//   selectAllCourses,
-//   selectCoursesProgress,
-//   selectFetchIsLoading,
-//   selectFetchError,
-//   setAllCourses,
-//   setCoursesProgress,
-//   setFetchIsLoading,
-//   setFetchError,
-// } from '@/store/features/courseSlice';
-// import {
-//   getAllCourses,
-//   getCourseProgress,
-//   addCourseToUser,
-// } from '@/services/courses/coursesApi';
-// import { calculateCourseProgress, transformCourse } from '@/utils/courseUtils';
-
-// interface ProfileUserProps {
-//   username?: string;
-//   userSelectedCourses: string[]; // Список ID курсов пользователя
-// }
-
-// export default function ProfileUser({
-//   username,
-//   userSelectedCourses,
-// }: ProfileUserProps) {
-//   const dispatch = useAppDispatch();
-//   const allCourses = useAppSelector(selectAllCourses);
-//   const coursesProgress = useAppSelector(selectCoursesProgress);
-//   const isLoading = useAppSelector(selectFetchIsLoading);
-//   const error = useAppSelector(selectFetchError);
-
-//   const [addingCourseId, setAddingCourseId] = useState<string | null>(null);
-
-//   // Загрузка курсов пользователя и прогресса
-//   useEffect(() => {
-//     const loadUserCourses = async () => {
-//       dispatch(setFetchIsLoading(true));
-//       dispatch(setFetchError(null));
-//       try {
-//         const coursesFromApi = await getAllCourses();
-//         // Преобразуем курсы в CourseDetail
-//         const allCoursesTransformed: CourseDetail[] = coursesFromApi.map(transformCourse);
-
-//         // Фильтруем только выбранные курсы пользователя
-//         const userCourses = allCoursesTransformed.filter((course) =>
-//           userSelectedCourses.includes(course._id),
-//         );
-
-//         dispatch(setAllCourses(userCourses));
-
-//         // Получаем прогресс
-//         const progressMap: Record<string, number> = {};
-//         for (const course of userCourses) {
-//           try {
-//             const progress = await getCourseProgress(course._id);
-//             progressMap[course._id] = calculateCourseProgress(
-//               progress,
-//               course.workouts?.length ?? 0,
-//             );
-//           } catch {
-//             progressMap[course._id] = 0;
-//           }
-//         }
-//         dispatch(setCoursesProgress(progressMap));
-//       } catch (err) {
-//         dispatch(setFetchError('Не удалось загрузить курсы'));
-//       } finally {
-//         dispatch(setFetchIsLoading(false));
-//       }
-//     };
-
-//     loadUserCourses();
-//   }, [dispatch, userSelectedCourses]);
-
-//   // Добавление курса
-//   const handleAddCourse = async (course: CourseDetail) => {
-//     setAddingCourseId(course._id);
-//     try {
-//       await addCourseToUser(course._id);
-
-//       // Обновляем локально список курсов
-//       const updatedCourses = [...allCourses, course];
-//       dispatch(setAllCourses(updatedCourses));
-
-//       const progress = await getCourseProgress(course._id);
-//       dispatch(
-//         setCoursesProgress({
-//           ...coursesProgress,
-//           [course._id]: calculateCourseProgress(
-//             progress,
-//             course.workouts?.length ?? 0,
-//           ),
-//         }),
-//       );
-//     } catch {
-//       alert('Не удалось добавить курс');
-//     } finally {
-//       setAddingCourseId(null);
-//     }
-//   };
-
-//   return (
-//     <div className={styles.profilePage__wrapper}>
-//       {/* Профиль */}
-//       <div className={styles.profilePage__myProfile}>
+//         <h2 className={styles.profilePage__title}>Профиль</h2>
 //         <div className={styles.myProfile__container}>
-//           <div className={styles.myProfile__contentProfile}>
-//             <div className={styles.contentProfile__image} />
-//             <div className={styles.contentProfile__info}>
-//               <h1>{username ?? 'Пользователь'}</h1>
-//               <p>Почта скрыта</p>
+//             <Image
+//                 className={styles.contentProfile__image}
+//                 src="/img/icon/profile.svg"
+//                 alt="иконка пользователя"
+//                 width={197}
+//                 height={197}
+//               />
+//           {/* <div className={styles.myProfile__contentProfile}> */}
+//             <div className={styles.contentProfile__image}>
+//               {/* <Image
+//                 className={styles.contentProfile__image}
+//                 src="/img/icon/profile.svg"
+//                 alt="иконка пользователя"
+//                 width={197}
+//                 height={197}
+//               /> */}
 //             </div>
-//           </div>
+
+//             <div className={styles.contentProfile__info}>
+//               <h1>{displayName ?? 'Пользователь'}</h1>
+//               <p className={styles.contentProfile__email}>{username}</p>
+//             </div>
+//           {/* </div> */}
 //         </div>
 //       </div>
 
 //       {/* Курсы */}
 //       <div className={styles.profilePage__myCourses}>
-//         <h2 className={styles.myCourses__title}>Мои курсы</h2>
-//         {isLoading ? (
+//         <h2 className={styles.profilePage__title}>Мои курсы</h2>
+
+//         {fetchIsLoading ? (
 //           <p>Загрузка курсов...</p>
-//         ) : error ? (
-//           <p style={{ color: 'red' }}>{error}</p>
+//         ) : fetchError ? (
+//           <p style={{ color: 'red' }}>{fetchError}</p>
+//         ) : myCourses.length === 0 ? (
+//           <p>Вы ещё не добавили курсы</p>
 //         ) : (
 //           <div className={styles.myCourses__container}>
-//             {allCourses.map((course) => {
-//               const skillImage =
-//                 skillImageMap.find((c) => c.name === course.nameRU)?.image ??
-//                 '/img/default-course.png';
-//               const isAdded = userSelectedCourses.includes(course._id);
+//             {myCourses.map((course) => (
 
-//               return (
-//                 <div key={course._id} className={styles.myCourses__course}>
-//                   <div className={styles.content__card}>
-//                     <Link
-//                       href={`/fitness/fitnessCourses/${course._id}`}
-//                       className={styles.card__imageContainer}
-//                     >
-//                       <Image
-//                         src={skillImage}
-//                         alt={course.nameRU}
-//                         width={360}
-//                         height={325}
-//                       />
-//                     </Link>
-//                     <h3>{course.nameRU}</h3>
-//                     <p>{course.durationInDays} дней</p>
-//                     <p>
-//                       {course.dailyDurationInMinutes.from}–
-//                       {course.dailyDurationInMinutes.to} мин/день
-//                     </p>
-//                     <p>Прогресс: {coursesProgress[course._id] ?? 0}%</p>
+//                 <CourseCard key={course._id} course={course} />
+//             //   <div key={course._id} className={styles.myCourses__course}>
+//             //     <div className={styles.content__card}>
+//             //       <Link
+//             //         href={`/fitness/fitnessCourses/${course._id}`}
+//             //         className={styles.card__imageContainer}
+//             //       >
+//             //         <Image
+//             //           src="/img/default-course.png"
+//             //           alt={course.nameRU}
+//             //           width={360}
+//             //           height={325}
+//             //         />
+//             //       </Link>
 
-//                     {username ? (
-//                       <button
-//                         className={styles.contentProfile__button}
-//                         disabled={isAdded || addingCourseId === course._id}
-//                         onClick={() => handleAddCourse(course)}
-//                       >
-//                         {isAdded
-//                           ? 'Добавлено'
-//                           : addingCourseId === course._id
-//                             ? 'Загрузка...'
-//                             : 'Добавить курс'}
-//                       </button>
-//                     ) : (
-//                       <Link
-//                         className={styles.contentProfile__button}
-//                         href="/auth/signin"
-//                       >
-//                         Войдите, чтобы добавить курс
-//                       </Link>
-//                     )}
-//                   </div>
-//                 </div>
-//               );
-//             })}
+//             //       <h3>{course.nameRU}</h3>
+//             //       <p>{course.durationInDays} дней</p>
+//             //       <p>
+//             //         {course.dailyDurationInMinutes.from}–
+//             //         {course.dailyDurationInMinutes.to} мин/день
+//             //       </p>
+
+//             //       <Link
+//             //         href={`/fitness/fitnessCourses/${course._id}`}
+//             //         className={styles.contentProfile__button}
+//             //       >
+//             //         Перейти к курсу
+//             //       </Link>
+//             //     </div>
+//             //   </div>
+//             ))}
 //           </div>
 //         )}
 //       </div>

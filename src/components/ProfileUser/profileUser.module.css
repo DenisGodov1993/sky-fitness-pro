@@ -1,17 +1,127 @@
 .profilePage__wrapper {
-  width: 1160px;
-  height: 1134px;
+  width: auto; 
+  /* width: 1160px;
+  height: 1134px; */
+  /* width: 100%;
+  height: 100%; */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
   gap: 60px;
 }
 
 /* Профиль */
 .profilePage__myProfile {
-  width: 1160px;
-  height: 341px;
+  /* width: 100%; */
+  /* width: auto; */
+  /* width: 1160px; */
+  /* height: 341px; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+  gap: 40px;
+}
+
+.profilePage__title {
+  /* width: 810px;
+  height: 44px; */
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: SemiBold; */
+  font-size: 40px;
+  font-weight: 600;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.myProfile__container {
+  /* width: 1160px; */
+  /* height: 257px; */
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+  /* gap: 10; */
+  gap: 33px;
+  padding: 30px;
+
+  border-radius: 30px;
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+
+/* .container__image { */
+  /* width: 100%; */
+  /* width: 197px; */
+  /* height: 197px; */
+  /* border-radius: 20px; */
+  /* background: rgba(217, 217, 217, 1); */
+/* } */
+
+.container__info {
+  /* width: 300px; */
+  /* height: 181px; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+  gap: 30px;
+}
+
+.container__name {
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Medium; */
+  font-size: 32px;
+  font-weight: 500;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.container__email {
+  /* width: 188px;
+  height: 20px; */
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Regular; */
+  font-size: 18px;
+  font-weight: 400;
+  padding-bottom: 14px;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.container__button {
+/* width: 192px; */
+/* height: 52px; */
+  max-width: 192px;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px 16px 26px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 46px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+.container__button:hover {
+  background-color: rgba(217, 217, 217, 1);
+}
+
+.profilePage__myCourses {
+  /* width: 1160px; */
+  /* height: 733px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -19,20 +129,15 @@
   gap: 40px;
 }
 
-.profilePage__title {
-  width: 810px;
-  height: 44px;
-  color: rgba(0, 0, 0, 1);
-  font-family: Roboto;
-  font-style: SemiBold;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 110%;
-  letter-spacing: 0px;
-  text-align: left;
-}
 
-.myProfile__containerProfile {
+
+
+
+
+
+
+
+/* .myProfile__containerProfile {
   width: 1160px;
   height: 257px;
   display: flex;
@@ -44,9 +149,9 @@
   border-radius: 30px;
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
   background: rgba(255, 255, 255, 1);
-}
+} */
 
-.myProfile__contentProfile {
+/* .myProfile__contentProfile {
   width: 530px;
   height: 197px;
   display: flex;
@@ -54,24 +159,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 33px;
-}
-
-.contentProfile__image {
-  width: 197px;
-  height: 197px;
-  border-radius: 20px;
-  background: rgba(217, 217, 217, 1);
-}
-
-.contentProfile__info {
-  width: 300px;
-  height: 181px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 44px;
-}
+} */
 
 /* .contentProfile__title {
   width: 300px;
@@ -99,7 +187,7 @@
   text-align: left;
 } */
 
-.contentProfile__email {
+/* .contentProfile__email {
   width: 188px;
   height: 20px;
   color: rgba(0, 0, 0, 1);
@@ -110,43 +198,12 @@
   line-height: 110%;
   letter-spacing: 0px;
   text-align: left;
-}
+} */
 
-.contentProfile__button {
-  width: 192px;
-  height: 52px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 26px 16px 26px;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 1);
-  border-radius: 46px;
-  color: rgba(0, 0, 0, 1);
-  font-family: Roboto;
-  font-style: Regular;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 110%;
-  letter-spacing: 0px;
-  /* text-align: left; */
-  background: rgba(255, 255, 255, 1);
-}
 
-.profilePage__myCourses {
-  width: 1160px;
-  height: 733px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 40px;
-}
 
 /* Мои курсы */
-.myCourses__title {
+/* .myCourses__title {
   width: 810px;
   height: 44px;
   color: rgba(0, 0, 0, 1);
@@ -157,7 +214,7 @@
   line-height: 110%;
   letter-spacing: 0px;
   text-align: left;
-}
+} */
 .myCourses__container {
   width: 1160px;
   height: 649px;
@@ -169,8 +226,8 @@
 }
 
 .myCourses__course {
-  width: 360px;
-  height: 649px;
+  /* width: 360px;
+  height: 649px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -182,20 +239,12 @@
   background: rgba(255, 255, 255, 1);
 }
 
-
-
-
-
-
-
-
-
 .content__card {
-  width: 360px;
-  height: 501px;
+  /* width: 360px;
+  height: 501px; */
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   gap: 24;
   padding: 0px 0px 15px 0px;
   border-radius: 30px;
@@ -205,8 +254,8 @@
 
 .card__imageContainer {
   position: relative;
-  width: 360px;
-  height: 325px;
+  /* width: 360px;
+  height: 325px; */
   overflow: visible;
 }
 
@@ -226,16 +275,16 @@
 }
 
 .card__textContainer {
-  width: 300px;
-  height: 137px;
+  /* width: 300px;
+  height: 137px; */
   display: flex;
   flex-direction: column;
   gap: 20;
 }
 
 .textContainer__title {
-  width: 300px;
-  height: 35px;
+  /* width: 300px;
+  height: 35px; */
   color: rgba(0, 0, 0, 1);
   font-size: 32px;
   font-weight: 500;
@@ -243,23 +292,23 @@
 }
 
 .textContainer__info {
-  width: 300px;
-  height: 82px;
+  /* width: 300px;
+  height: 82px; */
   display: flex;
   flex-direction: column;
   gap: 6;
 }
 
 .info__txt {
-  width: 300px;
-  height: 38px;
+  /* width: 300px;
+  height: 38px; */
   display: flex;
   gap: 6;
 }
 
 .txt__1 {
-  width: 103px;
-  height: 38px;
+  /* width: 103px;
+  height: 38px; */
   display: flex;
   align-items: center;
   gap: 6;
@@ -269,14 +318,14 @@
 }
 
 .txt__1Svg {
-  width: 15px;
-  height: 15px;
+  /* width: 15px;
+  height: 15px; */
   fill: transparent;
 }
 
 .txt__2 {
-  width: 163px;
-  height: 38px;
+  /* width: 163px;
+  height: 38px; */
   display: flex;
   align-items: center;
   gap: 6;
@@ -286,14 +335,14 @@
 }
 
 .txt__2Svg {
-  width: 15px;
-  height: 15px;
+  /* width: 15px;
+  height: 15px; */
   fill: transparent;
 }
 
 .txt__3 {
-  width: 129px;
-  height: 38px;
+  /* width: 129px;
+  height: 38px; */
   display: flex;
   align-items: center;
   gap: 6;

@@ -1,8 +1,5 @@
 .skillCard {
-  /* width: 1160px; */
-  /* height: 885px; */
   width: auto;
-  /* height: auto; */
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -10,23 +7,15 @@
 
 .skillCard__image {
   width: 100%;
-  /* height: auto; */
 }
 
 .skillCard__infoContainer {
-  /* width: auto; */
-  /* width: 1160px; */
-  /* height: 225px; */
-  display: flex;
   flex-direction: column;
   gap: 40px 17px;
 }
 
 .skillCard__text {
-  /* width: 810px; */
-  /* height: 44px; */
   color: rgba(0, 0, 0, 1);
-  /* font-style: SemiBold; */
   font-size: 40px;
   font-weight: 600;
   line-height: 110%;
@@ -38,10 +27,7 @@
 }
 
 .infoContainer__infoCard1 {
-  /* width: 368px; */
-  /* height: 141px; */
   display: flex;
-  /* flex-direction: column; */
   gap: 10px;
   padding: 20px;
   border-radius: 28px;
@@ -56,26 +42,19 @@
 }
 
 .infoCard1__card1 {
-  /* width: 328px; */
-  /* height: 101px; */
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
 .card1__txt {
-  /* width: 268px; */
-  /* height: 78px; */
   color: rgba(255, 255, 255, 1);
-  /* font-style: Regular; */
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
 }
 
 .infoContainer__infoCard2 {
-  /* width: 431px; */
-  /* height: 141px; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -92,26 +71,19 @@
 }
 
 .infoCard2__card2 {
-  /* width: 391px; */
-  /* height: 101px; */
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
 .card2__txt {
-  /* width: 323px; */
-  /* height: 78px; */
   color: rgba(255, 255, 255, 1);
-  /* font-style: Regular; */
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
 }
 
 .infoContainer__infoCard3 {
-  /* width: 327px; */
-  /* height: 141px; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -128,18 +100,13 @@
 }
 
 .infoCard3__card3 {
-  /* width: 287px; */
-  /* height: 101px; */
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
 .card3__txt {
-  /* width: 219px; */
-  /* height: 78px; */
   color: rgba(255, 255, 255, 1);
-  /* font-style: Regular; */
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
@@ -147,26 +114,19 @@
 
 /* Блок направления */
 .skillCard__directionsCourses {
-  /* width: 1160px; */
-  /* height: 230px; */
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
 .directionsCourses__text {
-  /* width: 810px; */
-  /* height: 44px; */
   color: rgba(0, 0, 0, 1);
-  /* font-style: SemiBold; */
   font-size: 40px;
   font-weight: 600;
   line-height: 110%;
 }
 
 .directionsCourses__dirCourse {
-  /* width: 1160px; */
-  /* height: 146px; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -177,27 +137,13 @@
 }
 
 .dirCourse__wrapper {
-  /* width: 1100px; */
-  /* height: 86px; */
   display: flex;
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  /* justify-content: flex-start; */
-  /* align-items: flex-start; */
   gap: 124px;
-
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  row-gap: 34px;       
-  column-gap: 124px;    */
 }
 
 .dirCourse__block {
-  /* width: 284px; */
-  /* height: 86px; */
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   gap: 34px;
 }
 
@@ -209,14 +155,10 @@
 
 .dirCourse__image {
   width: 100%;
-  /* height: auto; */
 }
 
 .dirCourse__txt {
-  /* width: 250px; */
-  /* height: 26px; */
   color: rgba(0, 0, 0, 1);
-  /* font-style: Regular; */
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
@@ -224,78 +166,44 @@
 
 /* блок рекламного плаката */
 .skillPoster {
-  /* min-height: 486px; */
   width: 100%;
   margin-top: 102px;
   position: relative;
   display: flex;
   align-items: center;
-  /* overflow: hidden */
-  
 }
 
 .skillPoster__posterImg {
-  /* width: 100%; */
-  /* height: 100%; */
-  /* height: auto; */
-  /* transform: rotate(-2.99deg); */
   position: absolute;
   right: 30px;
-  /* top: -50px; */
-  /* transform: translateY(-70px); */
-   transform: rotate(-0.99deg) translateY(-60px);
+  transform: rotate(-0.99deg) translateY(-60px);
   z-index: 2;
-  /* overflow: hidden; */
 }
 
 .skillPoster__posterImgSvg {
-  /* width: auto; */
-  /* height: auto; */
-  /* transform: rotate(5.38deg); */
   position: absolute;
   top: 130.5px;
   right: -23.5px;
-  /* top: 110px;
-  right: 5px; */
   z-index: 1;
-
-  /* Vector 6084 */
-  /* width: 670.18px;
-  height: 390.98px; */
   transform: rotate(-0.38deg) translateY(-40px);
 }
 
 .posterContainer {
   width: 100%;
-  /* height: 100%; */
-  /* height: auto; */
-  /* height: auto; */
-  /* max-height: 486px; */
-  /* width: auto; */
-  /* max-width: 1160px; */
-  /* width: 1160px; */
-  /* height: 486px; */
   border-radius: 30px;
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
   background: rgba(255, 255, 255, 1);
-  /* display: flex; */
   padding: 40px;
   overflow: hidden;
 }
 
 .posterContainer__txtContainer {
-  /* width: auto; */
-  /* width: 437px; */
-  /* height: 406px; */
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
 .txtContainer__title {
-  /* width: auto; */
-  /* width: 398px; */
-  /* height: 120px; */
   color: rgba(0, 0, 0, 1);
   font-size: 60px;
   font-weight: 500;
@@ -303,12 +211,10 @@
 }
 
 .txtContainer__list {
-  /* width: 437px; */
   min-height: 178px;
   display: flex;
   opacity: 0.6;
   color: rgba(0, 0, 0, 1);
-  /* font-style: Regular; */
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
@@ -329,8 +235,6 @@
 
 .txtContainer__btn {
   max-width: 437px;
-  /* width: 437px; */
-  /* height: 52px; */
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -338,28 +242,9 @@
   border-radius: 46px;
   background: rgba(188, 236, 48, 1);
   color: rgba(0, 0, 0, 1);
-  /* font-style: Regular; */
   font-size: 18px;
   font-weight: 400;
   line-height: 110%;
   border: none;
   cursor: pointer;
 }
-
-/* .infoContainer__infoCard {
-  display: flex;
-  gap: 20px;
-}
-
-.infoCardItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.infoCardText {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #333;
-} */

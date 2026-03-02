@@ -29,7 +29,7 @@ export default function CoursePage() {
     if (!course?._id) return;
 
     setIsLoading(true);
-    try { 
+    try {
       await addCourseToUser(course._id);
       alert('Курс успешно добавлен!');
     } catch {

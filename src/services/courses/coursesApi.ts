@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { BASE_URL } from '@/services/constants';
 
 const authHeaders = () => {
   if (typeof window === 'undefined') return {};
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   return token
     ? { Authorization: `Bearer ${token}` }
@@ -28,11 +28,18 @@ export const getCourseWorkouts = (courseId: string) => {
 };
 
 // добавить курс пользователю
-export const addCourseToUser = (courseId: string) => {
+// export const addCourseToUser = (courseId: string) => {
+//   return axios.post(
+//     `${BASE_URL}/users/me/courses`,
+//     { courseId },
+//     { headers: authHeaders() },
+//   );
+// };
+export const addCourseToUser = (courseId: string): Promise<AxiosResponse<{ message: string }>> => {
   return axios.post(
     `${BASE_URL}/users/me/courses`,
     { courseId },
-    { headers: authHeaders() },
+    { headers: { 'Content-Type': '', ...authHeaders() } } // оставляем пустым
   );
 };
 
@@ -51,6 +58,8 @@ export const resetCourseProgress = (courseId: string) => {
     { headers: authHeaders() },
   );
 };
+
+
 
 // import axios from 'axios';
 // import { BASE_URL } from '@/services/constants';

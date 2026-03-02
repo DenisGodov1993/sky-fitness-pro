@@ -53,6 +53,9 @@ export default function SignUp() {
 
       const res = await loginUser({ email, password });
 
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('username', email);
+
       dispatch(
         setUser({
           username: email,
@@ -60,6 +63,7 @@ export default function SignUp() {
         }),
       );
 
+      // router.push('/fitness/main');
       router.push('/auth/signin');
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
@@ -113,7 +117,7 @@ export default function SignUp() {
           {errorMessage && (
             <div className={styles.errorContainer}>{errorMessage}</div>
           )}
-        </div> 
+        </div>
 
         <div className={styles.login__btn}>
           <button

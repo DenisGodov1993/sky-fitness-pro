@@ -6,6 +6,8 @@ type initialStateType = {
   allCourses: CourseApiType[];
   fetchError: null | string;
   fetchIsLoading: boolean;
+
+  userId: string | null;
 };
 
 const initialState: initialStateType = {
@@ -13,6 +15,8 @@ const initialState: initialStateType = {
   allCourses: [],
   fetchError: null,
   fetchIsLoading: true,
+
+   userId: null,
 };
 
 const courseSlice = createSlice({
@@ -31,6 +35,12 @@ const courseSlice = createSlice({
     setFetchIsLoading: (state, action: PayloadAction<boolean>) => {
       state.fetchIsLoading = action.payload;
     },
+
+     setUser: (state, action: PayloadAction<{ username: string; userId: string }>) => {
+      // state.username = action.payload.username;
+      state.userId = action.payload.userId;
+      // state.isAuthenticated = true;
+    },
   },
 });
 
@@ -39,6 +49,8 @@ export const {
   setAllCourses,
   setFetchError,
   setFetchIsLoading,
+
+   setUser,
 } = courseSlice.actions;
 export const courseSliceReducer = courseSlice.reducer;
 
