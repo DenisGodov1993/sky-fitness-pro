@@ -81,12 +81,20 @@
 import axios, { AxiosResponse } from 'axios';
 import { BASE_URL } from '@/services/constants';
 
-const authHeaders = (): Record<string, string> => {
-  if (typeof window === 'undefined') return {};
+// const authHeaders = (): Record<string, string> => {
+//   if (typeof window === 'undefined') return {};
 
-  const token = localStorage.getItem('token');
+//   const token = localStorage.getItem('token');
 
-  return token ? { Authorization: `Bearer ${token}` } : {};
+//   return token ? { Authorization: `Bearer ${token}` } : {};
+// };
+
+export const authHeaders = (): { Authorization: string } => {
+  const token = localStorage.getItem('token') ?? '';
+
+  return {
+    Authorization: `Bearer ${token}`,
+  };
 };
 
 // 🔹 все курсы
@@ -158,13 +166,18 @@ export const saveWorkoutProgress = (
   courseId: string,
   workoutId: string,
   progressData: number[],
-) => {
+): Promise<void> => {
+  const headers = { ...authHeaders(), 'Content-Type': '' };
   return axios.patch(
     `${BASE_URL}/courses/${courseId}/workouts/${workoutId}`,
-    { progressData },
-    { headers: authHeaders() },
+    { progressData,
+      saveWorkoutProgress: true, // добавляем флаг для сохранения прогресса тренировки
+     },
+    { headers},
   );
 };
+
+
 
 export const getWorkoutById = (workoutId: string) => {
   return axios
