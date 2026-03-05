@@ -1,14 +1,42 @@
 .wrapper {
-  width: 100%;
+  /* width: 100%; */
+
+
   /* min-height: 100%; */
   /* overflow: hidden; */
   /* left: calc(50% - (366px / 2));
   top: calc(50% - (439px / 2)); */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+/* затемнение профиля */
+  background: rgba(0, 0, 0, 0.4); 
+
+  z-index: 1000;
 }
 
+/* .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+} */
 
+.modal {
+    width: 460px;
+  max-height: 80vh;
+  overflow: hidden;
 
-.modal__selectWorkout {
   /* select workout */
   width: 460px;
   height: 609px;
@@ -26,7 +54,7 @@
   background: rgba(255, 255, 255, 1);
 }
 
-.selectWorkout__title {
+.title {
   /* Выберите тренировку */
   /* width: 346px; */
   /* height: 35px; */
@@ -41,16 +69,92 @@
   /* text-align: left; */
 }
 
-
-.selectWorkout__content {
+.list {
+  /* Frame 2043683057 */
+  /* width: 380px; */
+  /* height: 360px; */
+  /* Автолейаут */
+  /* max-width: 380px; */
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: row; */
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+  gap: 20px;
 }
 
-.selectWorkout__btn {
+.originalTitle {
+  /* Утренняя практика */
+  /* width: 320px;
+height: 26px; */
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Regular; */
+  font-size: 24px;
+  font-weight: 400;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.nameContainer {
+   /* display: flex; */
+  /* flex-direction: column; */
+  /* flex-direction: row; */
+  /* border-bottom: 0.5px solid rgba(233, 67, 67, 0.8); */
+  border-bottom: 1px solid rgba(196, 196, 196, 1);
+}
+
+/* .nameContainer::before {
+  position: absolute;
+  content: '';
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 60px;
+  left: 0;
+} */
+
+
+
+.bigTitle {
+  /* Утренняя практика */
+  /* width: 320px;
+height: 26px; */
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Regular; */
+  font-size: 24px;
+  font-weight: 400;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.subTitle {
+  /* Йога на каждый день / 1 день */
+  /* width: 320px;
+height: 18px; */
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Regular; */
+  font-size: 16px;
+  font-weight: 400;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+/* .selectWorkout__content {
+} */
+
+.startButton {
   /* Frame 2043683048 */
   /* width: 380px; */
   /* height: 52px; */
   /* Автолейаут */
-  /* max-width: 380px; */ 
+  /* max-width: 380px; */
   width: 100%;
   max-height: 52px;
   display: flex;
@@ -70,4 +174,115 @@
   letter-spacing: 0px;
   text-align: left; */
   border: none;
+}
+
+
+
+
+.indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.completed {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: white;
+}
+
+.checkmark {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 360px; /* Фиксированная высота списка */
+  overflow-y: auto; /* Вертикальная прокрутка */
+  padding-right: 10px; /* Отступ для скроллбара */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.5);
+}
+
+.indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.completed {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: white;
+}
+
+.checkmark {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.nameContainer {
+  flex: 1; /* Занимает всё доступное пространство */
+  border-bottom: none; /* Убираем нижнюю границу */
+}
+
+/* Стили для скроллбара (опционально) */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* .active {
+  background-color: rgba(188, 236, 48, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+} */
+
+/* .indicator--selected {
+  background-color: #bcbc48;
+  border-color: #bcbc48;
+  color: white;
+} */
+
+.item--selected {
+  background-color: rgba(188, 236, 48, 0.1);
+  border-radius: 8px;
+  margin: 0 -10px; 
+  padding: 12px 16px;
 }

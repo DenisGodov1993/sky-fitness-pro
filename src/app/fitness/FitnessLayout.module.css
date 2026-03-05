@@ -4,6 +4,15 @@
   background-color: rgba(250, 250, 250, 1);
 }
 
+/* .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+} */
+
 .main {
   max-width: 1440px;
   margin: 0 auto;

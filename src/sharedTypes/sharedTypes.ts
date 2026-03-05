@@ -17,17 +17,6 @@ export interface CourseApiType {
   order: number; // порядок
 }
 
-// export type Course = {
-//   id: string;
-//   nameRU: string;
-//   durationInDays: number;
-//   dailyDurationInMinutes: {
-//     from: number;
-//     to: number;
-//   };
-//   difficulty: number;
-//   image: string;
-// };
 export interface Course {
   id: string;
   nameRU: string;
@@ -38,7 +27,7 @@ export interface Course {
   };
   difficulty: number;
   image: string;
-};
+}
 
 // тренировка из API
 export interface WorkoutApi {
@@ -47,8 +36,6 @@ export interface WorkoutApi {
   video: string;
   exercises: ExerciseApi[]; // упражнения
 }
-
-
 
 export interface ExerciseApi {
   _id: string;
@@ -129,8 +116,6 @@ export interface CourseProgress {
 //   video: string;
 //   exercises: ExerciseApi[]; // упражнения
 // }
-
-
 
 // export interface ExerciseApi {
 //   _id: string;

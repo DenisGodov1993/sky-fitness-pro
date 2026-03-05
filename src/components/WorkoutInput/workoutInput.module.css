@@ -1,0 +1,12 @@
+.workout-input {
+  width: 60px;
+  padding: 6px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.exercise-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}

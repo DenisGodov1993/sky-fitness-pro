@@ -51,8 +51,7 @@ export default function ProfilePage() {
 
           const completedWorkouts =
             courseProgress.workoutsProgress?.filter(
-              (w: { workoutCompleted: boolean }) =>
-                w.workoutCompleted
+              (w: { workoutCompleted: boolean }) => w.workoutCompleted,
             ).length ?? 0;
 
           map[courseId] = {
@@ -63,7 +62,8 @@ export default function ProfilePage() {
         }
 
         dispatch(setAllProgress(map));
-      } catch (err) {
+      } catch (error) {
+        console.error('Ошибка загрузки прогресса:', error);
         dispatch(setProgressError('Ошибка загрузки прогресса'));
         router.push('/auth/signin');
       } finally {
@@ -79,10 +79,7 @@ export default function ProfilePage() {
 
   return (
     <FitnessLayout>
-      <ProfileUser
-        username={email}
-        userSelectedCourses={selectedCourses}
-      />
+      <ProfileUser username={email} userSelectedCourses={selectedCourses} />
     </FitnessLayout>
   );
 }
@@ -118,7 +115,7 @@ export default function ProfilePage() {
 //       router.push('/auth/signin');
 //       return;
 //     }
- 
+
 //     getMe()
 //       .then((data) => {
 //         setEmail(data.user.email);

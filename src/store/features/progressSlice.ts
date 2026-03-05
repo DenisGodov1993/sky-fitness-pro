@@ -28,17 +28,13 @@ const progressSlice = createSlice({
 
     setAllProgress(
       state,
-      action: PayloadAction<Record<string, CourseProgress>>
+      action: PayloadAction<Record<string, CourseProgress>>,
     ) {
       state.progressMap = action.payload;
     },
 
-    updateCourseProgress(
-      state,
-      action: PayloadAction<CourseProgress>
-    ) {
-      state.progressMap[action.payload.courseId] =
-        action.payload;
+    updateCourseProgress(state, action: PayloadAction<CourseProgress>) {
+      state.progressMap[action.payload.courseId] = action.payload;
     },
 
     setProgressError(state, action: PayloadAction<string | null>) {
