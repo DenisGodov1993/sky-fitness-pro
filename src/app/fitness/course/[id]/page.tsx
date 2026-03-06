@@ -92,7 +92,6 @@ export default function CourseWorkoutsPage() {
             return (
               <div
                 key={workout._id}
-            
                 className={`${styles.item} ${isSelected ? styles['item--selected'] : ''}`}
                 onClick={() => setSelectedWorkoutId(workout._id)}
               >

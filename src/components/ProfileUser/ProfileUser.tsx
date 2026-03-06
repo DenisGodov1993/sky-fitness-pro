@@ -44,16 +44,17 @@ export default function ProfileUser({
   };
 
   return (
-    <div className={styles.profilePage__wrapper}>
+    <div className={styles.wrapper}>
       {/* Профиль */}
-      <div className={styles.profilePage__myProfile}>
-        <h1 className={styles.profilePage__title}>Профиль</h1>
+      <div className={styles.myProfile}>
+        <h1 className={styles.title}>Профиль</h1>
         <div className={styles.myProfile__container}>
           <Image
-            src="/img/icon/profile.svg"
-            alt="Профиль"
             width={197}
             height={197}
+            src="/img/icon/profile.svg"
+            alt="Профиль"
+            loading="eager"
           />
 
           <div className={styles.container__info}>
@@ -66,8 +67,8 @@ export default function ProfileUser({
         </div>
       </div>
       {/* Курсы */}
-      <div className={styles.profilePage__myCourses}>
-        <h1 className={styles.profilePage__title}>Мои курсы</h1>
+      <div className={styles.myCourses}>
+        <h1 className={styles.title}>Мои курсы</h1>
         {fetchIsLoading ? (
           <p>Загрузка курсов...</p>
         ) : fetchError ? (

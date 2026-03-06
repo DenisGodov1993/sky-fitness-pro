@@ -1,131 +1,72 @@
-.skillCard {
-  width: auto;
+.skillCard { 
   display: flex;
   flex-direction: column;
   gap: 60px;
 }
-
 .skillCard__image {
   width: 100%;
 }
 
-.skillCard__infoContainer {
-  flex-direction: column;
-  gap: 40px 17px;
-}
-
-.skillCard__text {
-  color: rgba(0, 0, 0, 1);
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 110%;
-}
-
-.infoContainer__infoCard {
-  display: flex;
-  gap: 17px;
-}
-
-.infoContainer__infoCard1 {
-  display: flex;
-  gap: 10px;
-  padding: 20px;
-  border-radius: 28px;
-  background: var(
-    --dark-gradient,
-    linear-gradient(
-      152.61deg,
-      rgba(21.46, 23.48, 31.57, 1),
-      rgba(30.28, 33.45, 46.14, 1)
-    )
-  );
-}
-
-.infoCard1__card1 {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.card1__txt {
-  color: rgba(255, 255, 255, 1);
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 110%;
-}
-
-.infoContainer__infoCard2 {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  border-radius: 28px;
-  background: var(
-    --dark-gradient,
-    linear-gradient(
-      152.61deg,
-      rgba(21.46, 23.48, 31.57, 1),
-      rgba(30.28, 33.45, 46.14, 1)
-    )
-  );
-}
-
-.infoCard2__card2 {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.card2__txt {
-  color: rgba(255, 255, 255, 1);
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 110%;
-}
-
-.infoContainer__infoCard3 {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  border-radius: 28px;
-  background: var(
-    --dark-gradient,
-    linear-gradient(
-      152.61deg,
-      rgba(21.46, 23.48, 31.57, 1),
-      rgba(30.28, 33.45, 46.14, 1)
-    )
-  );
-}
-
-.infoCard3__card3 {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.card3__txt {
-  color: rgba(255, 255, 255, 1);
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 110%;
-}
-
-/* Блок направления */
-.skillCard__directionsCourses {
+/* Блок Подойдет для вас, если */
+.wrapper {
+  /* width: auto; */
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
+.title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 40px;
+  font-weight: 600;
+}
+.conteiner {
+  display: flex;
+  flex-direction: row;
+  gap: 17px;
+}
+.content {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 28px;
+  background: var(
+    --dark-gradient,
+    linear-gradient(
+      152.61deg,
+      rgba(21.46, 23.48, 31.57, 1),
+      rgba(30.28, 33.45, 46.14, 1)
+    )
+  );
+}
+.contentInfo {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.number {
+  color: rgba(188, 236, 48, 1);
+  font-size: 75px;
+  font-weight: 500;
+}
+.text {
+  color: rgba(255, 255, 255, 1);
+  font-size: 24px;
+  font-weight: 400;
+}
 
+/* Блок направления */
+.skillCard__directionsCourses {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 .directionsCourses__text {
   color: rgba(0, 0, 0, 1);
   font-size: 40px;
   font-weight: 600;
   line-height: 110%;
 }
-
 .directionsCourses__dirCourse {
   display: flex;
   flex-direction: column;
@@ -146,17 +87,14 @@
   flex-direction: column;
   gap: 34px;
 }
-
 .dirCourse__item {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .dirCourse__image {
   width: 100%;
 }
-
 .dirCourse__txt {
   color: rgba(0, 0, 0, 1);
   font-size: 24px;
@@ -172,14 +110,14 @@
   display: flex;
   align-items: center;
 }
-
 .skillPoster__posterImg {
+  /* max-width: 604px; */
+  /* max-height: 604px; */
   position: absolute;
   right: 30px;
   transform: rotate(-0.99deg) translateY(-60px);
   z-index: 2;
 }
-
 .skillPoster__posterImgSvg {
   position: absolute;
   top: 130.5px;
@@ -187,7 +125,6 @@
   z-index: 1;
   transform: rotate(-0.38deg) translateY(-40px);
 }
-
 .posterContainer {
   width: 100%;
   border-radius: 30px;
@@ -196,20 +133,17 @@
   padding: 40px;
   overflow: hidden;
 }
-
 .posterContainer__txtContainer {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
-
 .txtContainer__title {
   color: rgba(0, 0, 0, 1);
   font-size: 60px;
   font-weight: 500;
   line-height: 100%;
 }
-
 .txtContainer__list {
   min-height: 178px;
   display: flex;
@@ -218,21 +152,18 @@
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
-
   ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-
   ul li::before {
     content: '•';
     margin-right: 10px;
     margin-left: 10px;
   }
 }
-
 .txtContainer__btn {
   max-width: 437px;
   display: flex;
@@ -247,4 +178,9 @@
   line-height: 110%;
   border: none;
   cursor: pointer;
+}
+.added{
+color:#8BE000;
+font-size:18px;
+font-weight:500;
 }

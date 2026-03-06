@@ -4,7 +4,6 @@
   justify-content: space-between;
   margin-bottom: 50px;
 }
-
 .title__text {
   display: flex;
   flex-direction: column;
@@ -12,12 +11,10 @@
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
 }
-
 .title__imageText {
   width: 288px;
   height: auto;
 }
-
 .imageText__text {
   padding: 16px 20px 16px 20px;
   border-radius: 5px;
@@ -26,18 +23,15 @@
   font-size: 32px;
   font-weight: 400;
 }
-
 .imageText__img {
   padding-left: 117.06px;
   transform: translateY(-12px);
 }
-
 .centerblock__content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 40px;
 }
-
 .backTotop {
   display: flex;
   justify-content: center;

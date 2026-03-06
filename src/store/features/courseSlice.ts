@@ -51,4 +51,3 @@ export const {
   setUser,
 } = courseSlice.actions;
 export const courseSliceReducer = courseSlice.reducer;
- 

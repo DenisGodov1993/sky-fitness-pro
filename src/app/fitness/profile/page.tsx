@@ -66,7 +66,7 @@ export default function ProfilePage() {
         console.error('Ошибка загрузки прогресса:', error);
         dispatch(setProgressError('Ошибка загрузки прогресса'));
         router.push('/auth/signin');
-      } finally {
+      } finally { 
         dispatch(setProgressLoading(false));
         setLoading(false);
       }
@@ -83,104 +83,3 @@ export default function ProfilePage() {
     </FitnessLayout>
   );
 }
-
-// 'use client';
-
-// import { useEffect, useState } from 'react';
-// import { useRouter } from 'next/navigation';
-// import FitnessLayout from '../FitnessLayout';
-// import { getMe } from '@/services/user/userApi';
-// import ProfileUser from '@/components/ProfileUser/ProfileUser';
-// import { CourseProgressApi } from '@/sharedTypes/sharedTypes';
-
-// interface CourseProgress {
-//   completedWorkouts: number;
-//   totalWorkouts: number;
-// }
-
-// type ProgressMap = Record<string, CourseProgress>;
-
-// export default function ProfilePage() {
-//   const router = useRouter();
-//   const [email, setEmail] = useState('');
-//   const [selectedCourses, setSelectedCourses] = useState<string[]>([]);
-//   // const [progress, setProgress] = useState<ProgressMap>({});
-//   const [progress, setProgress] = useState<CourseProgressApi[]>([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const token = localStorage.getItem('token');
-
-//     if (!token) {
-//       router.push('/auth/signin');
-//       return;
-//     }
-
-//     getMe()
-//       .then((data) => {
-//         setEmail(data.user.email);
-//         setSelectedCourses(data.user.selectedCourses);
-//         // setProgress(data.user.progress ?? {});
-//         setProgress(data.user.progress ?? []);
-//       })
-//       .catch(() => {
-//         router.push('/auth/signin');
-//       })
-//       .finally(() => setLoading(false));
-//   }, [router]);
-
-//   if (loading) return <div>Загрузка...</div>;
-
-//   return (
-//     <FitnessLayout>
-//       <ProfileUser
-//         username={email}
-//         userSelectedCourses={selectedCourses}
-//         userProgress={progress}
-//       />
-//     </FitnessLayout>
-//   );
-// }
-
-// 'use client';
-
-// import { useEffect, useState } from 'react';
-// import { useRouter } from 'next/navigation';
-// import FitnessLayout from '../FitnessLayout';
-// import { getMe } from '@/services/user/userApi';
-// import ProfileUser from '@/components/ProfileUser/ProfileUser';
-
-// export default function ProfilePage() {
-//   const router = useRouter();
-
-//   const [email, setEmail] = useState('');
-//   const [selectedCourses, setSelectedCourses] = useState<string[]>([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const token = localStorage.getItem('token');
-
-//     if (!token) {
-//       router.push('/auth/signin');
-//       return;
-//     }
-
-//     getMe()
-//       .then((data) => {
-//         setEmail(data.user.email);
-//         setSelectedCourses(data.user.selectedCourses);
-//       })
-//       .catch(() => {
-//         router.push('/auth/signin');
-//       })
-//       .finally(() => setLoading(false));
-//   }, [router]);
-
-//   if (loading) return <div>Загрузка...</div>;
-
-//   return (
-//     <FitnessLayout>
-//       <ProfileUser username={email} userSelectedCourses={selectedCourses} />
-//     </FitnessLayout>
-//   );
-// }

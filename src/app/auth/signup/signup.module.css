@@ -2,51 +2,43 @@
   width: 220px;
   height: 35px;
 }
-
 .modal__login {
   width: 280px;
   display: flex;
   flex-direction: column;
 }
-
 .login__input {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 34px;
 }
-
 .input__field {
   display: flex;
   padding: 16px 18px 16px 18px;
   border: 1px solid rgba(208, 206, 206, 1);
   border-radius: 8px;
 }
-
 .input__field::-webkit-input-placeholder {
   color: rgba(208, 206, 206, 1);
   font-weight: 400;
   font-size: 18px;
 }
-
 .input__field:-ms-input-placeholder {
   color: rgba(208, 206, 206, 1);
   font-weight: 400;
   font-size: 18px;
 }
-
 .input__field::-ms-input-placeholder {
   color: rgba(208, 206, 206, 1);
   font-weight: 400;
   font-size: 18px;
 }
-
 .input__field::placeholder {
   color: rgba(208, 206, 206, 1);
   font-weight: 400;
   font-size: 18px;
 }
-
 .errorContainer {
   color: red;
   font-style: Regular;
@@ -54,14 +46,12 @@
   font-weight: 400;
   text-align: center;
 }
-
 .login__btn {
   height: 114px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .btn__enter {
   display: flex;
   justify-content: center;
@@ -87,7 +77,6 @@
   color: rgba(153, 153, 153, 1);
   cursor: not-allowed;
 }
-
 .btn__signup {
   display: flex;
   justify-content: center;
@@ -104,7 +93,6 @@
 .btn__signup:hover {
   background: rgba(247, 247, 247, 1);
 }
-
 .btn__signup:active {
   background: rgba(233, 236, 237, 1);
 }

@@ -24,20 +24,32 @@ export default function AboutCourse({ course, username }: AboutCourseProps) {
     '/img/skillCard1.png';
 
   const onAddCourse = async () => {
-    if (!username) return;
+    if (!username || isAdded || isLoading) return;
 
     setIsLoading(true);
+
     try {
-      await addCourseToUser(course._id);
+      const res = await addCourseToUser(course._id);
+
       setIsAdded(true);
-      alert('Курс добавлен!');
-    } catch (err) {
-      alert('Ошибка добавления курса');
+      console.log(res?.data?.message ?? 'Курс добавлен');
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        const message = error.response?.data?.message as string | undefined;
+
+        if (message === 'Курс уже был добавлен!') {
+          setIsAdded(true);
+          console.log(message);
+        } else {
+          console.error(message ?? 'Ошибка API');
+        }
+      } else {
+        console.error('Неизвестная ошибка');
+      }
     } finally {
       setIsLoading(false);
     }
   };
-
   return (
     <>
       <div className={styles.skillCard}>
@@ -48,29 +60,24 @@ export default function AboutCourse({ course, username }: AboutCourseProps) {
             className={styles.skillCard__image}
             src={skillImage}
             alt={course.nameRU}
+            style={{ width: 'auto', height: 'auto' }}
             priority
           />
         )}
-
-        <div className={styles.skillCard__infoContainer}>
-          <h2 className={styles.skillCard__text}>Подойдет для вас, если:</h2>
-
-          <div className={styles.infoContainer__infoCard}>
+        <div className={styles.wrapper}>
+          <h2 className={styles.title}>Подойдет для вас, если:</h2>
+          <div className={styles.conteiner}>
             {course.fitting.slice(0, 3).map((text, index) => (
-              <div
-                key={index}
-                className={styles[`infoContainer__infoCard${index + 1}`]}
-              >
-                <div
-                  className={styles[`infoCard${index + 1}__card${index + 1}`]}
-                >
-                  <p className={styles[`card${index + 1}__txt`]}>{text}</p>
+              <div key={text} className={styles.content}>
+                <div className={styles.contentInfo}>
+                  <p className={styles.number}>{index + 1}</p>
+
+                  <p className={styles.text}>{text}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
         <div className={styles.skillCard__directionsCourses}>
           <h2 className={styles.directionsCourses__text}>Направления</h2>
 
@@ -117,23 +124,7 @@ export default function AboutCourse({ course, username }: AboutCourseProps) {
               <button
                 className={styles.txtContainer__btn}
                 disabled={isLoading}
-                // onClick={onAddCourse}
-                onClick={async () => {
-                  setIsLoading(true);
-                  try {
-                    const res = await addCourseToUser(course._id);
-                    setIsAdded(true);
-                    alert(res.data.message);
-                  } catch (error: unknown) {
-                    if (axios.isAxiosError(error) && error.response) {
-                      alert(error.response.data.message);
-                    } else {
-                      alert('Ошибка добавления курса');
-                    }
-                  } finally {
-                    setIsLoading(false);
-                  }
-                }}
+                onClick={onAddCourse}
               >
                 {isLoading ? 'Добавление...' : 'Добавить курс'}
               </button>
@@ -142,7 +133,8 @@ export default function AboutCourse({ course, username }: AboutCourseProps) {
                 Войдите, чтобы добавить курс
               </Link>
             ) : (
-              <p>Курс добавлен!</p>
+              // <p>Курс добавлен!</p>
+              <p className={styles.added}>Курс добавлен ✓</p>
             )}
           </div>
         </div>
@@ -153,7 +145,8 @@ export default function AboutCourse({ course, username }: AboutCourseProps) {
           className={styles.skillPoster__posterImg}
           src="/img/poster.png"
           alt="постер"
-          style={{ width: 'auto', height: 'auto' }}
+          // style={{ width: 'auto', height: 'auto' }}
+          priority
         />
 
         <Image

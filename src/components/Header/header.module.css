@@ -6,18 +6,15 @@
   justify-content: space-between;
   margin-bottom: 60px;
 }
-
 .header__logo {
   width: 220px;
   height: auto;
 }
-
 .logo__image {
   width: 220px;
   height: 35px;
   margin-bottom: 15px;
 }
-
 .logo__text {
   width: 327px;
   height: 20px;
@@ -27,7 +24,6 @@
   line-height: 110%;
   opacity: 0.5;
 }
-
 .header__btn {
   width: 103px;
   height: 52px;
@@ -49,7 +45,6 @@
 }
 
 /* вход пользователя после авторизации*/
-
 .header__user {
   display: flex;
   align-items: center;
@@ -59,16 +54,13 @@
   cursor: pointer;
   margin-bottom: 24px;
 }
-
 .header__userName {
   color: rgba(0, 0, 0, 1);
-  /* font-style: Regular; */
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
   margin-left: 20px;
 }
-
 .header__arrow {
   /* content: ''; */
   display: block;
@@ -81,12 +73,10 @@
 }
 
 /* модальное окно */
-
 .header__userWrapper {
   position: relative;
   z-index: 1000;
 }
-
 .userMenu {
   position: absolute;
   width: 266px;
@@ -99,7 +89,6 @@
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
   background: rgba(255, 255, 255, 1);
 }
-
 .userMenu__info {
   width: auto;
   text-align: center;
@@ -108,27 +97,20 @@
   align-items: center;
   gap: 10px;
 }
-
 .info__titleName {
   color: rgba(0, 0, 0, 1);
-  /* font-family: StratosSkyeng; */
-  /* font-style: Regular; */
   font-size: 18px;
   font-weight: 400;
   line-height: 110%;
 }
-
 .info__mail {
   width: 206px;
   height: 20px;
   color: rgba(153, 153, 153, 1);
-  /* font-family: StratosSkyeng; */
-  /* font-style: Regular; */
   font-size: 18px;
   font-weight: 400;
   line-height: 110%;
 }
-
 .userMenu__btn {
   width: 206px;
   height: 114px;
@@ -136,7 +118,6 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .btn__profile {
   width: 206px;
   height: 52px;
@@ -147,17 +128,14 @@
   border-radius: 46px;
   background: rgba(188, 236, 48, 1);
   color: rgba(0, 0, 0, 1);
-  /* font-style: Regular; */
   font-size: 18px;
   font-weight: 400;
   line-height: 110%;
   cursor: pointer;
 }
-
 .btn__profile:hover {
   background-color: rgb(167, 221, 6);
 }
-
 .btn__exit {
   width: 206px;
   height: 52px;
@@ -170,13 +148,11 @@
   border: 1px solid rgba(0, 0, 0, 1);
   border-radius: 46px;
   color: rgba(0, 0, 0, 1);
-  /* font-style: Regular; */
   font-size: 18px;
   font-weight: 400;
   line-height: 110%;
   cursor: pointer;
 }
-
 .btn__exit:hover {
   background-color: rgb(200, 201, 196);
 }
