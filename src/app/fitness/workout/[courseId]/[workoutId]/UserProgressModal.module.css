@@ -1,7 +1,213 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  /* background: rgba(0,0,0,0.5); */
+  background: rgba(0, 0, 0, 0.13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal {
+  /* background: white;
+  width: 520px;
+  max-height: 80vh; 
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column; */
+
+  /* progress */
+  /* width: 426px; */
+  /* height: 595.5px; */
+  max-width: 426px;
+  max-height: 595.5px;
+  /* Автолейаут */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  gap: 48;
+  padding: 40px;
+
+  border-radius: 30px;
+  /* Shadow */
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+
+.title {
+  /* margin-bottom: 20px; */
+  color: rgba(0, 0, 0, 1);
+
+  /* font-family: StratosSkyeng; */
+  /* font-style: Regular; */
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 110%; */
+  /* letter-spacing: 0%; */
+  /* text-align: left; */
+}
+
+/* .title__text {
+
+} */
+
+.content {
+  /* overflow-y: auto;  */
+  /* max-height: 50vh; */
+  /* padding-right: 6px; */
+  /* Frame 2043683057 */
+  /* width: 346px; */
+  /* height: 346.5px; */
+  /* Автолейаут */
+  display: flex;
+  /* flex-direction: row; */
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: center;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.exercise {
+  /* margin-bottom: 20px; */
+
+  /* Frame 2043683056 */
+  /* width: 320px; */
+  /* height: 346px; */
+  /* Автолейаут */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+  /* gap: 20px; */
+
+  /* Frame 2043683047 */
+  /* width: 320px; */
+  /* height: 102px; */
+  /* Автолейаут */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  /* align-items: flex-start; */
+  gap: 10px;
+}
+
+.question {
+  /* margin-bottom: 8px; */
+  /* Сколько раз вы сделали наклоны вперед? */
+  /* width: 320px; */
+  /* height: 40px; */
+
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Regular; */
+  font-size: 18px;
+  font-weight: 400;
+  /* line-height: 110%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.input {
+  /* width: 120px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 16px; */
+
+  /* Frame 2043683045 */
+  width: 320px;
+  height: 52px;
+  /* Автолейаут */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10;
+  padding: 16px 18px 16px 18px;
+
+  box-sizing: border-box;
+  border: 1px solid rgba(208, 206, 206, 1);
+  border-radius: 8px;
+
+  color: rgba(0, 0, 0, 1);
+
+  font-family: Roboto;
+  font-style: Regular;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.input::placeholder {
+  color: rgba(208, 206, 206, 1);
+
+  font-family: Roboto;
+  font-style: Regular;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.saveButton {
+  /* margin-top: 20px;
+  height: 44px;
+  border-radius: 24px;
+  border: none;
+  background: #9be22d;
+  font-weight: 600;
+  cursor: pointer; */
+
+  /* Frame 2043683048 */
+  width: 346px;
+  height: 52px;
+  /* Автолейаут */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10;
+  padding: 16px 26px 16px 26px;
+
+  border-radius: 46px;
+  background: rgba(188, 236, 48, 1);
+
+  color: rgba(0, 0, 0, 1);
+
+  font-family: Roboto;
+  font-style: Regular;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: 0px;
+  text-align: left;
+
+  border: none;
+  cursor: pointer;
+}
+
+.success {
+  text-align: center;
+}
+
+.check {
+  font-size: 48px;
+  color: #9be22d;
+}
+
+/* .overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,5 +282,5 @@
 
 .check {
   font-size: 52px;
-  color: #28a745;
-}
+  color: #28a745; 
+} */

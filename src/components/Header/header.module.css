@@ -84,6 +84,7 @@
 
 .header__userWrapper {
   position: relative;
+  z-index: 1000;
 }
 
 .userMenu {

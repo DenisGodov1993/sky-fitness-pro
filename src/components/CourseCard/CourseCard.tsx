@@ -91,6 +91,7 @@ export function CourseCard({
           // src="/img/test.jpg"
           src={courseImage ?? ''}
           alt={course.nameRU}
+          loading="eager"
         />
         {isProfile ? (
           <button
@@ -120,53 +121,54 @@ export function CourseCard({
           </button>
         )}
       </Link>
-      <div className={styles.card__textContainer}></div>
-      <h3 className={styles.textContainer__title}>{course.nameRU}</h3>
-      <div className={styles.textContainer__info}>
-        <div className={styles.info__txt}>
-          <div className={styles.txt__1}>
-            <svg className={styles.txt__1Svg}>
-              <use xlinkHref="/img/icon/calendar.svg"></use>
-            </svg>
-            <p>{course.durationInDays} дней</p>
-          </div>
-
-          <div className={styles.txt__2}>
-            <svg className={styles.txt__2Svg}>
-              <use xlinkHref="/img/icon/watch.svg"></use>
-            </svg>
-            <p>
-              {course.dailyDurationInMinutes?.from ?? '—'}-
-              {course.dailyDurationInMinutes?.to ?? '—'} мин/день
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.txt__3}>
-          <svg className={styles.txt__3Svg}>
-            <use xlinkHref="/img/icon/complexity.svg"></use>
-          </svg>
-          <p>Сложность</p>
-        </div>
-        {isProfile && (
-          <>
-            <div className={styles.progressWrapper}>
-              <div
-                className={styles.progressBar}
-                style={{ width: `${percentage}%` }}
-              />
+      <div className={styles.card__textContainer}>
+        <h3 className={styles.textContainer__title}>{course.nameRU}</h3>
+        <div className={styles.textContainer__info}>
+          <div className={styles.info__txt}>
+            <div className={styles.txt__1}>
+              <svg className={styles.txt__1Svg}>
+                <use xlinkHref="/img/icon/calendar.svg"></use>
+              </svg>
+              <p>{course.durationInDays} дней</p>
             </div>
 
-            <div className={styles.progressText}>{percentage}%</div>
+            <div className={styles.txt__2}>
+              <svg className={styles.txt__2Svg}>
+                <use xlinkHref="/img/icon/watch.svg"></use>
+              </svg>
+              <p>
+                {course.dailyDurationInMinutes?.from ?? '—'}-
+                {course.dailyDurationInMinutes?.to ?? '—'} мин/день
+              </p>
+            </div>
+          </div>
 
-            <button
-              className={styles.startBtn}
-              onClick={() => router.push(`/fitness/course/${course._id}`)}
-            >
-              {buttonText}
-            </button>
-          </>
-        )}
+          <div className={styles.txt__3}>
+            <svg className={styles.txt__3Svg}>
+              <use xlinkHref="/img/icon/complexity.svg"></use>
+            </svg>
+            <p>Сложность</p>
+          </div>
+          {isProfile && (
+            <>
+              <div className={styles.progressWrapper}>
+                <div
+                  className={styles.progressBar}
+                  style={{ width: `${percentage}%` }}
+                />
+              </div>
+
+              <div className={styles.progressText}>{percentage}%</div>
+
+              <button
+                className={styles.startBtn}
+                onClick={() => router.push(`/fitness/course/${course._id}`)}
+              >
+                {buttonText}
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

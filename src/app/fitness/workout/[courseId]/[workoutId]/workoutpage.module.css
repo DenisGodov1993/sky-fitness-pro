@@ -1,0 +1,48 @@
+.container {
+  max-width: 1160px;
+  /* width: 1160px; */
+  /* height: 1154px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.courseTitle {
+  /* width: 810px;
+  height: 60px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.courseTitle__text {
+  color: rgba(0, 0, 0, 1);
+  /* font-family: Roboto; */
+  /* font-style: Medium; */
+  font-size: 60px;
+  font-weight: 500;
+  /* line-height: 100%; */
+  /* letter-spacing: 0px; */
+  /* text-align: left; */
+}
+
+.videoContainer {
+  width: 100%;
+  border-radius: 30px; 
+  overflow: hidden;
+  /* border: none; */
+}
+
+/* .progressButton {
+  margin-top: 25px;
+  padding: 12px 22px;
+  background: #9be22d;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+} */

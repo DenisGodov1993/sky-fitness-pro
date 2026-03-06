@@ -35,6 +35,7 @@ export default function Centerblock() {
             src="/img/img_tail.png"
             alt="img_tail"
             style={{ width: 'auto', height: 'auto' }}
+            loading="eager"
           />
         </div>
       </div>
