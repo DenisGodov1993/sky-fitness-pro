@@ -15,4 +15,4 @@ export const getMe = () => {
       headers: authHeaders(),
     })
     .then((res) => res.data);
-};
+}; 

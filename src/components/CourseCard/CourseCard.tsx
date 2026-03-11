@@ -5,15 +5,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAppSelector, useAppDispatch } from '@/store/store';
 import { CourseApiType } from '@/sharedTypes/sharedTypes';
 import { CourseProgress } from '@/store/features/progressSlice';
-// import { useAppDispatch } from '@/store/store';
-// import { setCurrentCourse } from '@/store/features/courseSlice';
 import { courseImageMap } from '@/data';
 import {
   addCourseToUser,
   removeCourseFromUser,
 } from '@/services/courses/coursesApi';
+import {
+  addSelectedCourse,
+  removeSelectedCourse,
+} from '@/store/features/authSlice';
 
 interface CourseCardProps {
   course: CourseApiType;
@@ -27,40 +30,48 @@ export function CourseCard({
   progress,
 }: CourseCardProps) {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
-  // const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState('');
 
-  // const onClickCourse = () => {
-  //   dispatch(setCurrentCourse(course));
-  // };
+  const selectedCourses = useAppSelector(
+    (state) => state.auth.selectedCourses ?? [],
+  );
+  const isCourseAdded = selectedCourses.includes(course._id);
 
   const courseImage = courseImageMap.find(
     (c) => c.name === course.nameRU,
   )?.image;
 
-  const handleAdd = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleAdd = async () => {
+    if (isLoading || isCourseAdded) return;
+
     setIsLoading(true);
+    setStatus('');
+
     try {
       await addCourseToUser(course._id);
-      alert('Курс добавлен!');
-    } catch {
-      alert('Ошибка добавления');
+      dispatch(addSelectedCourse(course._id));
+    } catch (error: unknown) {
+      if (error instanceof Error) setStatus(error.message);
+      else setStatus('Ошибка добавления курса');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleRemove = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleRemove = async () => {
+    if (isLoading) return;
+
     setIsLoading(true);
+
     try {
       await removeCourseFromUser(course._id);
-      alert('Курс удалён!');
-      window.location.reload();
-    } catch {
-      alert('Ошибка удаления');
+      dispatch(removeSelectedCourse(course._id));
+    } catch (error: unknown) {
+      if (error instanceof Error) setStatus(error.message);
+      else setStatus('Ошибка удаления курса');
     } finally {
       setIsLoading(false);
     }
@@ -72,27 +83,23 @@ export function CourseCard({
       : 0;
 
   let buttonText = 'Начать тренировки';
-
   if (percentage > 0 && percentage < 100) buttonText = 'Продолжить';
-
   if (percentage === 100) buttonText = 'Начать заново';
 
   return (
-    //     <div className={styles.content__card} onClick={onClickCourse}>
     <div className={styles.content__card}>
-      <Link
-        className={styles.card__imageContainer}
-        href={`/fitness/fitnessCourses/${course._id}`}
-      >
-        <Image
-          width={360}
-          height={325}
-          className={styles.card__img}
-          // src="/img/test.jpg"
-          src={courseImage ?? ''}
-          alt={course.nameRU}
-          loading="eager"
-        />
+      <div className={styles.card__imageContainer}>
+        <Link href={`/fitness/fitnessCourses/${course._id}`}>
+          <Image
+            width={360}
+            height={325}
+            className={styles.card__img}
+            src={courseImage ?? ''}
+            alt={course.nameRU}
+            loading="eager"
+          />
+        </Link>
+
         {isProfile ? (
           <button
             className={styles.card__imgPlusSvg}
@@ -106,6 +113,10 @@ export function CourseCard({
               alt="Удалить"
             />
           </button>
+        ) : isCourseAdded ? (
+          <div className={styles.card__imgPlusSvg}>
+            <span>Курс добавлен</span>
+          </div>
         ) : (
           <button
             className={styles.card__imgPlusSvg}
@@ -120,9 +131,11 @@ export function CourseCard({
             />
           </button>
         )}
-      </Link>
+      </div>
+
       <div className={styles.card__textContainer}>
         <h3 className={styles.textContainer__title}>{course.nameRU}</h3>
+
         <div className={styles.textContainer__info}>
           <div className={styles.info__txt}>
             <div className={styles.txt__1}>
@@ -150,12 +163,14 @@ export function CourseCard({
             <p>Сложность</p>
           </div>
 
+          {status && <p>{status}</p>}
+
           {isProfile && (
             <>
               <div className={styles.exerciseCard}>
                 <div className={styles.exerciseHeader}>
                   <span>Прогресс </span>
-                  <span> {percentage}%</span>
+                  <span>{percentage}%</span>
                 </div>
 
                 <div className={styles.progressBar}>

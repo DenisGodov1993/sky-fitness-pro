@@ -129,3 +129,24 @@
   border-radius: 50px;
   background: rgba(0, 193, 255, 1);
 }
+
+/* планшет */
+@media (max-width: 1024px) {
+  .content__card {
+    max-width: 100%;
+  }
+}
+
+/* мобильные */
+@media (max-width: 768px) {
+  .content__card {
+    gap: 18px;
+  }
+  .textContainer__title {
+    font-size: 26px;
+  }
+  .card__textContainer {
+    width: 100%;
+    padding: 0 16px;
+  }
+}

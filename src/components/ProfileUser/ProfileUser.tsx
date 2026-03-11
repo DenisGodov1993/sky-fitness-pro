@@ -3,20 +3,24 @@
 import styles from './profileUser.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useAppSelector } from '@/store/store';
 import { useMemo } from 'react';
+// import { useAppSelector, useAppDispatch } from '@/store/store';
+import { useAppSelector } from '@/store/store';
 import { CourseCard } from '../CourseCard/CourseCard';
+// import { removeSelectedCourse } from '@/store/features/authSlice';
 
 interface ProfileUserProps {
   username: string;
-  userSelectedCourses: string[];
 }
 
-export default function ProfileUser({
-  username,
-  userSelectedCourses,
-}: ProfileUserProps) {
+export default function ProfileUser({ username }: ProfileUserProps) {
   const router = useRouter();
+  // const dispatch = useAppDispatch();
+
+  // Берем список выбранных курсов из Redux
+  const selectedCourses = useAppSelector(
+    (state) => state.auth.selectedCourses ?? [],
+  );
 
   const {
     allCourses = [],
@@ -32,11 +36,10 @@ export default function ProfileUser({
     return namePart[0].toUpperCase() + namePart.slice(1);
   }, [username]);
 
+  // Фильтруем курсы для текущего пользователя
   const myCourses = useMemo(() => {
-    return allCourses.filter((course) =>
-      userSelectedCourses.includes(course._id),
-    );
-  }, [allCourses, userSelectedCourses]);
+    return allCourses.filter((course) => selectedCourses.includes(course._id));
+  }, [allCourses, selectedCourses]);
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -66,6 +69,7 @@ export default function ProfileUser({
           </div>
         </div>
       </div>
+
       {/* Курсы */}
       <div className={styles.myCourses}>
         <h1 className={styles.title}>Мои курсы</h1>
@@ -77,16 +81,14 @@ export default function ProfileUser({
           <p>Вы ещё не добавили курсы</p>
         ) : (
           <div className={styles.myCourses__container}>
-            {myCourses.map((course) => {
-              return (
-                <CourseCard
-                  key={course._id}
-                  course={course}
-                  isProfile
-                  progress={progressMap[course._id]}
-                />
-              );
-            })}
+            {myCourses.map((course) => (
+              <CourseCard
+                key={course._id}
+                course={course}
+                isProfile
+                progress={progressMap[course._id]}
+              />
+            ))}
           </div>
         )}
       </div>

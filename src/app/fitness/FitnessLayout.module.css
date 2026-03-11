@@ -17,3 +17,16 @@
   position: relative;
   padding: 50px 140px;
 }
+
+/* планшет */
+@media (max-width: 1024px) {
+  .main {
+    padding: 40px 60px;
+  }
+}
+/* мобильный */
+@media (max-width: 768px) {
+  .main {
+    padding: 30px 20px;
+  }
+}

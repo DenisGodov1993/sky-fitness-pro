@@ -61,3 +61,44 @@
   border: none;
   cursor: pointer;
 }
+
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .container {
+    padding: 30px;
+  }
+}
+
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .container {
+    padding: 24px;
+  }
+  .title {
+    font-size: 26px;
+  }
+  .exerciseHeader {
+    font-size: 16px;
+  }
+  .progressButton {
+    width: 100%;
+  }
+}
+
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+  .title {
+    font-size: 22px;
+  }
+}

@@ -50,3 +50,37 @@
 .backTotop:hover {
   background-color: rgb(167, 221, 6);
 }
+
+/* планшет */
+@media (max-width: 1024px) {
+  .title__text {
+    font-size: 48px;
+  }
+  .imageText__text {
+    font-size: 26px;
+  }
+}
+
+/* мобильный */
+@media (max-width: 768px) {
+  .centerblock__title {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .title__text {
+    font-size: 34px;
+  }
+  .title__imageText {
+    width: 220px;
+  }
+  .imageText__text {
+    font-size: 22px;
+  }
+  .centerblock__content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .backTotop {
+    width: 100%;
+  }
+}

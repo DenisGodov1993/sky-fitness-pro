@@ -1,4 +1,4 @@
-.skillCard { 
+.skillCard {
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -179,8 +179,132 @@
   border: none;
   cursor: pointer;
 }
-.added{
-color:#8BE000;
-font-size:18px;
-font-weight:500;
+.added {
+  color: #8be000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .title {
+    font-size: 34px;
+  }
+  .conteiner {
+    flex-wrap: wrap;
+  }
+  .content {
+    flex: 1 1 48%;
+  }
+  .number {
+    font-size: 56px;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .dirCourse__wrapper {
+    gap: 60px;
+  }
+  .txtContainer__title {
+    font-size: 44px;
+  }
+  .txtContainer__list {
+    font-size: 20px;
+  }
+  .skillPoster__posterImg {
+    width: 420px;
+    transform: rotate(-1deg) translateY(-30px);
+  }
+}
+
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .skillCard {
+    gap: 40px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .conteiner {
+    flex-direction: column;
+  }
+  .content {
+    width: 100%;
+  }
+  .contentInfo {
+    gap: 16px;
+  }
+  .number {
+    font-size: 44px;
+  }
+  .text {
+    font-size: 18px;
+  }
+  .directionsCourses__text {
+    font-size: 28px;
+  }
+  .dirCourse__wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .dirCourse__txt {
+    font-size: 18px;
+  }
+  .skillPoster {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+  .skillPoster__posterImg {
+    position: static;
+    width: 100%;
+    transform: none;
+    margin-top: 30px;
+  }
+  .skillPoster__posterImgSvg {
+    display: none;
+  }
+  .posterContainer {
+    padding: 30px;
+  }
+  .txtContainer__title {
+    font-size: 34px;
+  }
+  .txtContainer__list {
+    font-size: 18px;
+  }
+  .txtContainer__btn {
+    max-width: 100%;
+  }
+}
+
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+  .number {
+    font-size: 36px;
+  }
+  .text {
+    font-size: 16px;
+  }
+  .directionsCourses__text {
+    font-size: 24px;
+  }
+  .dirCourse__txt {
+    font-size: 16px;
+  }
+  .posterContainer {
+    padding: 24px;
+  }
+  .txtContainer__title {
+    font-size: 28px;
+  }
+  .txtContainer__list {
+    font-size: 16px;
+  }
+  .txtContainer__btn {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
 }

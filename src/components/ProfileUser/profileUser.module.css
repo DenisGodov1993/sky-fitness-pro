@@ -72,3 +72,79 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 40px;
 }
+
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .wrapper {
+    gap: 50px;
+  }
+  .title {
+    font-size: 34px;
+  }
+  .myProfile__container {
+    padding: 24px;
+    gap: 24px;
+  }
+  .container__name {
+    font-size: 28px;
+  }
+  .container__email {
+    font-size: 16px;
+  }
+  .container__button {
+    font-size: 16px;
+    padding: 14px 22px;
+  }
+  .myCourses__container {
+    gap: 30px;
+  }
+}
+
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .wrapper {
+    gap: 40px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .myProfile__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .container__info {
+    align-items: center;
+    gap: 20px;
+  }
+  .container__name {
+    font-size: 24px;
+  }
+  .container__email {
+    font-size: 16px;
+  }
+  .container__button {
+    max-width: 100%;
+  }
+  .myCourses__container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+  .container__name {
+    font-size: 20px;
+  }
+  .container__email {
+    font-size: 14px;
+  }
+  .container__button {
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+}

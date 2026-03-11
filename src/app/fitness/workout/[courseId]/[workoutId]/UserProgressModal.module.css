@@ -85,3 +85,56 @@
   font-size: 48px;
   color: #9be22d;
 }
+
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .modal {
+    max-width: 380px;
+  }
+}
+
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 20px;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: 80vh;
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .content {
+    gap: 16px;
+  }
+
+  .input {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+
+  .saveButton {
+    width: 100%;
+  }
+}
+
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .modal {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+}

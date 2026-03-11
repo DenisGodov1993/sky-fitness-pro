@@ -137,7 +137,7 @@
   background-color: rgb(167, 221, 6);
 }
 .btn__exit {
-  width: 206px;
+  width: 206px; 
   height: 52px;
   display: flex;
   justify-content: center;
@@ -155,4 +155,34 @@
 }
 .btn__exit:hover {
   background-color: rgb(200, 201, 196);
+}
+
+/* планшет */
+@media (max-width: 1024px) {
+  .logo__text {
+    display: none;
+  }
+}
+
+/* мобильный */
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 40px;
+  }
+  .header__logo {
+    width: auto;
+  }
+  .logo__image {
+    width: 180px;
+  }
+  .header__userName {
+    display: none;
+  }
+  .header__btn {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  .userMenu {
+    right: 0;
+  }
 }

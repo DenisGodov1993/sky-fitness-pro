@@ -45,7 +45,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 48;
+  gap: 48px;
   padding: 40px;
 
   border-radius: 30px;
@@ -161,7 +161,7 @@ height: 18px; */
   /* flex-direction: row; */
   justify-content: center;
   align-items: center;
-  gap: 10;
+  gap: 10px;
   padding: 16px 26px 16px 26px;
   border-radius: 46px;
   background: rgba(188, 236, 48, 1);
@@ -282,4 +282,106 @@ height: 18px; */
   border-radius: 8px;
   margin: 0 -10px; 
   padding: 12px 16px;
+}
+
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+
+  .modal {
+    width: 420px;
+    padding: 32px;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .bigTitle {
+    font-size: 22px;
+  }
+
+  .subTitle {
+    font-size: 15px;
+  }
+
+}
+
+/* для мобильных экранов */
+@media (max-width: 768px) {
+
+  .modal {
+    width: 100%;
+    max-width: 420px;
+
+    height: auto;
+    max-height: 85vh;
+
+    padding: 28px 20px;
+    gap: 24px;
+
+    border-radius: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .list {
+    max-height: 45vh;
+  }
+
+  .bigTitle {
+    font-size: 20px;
+  }
+
+  .subTitle {
+    font-size: 14px;
+  }
+
+  .indicator {
+    width: 18px;
+    height: 18px;
+  }
+
+  .startButton {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+
+}
+
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+
+  .modal {
+    padding: 24px 16px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .bigTitle {
+    font-size: 18px;
+  }
+
+  .subTitle {
+    font-size: 13px;
+  }
+
+  .item {
+    padding: 10px 0;
+  }
+
+  .indicator {
+    width: 16px;
+    height: 16px;
+  }
+
+  .startButton {
+    font-size: 15px;
+  }
+
 }
