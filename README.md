@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Фитнес-приложение:
+Приложение онлайн-тренировок 
+с возможностью проходить фитнес-курсы, 
+выполнять упражнения и отслеживать прогресс.
 
-## Getting Started
+Стек технологий:
+- Next.js (App Router)
+- React
+- TypeScript
+- Redux Toolkit
+- Axios
+- React Toastify
+- CSS Modules
 
-First, run the development server:
+Возможности:
 
-```bash
+Авторизация:
+- регистрация пользователя
+- вход по email и паролю
+- JWT авторизация (JSON Web Token):
+JWT хранится в localStorage, добавляется в каждый запрос:
+Authorization: Bearer <token>
+
+Фитнес-курсы:
+- просмотр всех курсов
+- просмотр одного отдельного курса
+- добавление курса в профиль
+- удаление курса
+
+Тренировки:
+- просмотр тренировок курса
+- видео упражнений
+- ввод количества повторений
+
+Прогресс:
+- сохранение результатов упражнений конкретной тренировки по конкретному курсу
+- сохранение результатов тренировок по конкретному курсу
+- подсчет процента выполнения упражнений конкретной тренировки по конкретному курсу
+- подсчет процента выполнения тренировок по конкретному курсу
+- визуализационная шкала выполненных упражнений и тренировок в процентах
+
+API:
+
+Используется REST API:
+https://wedev-api.sky.pro/api/fitness
+
+Основные эндпоинты:
+POST /auth/register
+POST /auth/login
+GET /users/me
+GET /courses
+GET /courses/:id
+GET /courses/:id/workouts
+PATCH /courses/:courseId/workouts/:workoutId
+
+Запуск проекта:
+
+Установка зависимостей:
+npm install
+
+Запуск dev сервера:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Приложение будет доступно:
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Тесты:
+npm run test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Используется Jest и React Testing Library

@@ -4,18 +4,18 @@ import styles from './profileUser.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { useAppSelector } from '@/store/store';
+import { useAppSelector, useAppDispatch } from '@/store/store';
 import { CourseCard } from '../CourseCard/CourseCard';
+import { clearUser } from '@/store/features/authSlice';
 
 interface ProfileUserProps {
   username: string;
-  userSelectedCourses: string[];
 }
 
 export default function ProfileUser({ username }: ProfileUserProps) {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
-  // Берем список выбранных курсов из Redux
   const selectedCourses = useAppSelector(
     (state) => state.auth.selectedCourses ?? [],
   );
@@ -30,25 +30,29 @@ export default function ProfileUser({ username }: ProfileUserProps) {
 
   const displayName = useMemo(() => {
     if (!username) return 'Пользователь';
-    const namePart = username.split('@')[0];
-    return namePart[0].toUpperCase() + namePart.slice(1);
+
+    const name = username.split('@')[0];
+
+    return name[0].toUpperCase() + name.slice(1);
   }, [username]);
 
-  // Фильтруем курсы для текущего пользователя
+  const selectedSet = useMemo(() => new Set(selectedCourses), [selectedCourses]);
+
   const myCourses = useMemo(() => {
-    return allCourses.filter((course) => selectedCourses.includes(course._id));
-  }, [allCourses, selectedCourses]);
+    return allCourses.filter((course) => selectedSet.has(course._id));
+  }, [allCourses, selectedSet]);
 
   const logout = () => {
     localStorage.removeItem('token');
+    dispatch(clearUser());
     router.push('/auth/signin');
   };
 
   return (
     <div className={styles.wrapper}>
-      {/* Профиль */}
       <div className={styles.myProfile}>
         <h1 className={styles.title}>Профиль</h1>
+
         <div className={styles.myProfile__container}>
           <Image
             width={197}
@@ -61,6 +65,7 @@ export default function ProfileUser({ username }: ProfileUserProps) {
           <div className={styles.container__info}>
             <h2 className={styles.container__name}>{displayName}</h2>
             <p className={styles.container__email}>Логин: {username}</p>
+
             <button className={styles.container__button} onClick={logout}>
               Выйти
             </button>
@@ -68,9 +73,9 @@ export default function ProfileUser({ username }: ProfileUserProps) {
         </div>
       </div>
 
-      {/* Курсы */}
       <div className={styles.myCourses}>
         <h1 className={styles.title}>Мои курсы</h1>
+
         {fetchIsLoading ? (
           <p>Загрузка курсов...</p>
         ) : fetchError ? (

@@ -44,7 +44,8 @@ export default function AboutCourse({
             src={skillImage}
             alt={course.nameRU}
             style={{ width: 'auto', height: 'auto' }}
-            priority
+            // priority
+            priority={true}
           />
         )}
         <div className={styles.wrapper}>
