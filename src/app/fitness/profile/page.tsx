@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import FitnessLayout from '../FitnessLayout';
 import { getMe } from '@/services/user/userApi';
+import ProfileUser from '@/components/ProfileUser/ProfileUser';
+import { useAppDispatch } from '@/store/store';
+import { showError } from '@/utils/toast';
 import {
   getCourseProgress,
   getCourseWorkouts,
 } from '@/services/courses/coursesApi';
-import ProfileUser from '@/components/ProfileUser/ProfileUser';
-import { useAppDispatch } from '@/store/store';
 import {
   setAllProgress,
   setProgressLoading,
@@ -62,11 +63,11 @@ export default function ProfilePage() {
         }
 
         dispatch(setAllProgress(map));
-      } catch (error) {
-        console.error('Ошибка загрузки прогресса:', error);
+      } catch {
+        showError('Ошибка загрузки прогресса');
         dispatch(setProgressError('Ошибка загрузки прогресса'));
         router.push('/auth/signin');
-      } finally { 
+      } finally {
         dispatch(setProgressLoading(false));
         setLoading(false);
       }

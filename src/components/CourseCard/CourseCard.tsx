@@ -17,6 +17,8 @@ import {
   addSelectedCourse,
   removeSelectedCourse,
 } from '@/store/features/authSlice';
+import { showError, showSuccess } from '@/utils/toast';
+import axios from 'axios';
 
 interface CourseCardProps {
   course: CourseApiType;
@@ -51,11 +53,24 @@ export function CourseCard({
     setStatus('');
 
     try {
-      await addCourseToUser(course._id);
+      const res = await addCourseToUser(course._id);
       dispatch(addSelectedCourse(course._id));
-    } catch (error: unknown) {
-      if (error instanceof Error) setStatus(error.message);
-      else setStatus('Ошибка добавления курса');
+      showSuccess(res.data.message); // toast сработает корректно
+    } catch (error) {
+      // Типизированный catch через AxiosError
+      if (axios.isAxiosError<{ message: string }>(error) && error.response) {
+        const message = error.response.data.message;
+
+        // если курс уже есть на сервере — синхронизируем Redux
+        if (message.includes('уже был добавлен')) {
+          dispatch(addSelectedCourse(course._id));
+          showSuccess('Курс уже был добавлен');
+        } else {
+          showError(message);
+        }
+      } else {
+        showError('Ошибка добавления курса');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -69,9 +84,9 @@ export function CourseCard({
     try {
       await removeCourseFromUser(course._id);
       dispatch(removeSelectedCourse(course._id));
-    } catch (error: unknown) {
-      if (error instanceof Error) setStatus(error.message);
-      else setStatus('Ошибка удаления курса');
+      showSuccess('Курс удалён');
+    } catch {
+      showError('Ошибка удаления курса');
     } finally {
       setIsLoading(false);
     }

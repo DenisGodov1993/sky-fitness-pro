@@ -8,6 +8,7 @@ import { updateCourseProgress } from '@/store/features/progressSlice';
 import styles from './workoutpage.module.css';
 import UserProgressModal from './UserProgressModal';
 import AboutWorkout from '@/components/AboutWorkout/AboutWorkout';
+import { showError } from '@/utils/toast';
 import {
   getWorkoutById,
   getCourseProgress,
@@ -37,49 +38,61 @@ export default function WorkoutPage() {
   useEffect(() => {
     if (!courseId) return;
 
-    getCourseById(courseId).then((data: CourseApiType) => {
-      setCourse(data);
-    });
+    getCourseById(courseId)
+      .then((data: CourseApiType) => {
+        setCourse(data);
+      })
+      .catch(() => {
+        showError('Ошибка загрузки курса');
+      });
   }, [courseId]);
 
   // Загрузка тренировки
   useEffect(() => {
     if (!workoutId) return;
 
-    getWorkoutById(workoutId).then((data: WorkoutApi) => {
-      setWorkout(data);
-      setProgress(new Array(data.exercises.length).fill(0));
-    });
+    getWorkoutById(workoutId)
+      .then((data: WorkoutApi) => {
+        setWorkout(data);
+        setProgress(new Array(data.exercises.length).fill(0));
+      })
+      .catch(() => {
+        showError('Ошибка загрузки тренировки');
+      });
   }, [workoutId]);
 
   // Загрузка прогресса
   useEffect(() => {
     if (!courseId || !workoutId) return;
 
-    getCourseProgress(courseId).then((data: CourseProgressApi) => {
-      const completedWorkouts =
-        data.workoutsProgress?.filter(
-          (wp: WorkoutProgressApi) => wp.workoutCompleted,
-        ).length ?? 0;
+    getCourseProgress(courseId)
+      .then((data: CourseProgressApi) => {
+        const completedWorkouts =
+          data.workoutsProgress?.filter(
+            (wp: WorkoutProgressApi) => wp.workoutCompleted,
+          ).length ?? 0;
 
-      const totalWorkouts = data.workoutsProgress?.length ?? 0;
+        const totalWorkouts = data.workoutsProgress?.length ?? 0;
 
-      dispatch(
-        updateCourseProgress({
-          courseId,
-          completedWorkouts,
-          totalWorkouts,
-        }),
-      );
+        dispatch(
+          updateCourseProgress({
+            courseId,
+            completedWorkouts,
+            totalWorkouts,
+          }),
+        );
 
-      const workoutProgress = data.workoutsProgress?.find(
-        (wp: WorkoutProgressApi) => wp.workoutId === workoutId,
-      );
+        const workoutProgress = data.workoutsProgress?.find(
+          (wp: WorkoutProgressApi) => wp.workoutId === workoutId,
+        );
 
-      if (workoutProgress) {
-        setProgress(workoutProgress.progressData || []);
-      }
-    });
+        if (workoutProgress) {
+          setProgress(workoutProgress.progressData || []);
+        }
+      })
+      .catch(() => {
+        showError('Ошибка загрузки прогресса');
+      });
   }, [courseId, workoutId, dispatch]);
 
   const handleProgressUpdate = (newProgress: number[]) => {

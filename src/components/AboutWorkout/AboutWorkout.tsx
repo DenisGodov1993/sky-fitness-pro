@@ -13,7 +13,6 @@ interface AboutWorkoutProps {
 export default function AboutWorkout({
   workout,
   progress,
-  // setProgress,
   onProgressButtonClick,
 }: AboutWorkoutProps) {
   const hasProgress = progress.some((value) => value > 0);

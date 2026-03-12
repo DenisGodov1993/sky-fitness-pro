@@ -113,12 +113,10 @@
   .modal__login {
     width: 100%;
   }
-
   .input__field {
     font-size: 16px;
     padding: 14px 16px;
   }
-
   .btn__enter,
   .btn__signup {
     font-size: 16px;

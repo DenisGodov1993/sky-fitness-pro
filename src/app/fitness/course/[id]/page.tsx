@@ -3,6 +3,7 @@
 import styles from './courseworkoutspage.module.css';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
   WorkoutApi,
   CourseProgressApi,
@@ -12,7 +13,7 @@ import {
   getCourseWorkouts,
   getCourseProgress,
 } from '@/services/courses/coursesApi';
-// import ProfilePage from '../../profile/page';
+import { showError } from '@/utils/toast';
 
 export default function CourseWorkoutsPage() {
   const { id } = useParams<{ id: string }>();
@@ -29,20 +30,30 @@ export default function CourseWorkoutsPage() {
   useEffect(() => {
     if (!id) return;
 
-    getCourseWorkouts(id).then(setWorkouts);
+    const loadData = async () => {
+      try {
+        const workoutsData = await getCourseWorkouts(id);
+        setWorkouts(workoutsData);
 
-    getCourseProgress(id)
-      .then((data: CourseProgressApi) => {
+        const progressData: CourseProgressApi = await getCourseProgress(id);
         const progressMap: Record<string, number[]> = {};
-        data.workoutsProgress?.forEach((wp: WorkoutProgressApi) => {
-          progressMap[wp.workoutId] = wp.progressData || [];
+
+        progressData.workoutsProgress?.forEach((wp: WorkoutProgressApi) => {
+          progressMap[wp.workoutId] = wp.progressData ?? [];
         });
+
         setWorkoutProgress(progressMap);
-      })
-      .catch((error) => {
-        console.error('Ошибка загрузки прогресса:', error);
-        setWorkoutProgress({});
-      });
+      } catch {
+        showError('Ошибка загрузки тренировок');
+      }
+    };
+
+    loadData();
+
+    const handleFocus = () => loadData();
+    window.addEventListener('focus', handleFocus);
+
+    return () => window.removeEventListener('focus', handleFocus);
   }, [id]);
 
   const handleStart = () => {
@@ -78,10 +89,6 @@ export default function CourseWorkoutsPage() {
 
   return (
     <div className={styles.wrapper}>
-      {/* Страница профиля — фон */}
-      {/* <div className={styles.background}>
-              <ProfilePage />
-            </div> */}
       <div className={styles.modal}>
         <h1 className={styles.title}>Выберите тренировку</h1>
 
@@ -100,7 +107,15 @@ export default function CourseWorkoutsPage() {
                     completed ? styles.completed : ''
                   } ${isSelected ? styles['indicator--selected'] : ''}`}
                 >
-                  {completed && <span className={styles.checkmark}>✓</span>}
+                  {completed && (
+                    <Image
+                      src="/img/icon/checkmark.svg"
+                      alt="completed"
+                      width={14}
+                      height={14}
+                      className={styles.checkmark}
+                    />
+                  )}
                 </div>
                 {renderStyledName(workout.name)}
               </div>

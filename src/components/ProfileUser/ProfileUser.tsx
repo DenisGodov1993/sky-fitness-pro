@@ -4,18 +4,16 @@ import styles from './profileUser.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-// import { useAppSelector, useAppDispatch } from '@/store/store';
 import { useAppSelector } from '@/store/store';
 import { CourseCard } from '../CourseCard/CourseCard';
-// import { removeSelectedCourse } from '@/store/features/authSlice';
 
 interface ProfileUserProps {
   username: string;
+  userSelectedCourses: string[];
 }
 
 export default function ProfileUser({ username }: ProfileUserProps) {
   const router = useRouter();
-  // const dispatch = useAppDispatch();
 
   // Берем список выбранных курсов из Redux
   const selectedCourses = useAppSelector(

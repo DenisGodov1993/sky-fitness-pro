@@ -9,13 +9,13 @@ import { getMe } from '@/services/user/userApi';
 import FitnessLayout from '@/app/fitness/FitnessLayout';
 import AboutCourse from '@/components/AboutCourse/AboutCourse';
 import { addSelectedCourse } from '@/store/features/authSlice';
+import { showError, showSuccess } from '@/utils/toast';
 
 export default function CoursePage() {
   const params = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
 
   const [course, setCourse] = useState<CourseApiType | null>(null);
-  const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
 
   const username = useAppSelector((state) => state.auth.username);
@@ -42,7 +42,7 @@ export default function CoursePage() {
           });
         }
       } catch {
-        setError('Ошибка загрузки курса');
+        showError('Ошибка загрузки курса');
       }
     };
 
@@ -58,24 +58,17 @@ export default function CoursePage() {
       await addCourseToUser(course._id);
       // Добавляем курс в Redux
       dispatch(addSelectedCourse(course._id));
-    } catch (error) {
-      console.error(error);
+      showSuccess('Курс добавлен');
+    } catch {
+      showError('Ошибка добавления курса');
     } finally {
       setIsLoading(false);
     }
   };
 
-  if (error) {
-    return (
-      <FitnessLayout>
-        <div>{error}</div>
-      </FitnessLayout>
-    );
-  }
-
   if (!course) {
     return (
-      <FitnessLayout> 
+      <FitnessLayout>
         <div>Загрузка...</div>
       </FitnessLayout>
     );

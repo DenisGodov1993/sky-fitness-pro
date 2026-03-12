@@ -16,7 +16,6 @@ export interface CourseApiType {
   workouts: string[]; // тренировки
   order: number; // порядок
 }
-
 export interface Course {
   id: string;
   nameRU: string;
@@ -28,7 +27,6 @@ export interface Course {
   difficulty: number;
   image: string;
 }
-
 // тренировка из API
 export interface WorkoutApi {
   _id: string;
@@ -36,31 +34,26 @@ export interface WorkoutApi {
   video: string;
   exercises: ExerciseApi[]; // упражнения
 }
-
 export interface ExerciseApi {
   _id: string;
   name: string;
   quantity: number; // количество
 }
-
 // прогресс
 export interface CourseProgressApi {
   courseId: string;
   courseCompleted: boolean; // курс завершен
   workoutsProgress: WorkoutProgressApi[]; // прогресс тренировок
 }
-
 export interface WorkoutProgressApi {
   workoutId: string;
   workoutCompleted: boolean; // тренировка завершена
   progressData: number[];
 }
-
 export interface WorkoutProgress {
   workoutId: string;
   workoutCompleted: boolean;
 }
-
 export interface CourseProgress {
   courseId: string;
   completedWorkouts: number;
