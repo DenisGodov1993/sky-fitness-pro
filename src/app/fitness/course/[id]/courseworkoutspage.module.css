@@ -41,24 +41,6 @@
   padding: 10px 0;
   border-bottom: 1px solid rgba(196, 196, 196, 1);
 }
-/* .originalTitle {
-  color: rgba(0, 0, 0, 1);
-  font-size: 24px;
-  font-weight: 400;
-}
-.nameContainer {
-  border-bottom: 1px solid rgba(196, 196, 196, 1);
-}
-.bigTitle {
-  color: rgba(0, 0, 0, 1);
-  font-size: 24px;
-  font-weight: 400;
-}
-.subTitle {
-  color: rgba(0, 0, 0, 1);
-  font-size: 16px;
-  font-weight: 400;
-} */
 .startButton {
   width: 100%;
   max-height: 52px;
@@ -124,7 +106,6 @@
   margin: 0 -10px;
   padding: 12px 16px;
 }
-
 /* для планшетных экранов*/
 @media (max-width: 1024px) {
   .modal {

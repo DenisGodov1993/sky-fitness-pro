@@ -1,7 +1,7 @@
 import { dividingBlocks } from './dividingBlocks';
 
 describe('dividingBlocks', () => {
-  test('splits array into blocks', () => {
+  test('разделяет массив на блоки', () => {
     const result = dividingBlocks(['a', 'b', 'c', 'd'], 2);
 
     expect(result).toEqual([

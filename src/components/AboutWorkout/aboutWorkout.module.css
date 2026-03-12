@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 24px;
-  padding: 40px; 
+  padding: 40px;
   border-radius: 30px;
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
   background: rgba(255, 255, 255, 1);
@@ -61,7 +61,6 @@
   border: none;
   cursor: pointer;
 }
-
 /* для планшетных экранов*/
 @media (max-width: 1024px) {
   .grid {
@@ -72,7 +71,6 @@
     padding: 30px;
   }
 }
-
 /* для мобильных экранов */
 @media (max-width: 768px) {
   .grid {
@@ -92,7 +90,6 @@
     width: 100%;
   }
 }
-
 /* для маленьких мобильных экранов */
 @media (max-width: 480px) {
   .container {

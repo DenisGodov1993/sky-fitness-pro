@@ -11,16 +11,16 @@ describe('progressSlice', () => {
   const initialState = {
     progressMap: {},
     loading: false,
-    error: null as string | null,
+    error: null as string | null, 
   };
 
-  test('should set loading', () => {
+  test('настраивает загрузку', () => {
     const state = progressSliceReducer(initialState, setProgressLoading(true));
 
     expect(state.loading).toBe(true);
   });
 
-  test('should set all progress', () => {
+  test('устанавливает весь прогресс', () => {
     const progress = {
       course1: {
         courseId: 'course1',
@@ -34,7 +34,7 @@ describe('progressSlice', () => {
     expect(state.progressMap).toEqual(progress);
   });
 
-  test('should update course progress', () => {
+  test('обновляет прогресс курса', () => {
     const progress = {
       courseId: 'course1',
       completedWorkouts: 5,
@@ -49,7 +49,7 @@ describe('progressSlice', () => {
     expect(state.progressMap['course1']).toEqual(progress);
   });
 
-  test('should set error', () => {
+  test('устанавливает ошибки', () => {
     const state = progressSliceReducer(
       initialState,
       setProgressError('Ошибка'),
@@ -58,7 +58,7 @@ describe('progressSlice', () => {
     expect(state.error).toBe('Ошибка');
   });
 
-  test('should clear progress', () => {
+  test('прогресс', () => {
     const state = progressSliceReducer(
       {
         progressMap: {

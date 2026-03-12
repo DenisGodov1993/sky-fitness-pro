@@ -121,7 +121,6 @@ export default function WorkoutPage() {
         <AboutWorkout
           workout={workout}
           progress={progress}
-          setProgress={setProgress}
           onProgressButtonClick={() => setIsModalOpen(true)}
         />
         {/* Модалка */}

@@ -1,91 +1,39 @@
-import { render, screen } from "@testing-library/react";
-import AboutWorkout from "./AboutWorkout";
+import { render, screen } from '@testing-library/react';
+import AboutWorkout from './AboutWorkout';
 
 const workout = {
-  _id: "1",
-  name: "Тренировка (10)",
-  video: "",
+  _id: '1',
+  name: 'Тренировка (10)',
+  video: '',
   exercises: [
     {
-      _id: "ex1",
-      name: "Отжимания (10)",
-      quantity: 10
-    }
-  ]
+      _id: 'ex1',
+      name: 'Отжимания (10)',
+      quantity: 10,
+    },
+  ],
 };
 
-test("renders workout name", () => {
+test('отображение названия тренировки', () => {
   render(
     <AboutWorkout
       workout={workout}
       progress={[5]}
       onProgressButtonClick={() => {}}
-    />
+    />,
   );
 
-  expect(screen.getByText("Тренировка")).toBeInTheDocument();
+  expect(screen.getByText('Тренировка')).toBeInTheDocument();
 });
 
-test("shows exercise progress percent", () => {
+test('отображение прогресса упражнения', () => {
   render(
     <AboutWorkout
       workout={workout}
       progress={[5]}
       onProgressButtonClick={() => {}}
-    />
+    />,
   );
 
-  expect(screen.getByText("50%")).toBeInTheDocument();
+  expect(screen.getByText('50%')).toBeInTheDocument();
 });
-
-// import { render, screen } from '@testing-library/react';
-// import AboutWorkout from './AboutWorkout';
-
-// const workout = {
-//   _id: '1',
-//   name: 'Тренировка (10 повторений)',
-//   video: '',
-//   exercises: [
-//     {
-//       _id: 'ex1',
-//       name: 'Отжимания (10)',
-//       quantity: 10,
-//     },
-//   ],
-// };
-
-// test('renders workout title without repetitions', () => {
-//   render(
-//     <AboutWorkout
-//       workout={workout}
-//       progress={[5]}
-//       onProgressButtonClick={() => {}}
-//     />,
-//   );
-
-//   expect(screen.getByText('Тренировка')).toBeInTheDocument();
-// });
-
-// test('renders exercise name', () => {
-//   render(
-//     <AboutWorkout
-//       workout={workout}
-//       progress={[5]}
-//       onProgressButtonClick={() => {}}
-//     />,
-//   );
-
-//   expect(screen.getByText('Отжимания')).toBeInTheDocument();
-// });
-
-// test('shows progress percent', () => {
-//   render(
-//     <AboutWorkout
-//       workout={workout}
-//       progress={[5]}
-//       onProgressButtonClick={() => {}}
-//     />,
-//   );
-
-//   expect(screen.getByText('50%')).toBeInTheDocument();
-// });

@@ -53,7 +53,6 @@
   font-size: 24px;
   font-weight: 400;
 }
-
 /* Блок направления */
 .skillCard__directionsCourses {
   /* width: 100%; */
@@ -76,7 +75,6 @@
   border-radius: 28px;
   background: rgba(188, 236, 48, 1);
 }
-
 .dirCourse__wrapper {
   display: flex;
   gap: 124px;
@@ -101,7 +99,6 @@
   font-weight: 400;
   line-height: 110%;
 }
-
 /* блок рекламного плаката */
 .skillPoster {
   width: 100%;
@@ -184,7 +181,6 @@
   font-size: 18px;
   font-weight: 500;
 }
-
 /* для планшетных экранов*/
 @media (max-width: 1024px) {
   .title {
@@ -216,7 +212,6 @@
     transform: rotate(-1deg) translateY(-30px);
   }
 }
-
 /* для мобильных экранов */
 @media (max-width: 768px) {
   .skillCard {
@@ -276,7 +271,6 @@
     max-width: 100%;
   }
 }
-
 /* для маленьких мобильных экранов */
 @media (max-width: 480px) {
   .title {

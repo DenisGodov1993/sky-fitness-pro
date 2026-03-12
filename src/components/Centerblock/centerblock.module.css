@@ -50,7 +50,6 @@
 .backTotop:hover {
   background-color: rgb(167, 221, 6);
 }
-
 /* планшет */
 @media (max-width: 1024px) {
   .title__text {
@@ -60,7 +59,6 @@
     font-size: 26px;
   }
 }
-
 /* мобильный */
 @media (max-width: 768px) {
   .centerblock__title {

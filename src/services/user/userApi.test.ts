@@ -10,7 +10,7 @@ describe('getMe', () => {
     jest.clearAllMocks();
   });
 
-  test('should call API with token from localStorage', async () => {
+  test('вызывает API с токеном из localStorage.', async () => {
     Storage.prototype.getItem = jest.fn(() => 'test-token');
 
     mockedAxios.get.mockResolvedValue({
@@ -33,7 +33,7 @@ describe('getMe', () => {
     });
   });
 
-  test('should call API without Authorization header if no token', async () => {
+  test('При отсутствии токена, API следует вызывать без заголовка Authorization', async () => {
     Storage.prototype.getItem = jest.fn(() => null);
 
     mockedAxios.get.mockResolvedValue({

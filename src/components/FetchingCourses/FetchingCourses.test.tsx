@@ -3,7 +3,7 @@ import FetchingCourses from './FetchingCourses';
 import { Provider } from 'react-redux';
 import { makeStore } from '@/store/store';
 
-test('renders FetchingCourses without crash', () => {
+test('Отображение FetchingCourses без сбоев', () => {
   const store = makeStore();
 
   render(

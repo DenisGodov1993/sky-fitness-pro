@@ -4,7 +4,7 @@ import { getCourses } from './coursesApi';
 jest.mock('axios');
 
 describe('coursesApi', () => {
-  test('fetches courses', async () => {
+  test('выбор курсов', async () => {
     const courses = [{ _id: '1', nameRU: 'Йога' }];
 
     (axios.get as jest.Mock).mockResolvedValue({

@@ -10,15 +10,15 @@ import { clearUser } from '@/store/features/authSlice';
 
 interface ProfileUserProps {
   username: string;
+  selectedCourses?: string[];
 }
 
-export default function ProfileUser({ username }: ProfileUserProps) {
+export default function ProfileUser({
+  username,
+  selectedCourses,
+}: ProfileUserProps) {
   const router = useRouter();
   const dispatch = useAppDispatch();
-
-  const selectedCourses = useAppSelector(
-    (state) => state.auth.selectedCourses ?? [],
-  );
 
   const {
     allCourses = [],
@@ -36,7 +36,10 @@ export default function ProfileUser({ username }: ProfileUserProps) {
     return name[0].toUpperCase() + name.slice(1);
   }, [username]);
 
-  const selectedSet = useMemo(() => new Set(selectedCourses), [selectedCourses]);
+  const selectedSet = useMemo(
+    () => new Set(selectedCourses),
+    [selectedCourses],
+  );
 
   const myCourses = useMemo(() => {
     return allCourses.filter((course) => selectedSet.has(course._id));

@@ -43,7 +43,6 @@
 .header__btn:hover {
   background-color: rgb(167, 221, 6);
 }
-
 /* вход пользователя после авторизации*/
 .header__user {
   display: flex;
@@ -71,7 +70,6 @@
   border-bottom: 2px solid rgba(0, 0, 0, 1);
   transform: rotate(-45deg);
 }
-
 /* модальное окно */
 .header__userWrapper {
   position: relative;
@@ -137,7 +135,7 @@
   background-color: rgb(167, 221, 6);
 }
 .btn__exit {
-  width: 206px; 
+  width: 206px;
   height: 52px;
   display: flex;
   justify-content: center;
@@ -156,14 +154,12 @@
 .btn__exit:hover {
   background-color: rgb(200, 201, 196);
 }
-
 /* планшет */
 @media (max-width: 1024px) {
   .logo__text {
     display: none;
   }
 }
-
 /* мобильный */
 @media (max-width: 768px) {
   .header {

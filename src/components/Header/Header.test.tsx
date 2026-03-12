@@ -13,7 +13,7 @@ function renderHeader(store: ReturnType<typeof makeStore>) {
 }
 
 describe('Header', () => {
-  test('renders login button when user not logged in', () => {
+  test('Отображение кнопки входа в систему, когда пользователь не авторизован', () => {
     const store = makeStore();
 
     renderHeader(store);
@@ -21,7 +21,7 @@ describe('Header', () => {
     expect(screen.getByText(/войти/i)).toBeInTheDocument();
   });
 
-  test('renders user name when logged in', () => {
+  test('Отображение имени пользователя, когда он авторизован', () => {
     const store = makeStore();
 
     store.dispatch(
@@ -37,7 +37,7 @@ describe('Header', () => {
     expect(screen.getByText('Test')).toBeInTheDocument();
   });
 
-  test('opens user menu', () => {
+  test('открытие меню пользователя', () => {
     const store = makeStore();
 
     store.dispatch(
@@ -55,7 +55,7 @@ describe('Header', () => {
     expect(screen.getByText(/мой профиль/i)).toBeInTheDocument();
   });
 
-  test('shows logout button', () => {
+  test('показывает кнопку выхода из системы', () => {
     const store = makeStore();
 
     store.dispatch(

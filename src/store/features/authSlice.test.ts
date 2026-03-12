@@ -13,13 +13,13 @@ describe('authSlice', () => {
     selectedCourses: [] as string[],
   };
 
-  test('should return initial state', () => {
+  test('возвращает начальное состояние', () => {
     const state = authSliceReducer(undefined, { type: '' });
 
     expect(state).toEqual(initialState);
   });
 
-  test('should set user', () => {
+  test('устанавливает пользователя', () => {
     const action = setUser({
       username: 'test@test.com',
       token: '123',
@@ -33,7 +33,7 @@ describe('authSlice', () => {
     expect(state.selectedCourses).toEqual(['1']);
   });
 
-  test('should clear user', () => {
+  test('очищает информацию о пользователе', () => {
     const state = authSliceReducer(
       {
         username: 'test@test.com',
@@ -46,13 +46,13 @@ describe('authSlice', () => {
     expect(state).toEqual(initialState);
   });
 
-  test('should add selected course', () => {
+  test('добавляет выбранный курс', () => {
     const state = authSliceReducer(initialState, addSelectedCourse('course1'));
 
     expect(state.selectedCourses).toEqual(['course1']);
   });
 
-  test('should remove selected course', () => {
+  test('удаляет выбранный курс', () => {
     const state = authSliceReducer(
       {
         username: '',

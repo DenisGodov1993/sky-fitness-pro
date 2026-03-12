@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import ProfileUser from "./ProfileUser";
 import { makeStore } from "@/store/store";
 
-test("renders profile title", () => {
+test("Отображение заголовка профиля", () => {
   const store = makeStore();
 
   render(
@@ -15,7 +15,7 @@ test("renders profile title", () => {
   expect(screen.getByText("Профиль")).toBeInTheDocument();
 });
 
-test("renders user email", () => {
+test("отображение email пользователя", () => {
   const store = makeStore();
 
   render(

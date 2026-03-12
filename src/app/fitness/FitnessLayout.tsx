@@ -8,7 +8,6 @@ import { useAuthInit } from '@/hooks/useAuthInit';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 interface FitnessLayoutProps {
   children: ReactNode;
 }

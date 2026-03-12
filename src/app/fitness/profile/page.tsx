@@ -80,7 +80,7 @@ export default function ProfilePage() {
 
   return (
     <FitnessLayout>
-      <ProfileUser username={email} userSelectedCourses={selectedCourses} />
+      <ProfileUser username={email} selectedCourses={selectedCourses} />
     </FitnessLayout>
   );
 }

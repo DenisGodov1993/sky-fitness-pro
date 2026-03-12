@@ -109,7 +109,6 @@
 
 /* для мобильных экранов */
 @media (max-width: 768px) {
-
   .modal__login {
     width: 100%;
   }

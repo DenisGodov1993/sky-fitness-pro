@@ -1,7 +1,6 @@
 .wrapper {
   width: 100%;
-  /* min-height: 100%; */
-   min-height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 }
 .background {
@@ -12,95 +11,51 @@
   height: 100%;
   z-index: 0;
 }
-/* .containerAuth {
-  max-width: 100%;
-  height: 100vh;
-  margin: 0 auto;
-  position: relative;
-  background: rgba(250, 250, 250, 1);
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 1;
-} */
 .containerAuth {
   position: fixed;
   inset: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
-
   z-index: 2;
   padding: 20px;
 }
 /* Центрирование модалки */
-/* .modal__block {
-  position: absolute;
-  z-index: 2; */
-/* left: calc(50% - (366px / 2));
-  top: calc(50% - (439px / 2));
-  opacity: 1; */
-/* left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-} */
 .modal__block {
   width: 100%;
   display: flex;
   justify-content: center;
 }
-/* .modal__form {
-  width: 360px;
-  max-height: 487px;
-  display: flex;
-  flex-direction: column; */
-/* justify-content: flex-start; */
-/* align-items: center;
-  gap: 48px;
-  padding: 40px;
-  border-radius: 30px;
-  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
-  background: rgba(255, 255, 255, 1);
-} */
 .modal__form {
   width: 360px;
   max-width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 32px;
   padding: 40px;
-
   border-radius: 28px;
-
   background: white;
-
   box-shadow:
     0 10px 40px rgba(0, 0, 0, 0.15),
     0 2px 8px rgba(0, 0, 0, 0.1);
-
   animation: modalFade 0.35s ease;
 }
 .modal__form:hover {
   transform: scale(1.01);
 }
-
 @keyframes modalFade {
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.98);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
-
 /* для планшетных экранов*/
 @media (max-width: 1024px) {
   .modal__form {
@@ -109,14 +64,12 @@
     gap: 32px;
   }
 }
-
 /* для мобильных экранов */
 @media (max-width: 768px) {
   .modal__block {
     width: 100%;
     padding: 20px;
   }
-
   .modal__form {
     width: 100%;
     max-width: 340px;
@@ -125,7 +78,6 @@
     gap: 28px;
   }
 }
-
 @media (max-width: 768px) {
   .modal__form {
     width: 100%;
@@ -135,7 +87,6 @@
     border-radius: 22px;
   }
 }
-
 /* для маленьких мобильных экранов */
 @media (max-width: 480px) {
   .modal__form {
