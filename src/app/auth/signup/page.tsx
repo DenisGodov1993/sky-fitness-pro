@@ -63,8 +63,8 @@ export default function SignUp() {
         }),
       );
 
-      // router.push('/fitness/main');
-      router.push('/auth/signin');
+      router.push('/fitness/main');
+      // router.push('/auth/signin');
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
         setErrorMessage(error.response.data.message);
