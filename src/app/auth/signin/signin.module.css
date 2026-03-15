@@ -1,0 +1,123 @@
+.modal__logo {
+  width: 220px;
+  height: 35px;
+}
+.modal__login {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.login__input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+.input__field {
+  padding: 16px 18px 16px 18px;
+  border: 1px solid rgba(208, 206, 206, 1);
+  border-radius: 8px;
+}
+.input__field::-webkit-input-placeholder {
+  color: rgba(208, 206, 206, 1);
+  font-weight: 400;
+  font-size: 18px;
+}
+.input__field:-ms-input-placeholder {
+  color: rgba(208, 206, 206, 1);
+  font-weight: 400;
+  font-size: 18px;
+}
+.input__field::-ms-input-placeholder {
+  color: rgba(208, 206, 206, 1);
+  font-weight: 400;
+  font-size: 18px;
+}
+.input__field::placeholder {
+  color: rgba(208, 206, 206, 1);
+  font-weight: 400;
+  font-size: 18px;
+}
+.errorContainer {
+  color: red;
+  font-style: Regular;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+.login__btn {
+  height: 114px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.btn__enter {
+  display: flex;
+  justify-content: center;
+  padding: 16px 26px 16px 26px;
+  border-radius: 46px;
+  background: rgba(188, 236, 48, 1);
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.btn__enter:hover {
+  background: rgba(198, 255, 0, 1);
+}
+.btn__enter:active {
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+}
+.btn__enter:disabled {
+  background: rgba(247, 247, 247, 1);
+  color: rgba(153, 153, 153, 1);
+  cursor: not-allowed;
+}
+.btn__signup {
+  display: flex;
+  justify-content: center;
+  padding: 16px 26px 16px 26px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 46px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 110%;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+.btn__signup:hover {
+  background: rgba(247, 247, 247, 1);
+}
+.btn__signup:active {
+  background: rgba(233, 236, 237, 1);
+}
+
+/* Состояние "неактивно" — только если управляете вручную */
+.btn__signup.inactive,
+.btn__signup[aria-disabled='true'] {
+  border: 1px solid rgba(153, 153, 153, 1);
+  color: rgba(153, 153, 153, 1);
+  background: rgba(247, 247, 247, 1);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .modal__login {
+    width: 100%;
+  }
+  .input__field {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+  .btn__enter,
+  .btn__signup {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+}

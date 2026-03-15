@@ -1,0 +1,51 @@
+.container {
+  max-width: 1160px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.courseTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.courseTitle__text {
+  color: rgba(0, 0, 0, 1);
+  font-size: 60px;
+  font-weight: 500;
+}
+.videoContainer {
+  width: 100%;
+  border-radius: 30px; 
+  overflow: hidden;
+}
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .courseTitle__text {
+    font-size: 44px;
+  }
+  .videoContainer iframe {
+    height: 420px;
+  }
+}
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .container {
+    gap: 24px;
+  }
+  .courseTitle__text {
+    font-size: 32px;
+  }
+  .videoContainer iframe {
+    height: 260px;
+  }
+}
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .courseTitle__text {
+    font-size: 26px;
+  }
+  .videoContainer iframe {
+    height: 200px;
+  }
+}

@@ -1,0 +1,149 @@
+.content__card {
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0px 0px 15px 0px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+.card__imageContainer {
+  position: relative;
+}
+.card__img {
+  width: 100%;
+}
+.card__imgPlusSvg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.card__textContainer {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.textContainer__title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 32px;
+  font-weight: 500;
+}
+.textContainer__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.info__txt {
+  display: flex;
+  gap: 6px;
+}
+.txt__1 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 50px;
+  background: rgba(247, 247, 247, 1);
+}
+.txt__1Svg {
+  width: 15px;
+  height: 15px;
+  fill: transparent;
+}
+.txt__2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 50px;
+  background: rgba(247, 247, 247, 1);
+}
+.txt__2Svg {
+  width: 15px;
+  height: 15px;
+  fill: transparent;
+}
+.txt__3 {
+  width: 129px;
+  /* height: 38px; */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 50px;
+  background: rgba(247, 247, 247, 1);
+}
+.txt__3Svg {
+  width: 18px;
+  height: 18px;
+  fill: transparent;
+}
+.startBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px 16px 26px;
+  border-radius: 46px;
+  background: rgba(188, 236, 48, 1);
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+.startBtn:hover {
+  background-color: rgb(167, 221, 6);
+}
+/* прогресс */
+.exerciseCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.exerciseHeader {
+  display: flex;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+}
+.progressBar {
+  width: 100%;
+  height: 6px;
+  border-radius: 50px;
+  background: rgba(247, 247, 247, 1);
+}
+.progress {
+  height: 100%;
+  border-radius: 50px;
+  background: rgba(0, 193, 255, 1);
+}
+/* планшет */
+@media (max-width: 1024px) {
+  .content__card {
+    max-width: 100%;
+  }
+}
+/* мобильные */
+@media (max-width: 768px) {
+  .content__card {
+    gap: 18px;
+  }
+  .textContainer__title {
+    font-size: 26px;
+  }
+  .card__textContainer {
+    width: 100%;
+    padding: 0 16px;
+  }
+}

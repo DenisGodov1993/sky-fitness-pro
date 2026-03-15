@@ -1,0 +1,183 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* затемнение профиля */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+.title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 32px;
+  font-weight: 400;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 354px;
+  overflow-y: auto;
+  padding-right: 26px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(196, 196, 196, 1);
+}
+.startButton {
+  width: 100%;
+  max-height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px 16px 26px;
+  border-radius: 46px;
+  background: rgba(188, 236, 48, 1);
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+}
+.indicator {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  flex-shrink: 0;
+  /* position: relative;  */
+  overflow: hidden;
+}
+.completed {
+  border-color: rgba(188, 236, 48, 1);
+}
+.checkmark {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  z-index: 2;
+  /* position: relative;  */
+}
+.nameContainer {
+  /* Занимает всё доступное пространство */
+  flex: 1;
+  border-bottom: none;
+}
+/* Стили для скроллбара*/
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+.list::-webkit-scrollbar-track {
+  width: 6px;
+  height: 359px;
+  border-radius: 10px;
+  background: rgba(247, 247, 247, 1);
+}
+.list::-webkit-scrollbar-thumb {
+  width: 6px;
+  height: 116px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 1);
+}
+.item--selected {
+  background-color: rgba(188, 236, 48, 0.1);
+  border-radius: 8px;
+  margin: 0 -10px;
+  padding: 12px 16px;
+}
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .modal {
+    width: 420px;
+    padding: 32px;
+    gap: 32px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .bigTitle {
+    font-size: 22px;
+  }
+  .subTitle {
+    font-size: 15px;
+  }
+}
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .modal {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    max-height: 85vh;
+    padding: 28px 20px;
+    gap: 24px;
+    border-radius: 24px;
+  }
+  .title {
+    font-size: 24px;
+    text-align: center;
+  }
+  .list {
+    max-height: 45vh;
+  }
+  .bigTitle {
+    font-size: 20px;
+  }
+  .subTitle {
+    font-size: 14px;
+  }
+  .indicator {
+    width: 18px;
+    height: 18px;
+  }
+  .startButton {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+}
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .modal {
+    padding: 24px 16px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .bigTitle {
+    font-size: 18px;
+  }
+  .subTitle {
+    font-size: 13px;
+  }
+  .item {
+    padding: 10px 0;
+  }
+  .indicator {
+    width: 16px;
+    height: 16px;
+  }
+  .startButton {
+    font-size: 15px;
+  }
+}

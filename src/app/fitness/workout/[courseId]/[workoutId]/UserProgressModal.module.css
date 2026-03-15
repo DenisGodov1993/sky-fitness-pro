@@ -1,0 +1,200 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+/* модальное окно "Мой прогресс" */
+.modalProgress {
+  max-width: 426px;
+  max-height: 595.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+.title {
+  color: rgba(0, 0, 0, 1);
+  font-size: 32px;
+  font-weight: 400;
+}
+.content {
+  max-width: 346px;
+  max-height: 432.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  padding-right: 6px;
+  overflow-y: auto;
+}
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+.content::-webkit-scrollbar-track {
+  background: rgba(247, 247, 247, 1);
+  border-radius: 10px;
+}
+.content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  height: 116px;
+}
+
+.exercise {
+  max-width: 320px;
+  max-height: 102px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.question {
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+}
+.input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px 16px 18px;
+  box-sizing: border-box;
+  border: 1px solid rgba(208, 206, 206, 1);
+  border-radius: 8px;
+  color: rgba(0, 0, 0, 1);
+}
+.input::placeholder {
+  color: rgba(208, 206, 206, 1);
+}
+.placeholderStyle {
+  color: rgba(208, 206, 206, 1);
+}
+.filled {
+  color: rgba(0, 0, 0, 1);
+}
+.saveButton {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 26px 16px 26px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 46px;
+  background: rgba(188, 236, 48, 1);
+  border: none;
+  cursor: pointer;
+}
+/* модальное окно "Ваш прогресс засчитан!" */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 1);
+}
+.txt {
+  max-width: 346px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+}
+.check {
+  /* width: 68px;
+  height: 68px; */
+  color: rgba(188, 236, 48, 1);
+}
+/* адаптив */
+/* для планшетных экранов*/
+@media (max-width: 1024px) {
+  .modal {
+    max-width: 380px;
+    padding: 32px;
+    gap: 36px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .content {
+    gap: 24px;
+  }
+  .question {
+    font-size: 17px;
+  }
+  .input {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+  .saveButton {
+    font-size: 17px;
+  }
+  .txt {
+    max-width: 250px;
+  }
+  .check {
+    width: 56px;
+    height: 56px;
+  }
+}
+/* для мобильных экранов */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 20px;
+  }
+  .modalProgress {
+    padding: 24px;
+    gap: 28px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .content {
+    gap: 16px;
+    max-height: 300px;
+  }
+  .exercise {
+    max-width: 100%;
+  }
+  .question {
+    font-size: 15px;
+  }
+  .input {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+  .saveButton {
+    width: 100%;
+  }
+  .txt {
+    max-width: 200px;
+    font-size: 24px;
+  }
+}
+/* для маленьких мобильных экранов */
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+  .question {
+    font-size: 14px;
+  }
+  .txt {
+    max-width: 160px;
+    font-size: 20px;
+  }
+  .check {
+    width: 46px;
+    height: 46px;
+  }
+}
